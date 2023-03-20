@@ -1,0 +1,21 @@
+Processes:
+  - process0(SQLDatabase Database)
+  - process1(WebProxy HTTPServer)
+  - process2(PythonEnv DevelopmentEnvironment)
+  - process3(PythonEnv DevelopmentEnvironment)
+Storages:
+  - storage0(DockerVolume)
+  - dockerSocket(DockerSocket)
+  - hostStorage(HostStorage)
+Externals:
+  - user(RemoteUser)
+Flows:
+  - flow0(NetworkFlow HTTPFlow): user -> process1
+  - flow1(ConfigStorageFlow ReadWriteFlow): process1 -> storage0
+  - flow2(DockerSocketFlow ReadOnlyFlow SensitiveHostPath): process1 -> dockerSocket
+  - flow3(GenericStorageFlow ReadWriteFlow): process2 -> hostStorage
+  - flow4(GenericStorageFlow ReadWriteFlow): process3 -> hostStorage
+  - flow5(DependFlow): process1 -> process2
+  - flow6(DependFlow): process1 -> process3
+  - flow7(DependFlow): process2 -> process3
+  - flow8(DependFlow): process3 -> process0

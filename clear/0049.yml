@@ -1,0 +1,83 @@
+---
+name: "0049.yml"
+id: "b01fcdc4-bd5a-4dc5-b64c-5893b5537a75"
+processes:
+- name: "process0"
+  realName: null
+  model: "WebServer"
+  id: "d5e731e5-c177-4f06-8ecb-872eca7b4561"
+  labels:
+  - "HTTPServer"
+- name: "process1"
+  realName: null
+  model: "PHPEnv"
+  id: "d4767f62-559d-4896-97d3-3a618ac88c04"
+  labels:
+  - "DevelopmentEnvironment"
+externals:
+- name: "user"
+  model: "RemoteUser"
+  id: "7c195c63-2395-4a11-a9e4-49a0af2b9cb5"
+flows:
+- name: "flow0"
+  model: "NetworkFlow"
+  realPortMapping: null
+  id: "2bcf4c31-9f06-4584-a460-fc728483b960"
+  localPort: null
+  source:
+    name: "user"
+    id: "7c195c63-2395-4a11-a9e4-49a0af2b9cb5"
+  target:
+    name: "process0"
+    id: "d5e731e5-c177-4f06-8ecb-872eca7b4561"
+  labels:
+  - "HTTPFlow"
+  realStorageMappings: null
+- name: "flow1"
+  model: "GenericStorageFlow"
+  realPortMapping: null
+  id: "399069b5-2abd-4ce2-a804-4cd54282442a"
+  localPort: null
+  source:
+    name: "process0"
+    id: "d5e731e5-c177-4f06-8ecb-872eca7b4561"
+  target:
+    name: "hostStorage"
+    id: "8a3a8274-5aa5-44bc-a02d-b7026e2ca6a7"
+  labels:
+  - "ReadWriteFlow"
+  realStorageMappings: null
+- name: "flow2"
+  model: "ConfigStorageFlow"
+  realPortMapping: null
+  id: "9008429f-2c01-4acb-bdaf-e15d9b1d1993"
+  localPort: null
+  source:
+    name: "process0"
+    id: "d5e731e5-c177-4f06-8ecb-872eca7b4561"
+  target:
+    name: "hostStorage"
+    id: "8a3a8274-5aa5-44bc-a02d-b7026e2ca6a7"
+  labels:
+  - "ReadWriteFlow"
+  realStorageMappings: null
+- name: "flow3"
+  model: "GenericStorageFlow"
+  realPortMapping: null
+  id: "c7c2cbb3-4c5f-4ff6-92a3-c63eb01f9ae9"
+  localPort: null
+  source:
+    name: "process1"
+    id: "d4767f62-559d-4896-97d3-3a618ac88c04"
+  target:
+    name: "hostStorage"
+    id: "8a3a8274-5aa5-44bc-a02d-b7026e2ca6a7"
+  labels:
+  - "ReadWriteFlow"
+  realStorageMappings: null
+storages:
+- name: "hostStorage"
+  model: "HostStorage"
+  realName: null
+  realService: null
+  id: "8a3a8274-5aa5-44bc-a02d-b7026e2ca6a7"

@@ -1,0 +1,165 @@
+---
+name: "0063.yml"
+id: "efd66313-f00a-43bf-b735-e8a08bede91a"
+processes:
+- name: "process0"
+  realName: null
+  model: "SQLDatabase"
+  id: "9579b0ec-dd54-49d8-b598-055ad73803e5"
+  labels:
+  - "Database"
+- name: "process1"
+  realName: null
+  model: "PHPEnv"
+  id: "f38f67bf-c54c-493a-8f8d-a82cf3265328"
+  labels:
+  - "DevelopmentEnvironment"
+  - "HTTPServer"
+- name: "process2"
+  realName: null
+  model: "WebServer"
+  id: "88f1838f-3b9a-45af-9d65-ce7293a1814f"
+  labels:
+  - "HTTPServer"
+externals:
+- name: "user"
+  model: "RemoteUser"
+  id: "b32f7360-bf64-467a-a34d-18b9268cf231"
+flows:
+- name: "flow0"
+  model: "DataStorageFlow"
+  realPortMapping: null
+  id: "77c46602-9f72-447e-a9c6-5406e3626d45"
+  localPort: null
+  source:
+    name: "process0"
+    id: "9579b0ec-dd54-49d8-b598-055ad73803e5"
+  target:
+    name: "storage0"
+    id: "5a55154f-26b0-4d93-9387-9ac5ba2c14cb"
+  labels:
+  - "ReadWriteFlow"
+  realStorageMappings: null
+- name: "flow1"
+  model: "ConfigStorageFlow"
+  realPortMapping: null
+  id: "741db05b-deb7-4940-b520-554dd022f637"
+  localPort: null
+  source:
+    name: "process0"
+    id: "9579b0ec-dd54-49d8-b598-055ad73803e5"
+  target:
+    name: "storage1"
+    id: "e23f3a9a-91e8-4e69-8675-afa9faa6ca09"
+  labels:
+  - "ReadWriteFlow"
+  realStorageMappings: null
+- name: "flow2"
+  model: "ConfigStorageFlow"
+  realPortMapping: null
+  id: "a4150cf2-9942-4d6b-8ab4-658a8930b332"
+  localPort: null
+  source:
+    name: "process0"
+    id: "9579b0ec-dd54-49d8-b598-055ad73803e5"
+  target:
+    name: "storage2"
+    id: "61ec311d-bedc-45da-aa93-32040cf76d4b"
+  labels:
+  - "ReadWriteFlow"
+  realStorageMappings: null
+- name: "flow3"
+  model: "NetworkFlow"
+  realPortMapping: null
+  id: "83ecfe1e-1043-4f77-9c3c-6c002f8bbb28"
+  localPort: null
+  source:
+    name: "user"
+    id: "b32f7360-bf64-467a-a34d-18b9268cf231"
+  target:
+    name: "process1"
+    id: "f38f67bf-c54c-493a-8f8d-a82cf3265328"
+  labels:
+  - "HTTPFlow"
+  realStorageMappings: null
+- name: "flow4"
+  model: "GenericStorageFlow"
+  realPortMapping: null
+  id: "48c59478-e408-478d-b103-64ce446fed3f"
+  localPort: null
+  source:
+    name: "process1"
+    id: "f38f67bf-c54c-493a-8f8d-a82cf3265328"
+  target:
+    name: "storage3"
+    id: "754cc64e-64ae-4886-be26-355f90753804"
+  labels:
+  - "ReadWriteFlow"
+  realStorageMappings: null
+- name: "flow5"
+  model: "NetworkFlow"
+  realPortMapping: null
+  id: "fb19a003-7a12-4d3f-b3e5-f8efe1cb5bb0"
+  localPort: null
+  source:
+    name: "user"
+    id: "b32f7360-bf64-467a-a34d-18b9268cf231"
+  target:
+    name: "process2"
+    id: "88f1838f-3b9a-45af-9d65-ce7293a1814f"
+  labels:
+  - "HTTPFlow"
+  realStorageMappings: null
+- name: "flow6"
+  model: "GenericStorageFlow"
+  realPortMapping: null
+  id: "fa91b6c8-5453-4038-8b8e-7a601060c91b"
+  localPort: null
+  source:
+    name: "process2"
+    id: "88f1838f-3b9a-45af-9d65-ce7293a1814f"
+  target:
+    name: "storage4"
+    id: "b1a3b309-d1fa-40c6-aeab-fe884a736064"
+  labels:
+  - "ReadWriteFlow"
+  realStorageMappings: null
+- name: "flow7"
+  model: "DependFlow"
+  realPortMapping: null
+  id: "2536e2a0-a594-426a-aa55-f3bed9428c63"
+  localPort: null
+  source:
+    name: "process1"
+    id: "f38f67bf-c54c-493a-8f8d-a82cf3265328"
+  target:
+    name: "process0"
+    id: "9579b0ec-dd54-49d8-b598-055ad73803e5"
+  labels: null
+  realStorageMappings: null
+storages:
+- name: "storage0"
+  model: "DockerVolume"
+  realName: null
+  realService: null
+  id: "5a55154f-26b0-4d93-9387-9ac5ba2c14cb"
+- name: "storage1"
+  model: "DockerVolume"
+  realName: null
+  realService: null
+  id: "e23f3a9a-91e8-4e69-8675-afa9faa6ca09"
+- name: "storage2"
+  model: "DockerVolume"
+  realName: null
+  realService: null
+  id: "61ec311d-bedc-45da-aa93-32040cf76d4b"
+- name: "storage3"
+  model: "DockerVolume"
+  realName: null
+  realService: null
+  id: "754cc64e-64ae-4886-be26-355f90753804"
+- name: "storage4"
+  model: "DockerVolume"
+  realName: null
+  realService: null
+  id: "b1a3b309-d1fa-40c6-aeab-fe884a736064"

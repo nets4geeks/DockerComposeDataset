@@ -1,0 +1,20 @@
+Processes:
+  - process0(WebProxy HTTPServer)
+  - process1(PythonEnv DevelopmentEnvironment)
+  - process2(CacheDatabase)
+  - process3(SQLDatabase Database)
+  - process4(GenericService)
+Storages:
+  - hostStorage(HostStorage)
+  - storage0(DockerVolume)
+  - storage1(DockerVolume)
+Externals:
+  - user(RemoteUser)
+Flows:
+  - flow0(NetworkFlow HTTPFlow): user -> process0
+  - flow1(GenericStorageFlow ReadOnlyFlow): process0 -> hostStorage
+  - flow2(GenericStorageFlow ReadOnlyFlow): process1 -> hostStorage
+  - flow3(GenericStorageFlow ReadWriteFlow): process1 -> storage0
+  - flow4(DataStorageFlow ReadWriteFlow): process3 -> storage1
+  - flow5(DependFlow): process1 -> process2
+  - flow6(DependFlow): process1 -> process3

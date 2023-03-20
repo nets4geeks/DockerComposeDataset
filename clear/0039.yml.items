@@ -1,0 +1,14 @@
+Processes:
+  - process0(GitService HTTPServer SSHServer)
+  - process1(SQLDatabase Database)
+Storages:
+  - hostStorage(HostStorage)
+Externals:
+  - user(RemoteUser)
+Flows:
+  - flow0(NetworkFlow HTTPFlow): user -> process0
+  - flow1(NetworkFlow SSHFlow): user -> process0
+  - flow2(DataStorageFlow ReadWriteFlow): process0 -> hostStorage
+  - flow3(GenericStorageFlow ReadOnlyFlow): process0 -> hostStorage
+  - flow4(DataStorageFlow ReadWriteFlow): process1 -> hostStorage
+  - flow5(DependFlow): process0 -> process1

@@ -1,0 +1,17 @@
+Processes:
+  - process0(GitService HTTPServer)
+  - process1(GenericDevelopment)
+  - process2(AgentApplication)
+Storages:
+  - hostStorage(HostStorage)
+  - dockerSocket(DockerSocket)
+Externals:
+  - user(RemoteUser)
+Flows:
+  - flow0(NetworkFlow HTTPFlow): user -> process0
+  - flow1(DataStorageFlow ReadWriteFlow): process0 -> hostStorage
+  - flow2(NetworkFlow GenericProtocolFlow): user -> process1
+  - flow3(NetworkFlow GenericProtocolFlow): user -> process1
+  - flow4(GenericStorageFlow ReadWriteFlow): process1 -> hostStorage
+  - flow5(DockerSocketFlow ReadWriteFlow SensitiveHostPath): process2 -> dockerSocket
+  - flow6(DependFlow): process2 -> process1

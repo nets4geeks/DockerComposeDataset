@@ -1,0 +1,82 @@
+---
+name: "0105.yml"
+id: "8a91d831-716c-48e9-a8bc-29f38c3cd8bf"
+processes:
+- name: "process0"
+  realName: null
+  model: "InfrastructureMonitoring"
+  id: "2a2a852b-06bc-452f-b1d5-5e9e6dd7a608"
+  labels: null
+- name: "process1"
+  realName: null
+  model: "DataVisualizer"
+  id: "4a0ed434-eb77-4656-a1b0-2c830f2aa592"
+  labels:
+  - "HTTPServer"
+externals:
+- name: "user"
+  model: "RemoteUser"
+  id: "fc0bf096-3d22-4a4e-882b-ca0a6da58f81"
+flows:
+- name: "flow0"
+  model: "ConfigStorageFlow"
+  realPortMapping: null
+  id: "f0a9988d-5bc9-4c76-8f08-baa233b55762"
+  localPort: null
+  source:
+    name: "process0"
+    id: "2a2a852b-06bc-452f-b1d5-5e9e6dd7a608"
+  target:
+    name: "hostStorage"
+    id: "489e9854-8139-4cbe-afc8-a5349f1cfebc"
+  labels:
+  - "ReadWriteFlow"
+  realStorageMappings: null
+- name: "flow1"
+  model: "NetworkFlow"
+  realPortMapping: null
+  id: "85737938-7e17-4c2c-9a07-b7d4f9b46b1f"
+  localPort: null
+  source:
+    name: "user"
+    id: "fc0bf096-3d22-4a4e-882b-ca0a6da58f81"
+  target:
+    name: "process1"
+    id: "4a0ed434-eb77-4656-a1b0-2c830f2aa592"
+  labels:
+  - "HTTPFlow"
+  realStorageMappings: null
+- name: "flow2"
+  model: "ConfigStorageFlow"
+  realPortMapping: null
+  id: "8eef4537-628e-409b-abd1-99b72c990861"
+  localPort: null
+  source:
+    name: "process1"
+    id: "4a0ed434-eb77-4656-a1b0-2c830f2aa592"
+  target:
+    name: "hostStorage"
+    id: "489e9854-8139-4cbe-afc8-a5349f1cfebc"
+  labels:
+  - "ReadWriteFlow"
+  realStorageMappings: null
+- name: "flow3"
+  model: "DataStorageFlow"
+  realPortMapping: null
+  id: "1ea50ceb-eee0-4dcb-ab65-2651939bc56e"
+  localPort: null
+  source:
+    name: "process1"
+    id: "4a0ed434-eb77-4656-a1b0-2c830f2aa592"
+  target:
+    name: "hostStorage"
+    id: "489e9854-8139-4cbe-afc8-a5349f1cfebc"
+  labels:
+  - "ReadWriteFlow"
+  realStorageMappings: null
+storages:
+- name: "hostStorage"
+  model: "HostStorage"
+  realName: null
+  realService: null
+  id: "489e9854-8139-4cbe-afc8-a5349f1cfebc"

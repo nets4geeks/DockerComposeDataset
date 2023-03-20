@@ -1,0 +1,41 @@
+Processes:
+  - process0(DataConverter)
+  - process1(SearchEngine Database)
+  - process2(DataConverter)
+  - process3(NoSQLDatabase Database)
+  - process4(CacheDatabase)
+  - process5(DataConverter HTTPServer)
+  - process6(DataConverter)
+  - process7(AgentApplication)
+Storages:
+  - hostStorage(HostStorage)
+  - storage0(DockerAnonymousVolume)
+  - dockerSocket(DockerSocket)
+Externals:
+  - user(RemoteUser)
+Flows:
+  - flow0(NetworkFlow GenericProtocolFlow): user -> process0
+  - flow1(LogStorageFlow ReadWriteFlow): process0 -> hostStorage
+  - flow2(GenericStorageFlow ReadWriteFlow): process0 -> hostStorage
+  - flow3(DataStorageFlow ReadWriteFlow): process1 -> hostStorage
+  - flow4(GenericStorageFlow ReadWriteFlow): process1 -> storage0
+  - flow5(NetworkFlow GenericProtocolFlow): user -> process2
+  - flow6(LogStorageFlow ReadWriteFlow): process2 -> hostStorage
+  - flow7(GenericStorageFlow ReadWriteFlow): process2 -> hostStorage
+  - flow8(DataStorageFlow ReadWriteFlow): process3 -> hostStorage
+  - flow9(DataStorageFlow ReadWriteFlow): process4 -> hostStorage
+  - flow10(NetworkFlow HTTPFlow): user -> process5
+  - flow11(LogStorageFlow ReadWriteFlow): process6 -> hostStorage
+  - flow12(DockerSocketFlow ReadWriteFlow SensitiveHostPath): process7 -> dockerSocket
+  - flow13(GenericStorageFlow ReadWriteFlow): process7 -> hostStorage
+  - flow14(DependFlow): process0 -> process4
+  - flow15(DependFlow): process0 -> process3
+  - flow16(DependFlow): process0 -> process1
+  - flow17(DependFlow): process0 -> process2
+  - flow18(DependFlow): process5 -> process0
+  - flow19(DependFlow): process6 -> process0
+  - flow20(DependFlow): process6 -> process4
+  - flow21(DependFlow): process6 -> process3
+  - flow22(DependFlow): process6 -> process1
+  - flow23(DependFlow): process6 -> process2
+  - flow24(DependFlow): process7 -> process0

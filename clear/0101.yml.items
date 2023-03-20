@@ -1,0 +1,32 @@
+Processes:
+  - process0(ApplicationGateway)
+  - process1(InfrastructureMonitoring)
+  - process2(DataVisualizer)
+  - process3(GenericService)
+  - process4(CacheDatabase)
+  - process5(GenericService)
+  - process6(GenericService)
+  - process7(WebProxy HTTPServer HTTPSServer)
+Storages:
+  - hostStorage(HostStorage)
+  - storage0(DockerVolume)
+  - storage1(DockerVolume)
+  - dockerSocket(DockerSocket)
+Externals:
+  - user(RemoteUser)
+Flows:
+  - flow0(ConfigStorageFlow ReadWriteFlow): process0 -> hostStorage
+  - flow1(ConfigStorageFlow ReadWriteFlow): process1 -> hostStorage
+  - flow2(DataStorageFlow ReadWriteFlow): process1 -> storage0
+  - flow3(DataStorageFlow ReadWriteFlow): process2 -> storage1
+  - flow4(ConfigStorageFlow ReadWriteFlow): process2 -> hostStorage
+  - flow5(GenericStorageFlow ReadWriteFlow): process3 -> hostStorage
+  - flow6(DataStorageFlow ReadWriteFlow): process4 -> hostStorage
+  - flow7(GenericStorageFlow ReadWriteFlow): process6 -> hostStorage
+  - flow8(NetworkFlow HTTPFlow): user -> process7
+  - flow9(NetworkFlow HTTPSFlow): user -> process7
+  - flow10(DockerSocketFlow ReadWriteFlow SensitiveHostPath): process7 -> dockerSocket
+  - flow11(GenericStorageFlow ReadWriteFlow): process7 -> hostStorage
+  - flow12(DependFlow): process2 -> process1
+  - flow13(DependFlow): process5 -> process6
+  - flow14(DependFlow): process6 -> process4

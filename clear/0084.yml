@@ -1,0 +1,184 @@
+---
+name: "0084.yml"
+id: "f39909b1-720f-4477-9524-e992f0188a9e"
+processes:
+- name: "process0"
+  realName: null
+  model: "SQLDatabase"
+  id: "869afe93-e0ce-466a-a14d-e8a083d0c67e"
+  labels:
+  - "Database"
+- name: "process1"
+  realName: null
+  model: "CacheDatabase"
+  id: "ad818a0f-14b7-4005-b0bf-2ca176f1a273"
+  labels: null
+- name: "process2"
+  realName: null
+  model: "PythonEnv"
+  id: "c81d44b4-678d-481f-ba14-5df0bfafef3c"
+  labels:
+  - "DevelopmentEnvironment"
+- name: "process3"
+  realName: null
+  model: "WebServer"
+  id: "d7468358-63e9-41a7-add0-7588f21085a5"
+  labels:
+  - "HTTPServer"
+externals:
+- name: "user"
+  model: "RemoteUser"
+  id: "f503bffe-2fdf-4238-92bd-cb2121f8dbef"
+flows:
+- name: "flow0"
+  model: "GenericStorageFlow"
+  realPortMapping: null
+  id: "f887f2b5-5056-48d2-b6ea-5dbd7e27ae3e"
+  localPort: null
+  source:
+    name: "process2"
+    id: "c81d44b4-678d-481f-ba14-5df0bfafef3c"
+  target:
+    name: "hostStorage"
+    id: "6ec0503c-b8b9-4968-bf00-549fe6cea1a7"
+  labels:
+  - "ReadWriteFlow"
+  realStorageMappings: null
+- name: "flow1"
+  model: "NetworkFlow"
+  realPortMapping: null
+  id: "def59d5b-8ef9-4a1e-b376-e6b17405c56c"
+  localPort: null
+  source:
+    name: "user"
+    id: "f503bffe-2fdf-4238-92bd-cb2121f8dbef"
+  target:
+    name: "process3"
+    id: "d7468358-63e9-41a7-add0-7588f21085a5"
+  labels:
+  - "HTTPFlow"
+  realStorageMappings: null
+- name: "flow2"
+  model: "GenericStorageFlow"
+  realPortMapping: null
+  id: "dc4c9a8f-3dca-4606-88cf-a3b3625795b4"
+  localPort: null
+  source:
+    name: "process3"
+    id: "d7468358-63e9-41a7-add0-7588f21085a5"
+  target:
+    name: "hostStorage"
+    id: "6ec0503c-b8b9-4968-bf00-549fe6cea1a7"
+  labels:
+  - "ReadWriteFlow"
+  realStorageMappings: null
+- name: "flow3"
+  model: "DependFlow"
+  realPortMapping: null
+  id: "17e204b1-7547-4a66-8c5e-73de2e182085"
+  localPort: null
+  source:
+    name: "process2"
+    id: "c81d44b4-678d-481f-ba14-5df0bfafef3c"
+  target:
+    name: "process0"
+    id: "869afe93-e0ce-466a-a14d-e8a083d0c67e"
+  labels: null
+  realStorageMappings: null
+- name: "flow4"
+  model: "LinkFlow"
+  realPortMapping: null
+  id: "258d589b-1e6c-4470-86d8-3d55a30020c5"
+  localPort: null
+  source:
+    name: "process2"
+    id: "c81d44b4-678d-481f-ba14-5df0bfafef3c"
+  target:
+    name: "process0"
+    id: "869afe93-e0ce-466a-a14d-e8a083d0c67e"
+  labels: null
+  realStorageMappings: null
+- name: "flow5"
+  model: "LinkFlow"
+  realPortMapping: null
+  id: "59aa73ee-c98d-4b59-9f46-3d14d2b94d9b"
+  localPort: null
+  source:
+    name: "process2"
+    id: "c81d44b4-678d-481f-ba14-5df0bfafef3c"
+  target:
+    name: "process1"
+    id: "ad818a0f-14b7-4005-b0bf-2ca176f1a273"
+  labels: null
+  realStorageMappings: null
+- name: "flow6"
+  model: "DependFlow"
+  realPortMapping: null
+  id: "58c453da-f6b3-4977-91e8-b54625cb330e"
+  localPort: null
+  source:
+    name: "process3"
+    id: "d7468358-63e9-41a7-add0-7588f21085a5"
+  target:
+    name: "process0"
+    id: "869afe93-e0ce-466a-a14d-e8a083d0c67e"
+  labels: null
+  realStorageMappings: null
+- name: "flow7"
+  model: "DependFlow"
+  realPortMapping: null
+  id: "2550402e-fcbb-400f-8f6b-f96e832717c8"
+  localPort: null
+  source:
+    name: "process3"
+    id: "d7468358-63e9-41a7-add0-7588f21085a5"
+  target:
+    name: "process1"
+    id: "ad818a0f-14b7-4005-b0bf-2ca176f1a273"
+  labels: null
+  realStorageMappings: null
+- name: "flow8"
+  model: "LinkFlow"
+  realPortMapping: null
+  id: "1b4454e9-350d-4944-8df8-4149eb9d0b5c"
+  localPort: null
+  source:
+    name: "process3"
+    id: "d7468358-63e9-41a7-add0-7588f21085a5"
+  target:
+    name: "process0"
+    id: "869afe93-e0ce-466a-a14d-e8a083d0c67e"
+  labels: null
+  realStorageMappings: null
+- name: "flow9"
+  model: "LinkFlow"
+  realPortMapping: null
+  id: "39477f6b-37f5-461c-8d4d-35d6f5d5a61f"
+  localPort: null
+  source:
+    name: "process3"
+    id: "d7468358-63e9-41a7-add0-7588f21085a5"
+  target:
+    name: "process2"
+    id: "c81d44b4-678d-481f-ba14-5df0bfafef3c"
+  labels: null
+  realStorageMappings: null
+- name: "flow10"
+  model: "LinkFlow"
+  realPortMapping: null
+  id: "2a5a2919-5b6f-4c1a-b020-a0696db36c61"
+  localPort: null
+  source:
+    name: "process3"
+    id: "d7468358-63e9-41a7-add0-7588f21085a5"
+  target:
+    name: "process1"
+    id: "ad818a0f-14b7-4005-b0bf-2ca176f1a273"
+  labels: null
+  realStorageMappings: null
+storages:
+- name: "hostStorage"
+  model: "HostStorage"
+  realName: null
+  realService: null
+  id: "6ec0503c-b8b9-4968-bf00-549fe6cea1a7"

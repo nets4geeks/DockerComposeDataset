@@ -1,0 +1,16 @@
+Processes:
+  - process0(SQLDatabase Database)
+  - process1(AgentApplication)
+Storages:
+  - hostStorage(HostStorage)
+  - storage0(DockerVolume)
+  - dockerSocket(DockerSocket)
+Externals:
+  - user(RemoteUser)
+Flows:
+  - flow0(NetworkFlow DBFlow): user -> process0
+  - flow1(ConfigStorageFlow ReadWriteFlow): process0 -> hostStorage
+  - flow2(DataStorageFlow ReadWriteFlow): process0 -> storage0
+  - flow3(DockerSocketFlow ReadWriteFlow SensitiveHostPath): process1 -> dockerSocket
+  - flow4(GenericStorageFlow ReadWriteFlow): process1 -> hostStorage
+  - flow5(LinkFlow): process1 -> process0

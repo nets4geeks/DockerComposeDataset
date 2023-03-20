@@ -1,0 +1,15 @@
+Processes:
+  - process0(PerlEnv DevelopmentEnvironment)
+  - process1(WebServer HTTPServer)
+Storages:
+  - storage0(DockerVolume)
+  - hostStorage(HostStorage)
+Externals:
+  - user(RemoteUser)
+Flows:
+  - flow0(GenericStorageFlow ReadWriteFlow): process0 -> storage0
+  - flow1(GenericStorageFlow ReadWriteFlow): process0 -> hostStorage
+  - flow2(NetworkFlow HTTPFlow): user -> process1
+  - flow3(ConfigStorageFlow ReadWriteFlow): process1 -> hostStorage
+  - flow4(GenericStorageFlow ReadWriteFlow): process1 -> storage0
+  - flow5(DependFlow): process1 -> process0

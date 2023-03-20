@@ -1,0 +1,18 @@
+Processes:
+  - process0(GenericService DNSResolver DoQResolver DNSTLSResolver HTTPServer HTTPSServer)
+  - process1(NameServer)
+Storages:
+  - storage0(DockerVolume)
+  - storage1(DockerVolume)
+Externals:
+  - user(RemoteUser)
+Flows:
+  - flow0(NetworkFlow DNSFlow): user -> process0
+  - flow1(NetworkFlow DNSoverQUICFlow): user -> process0
+  - flow2(NetworkFlow DNSoverTLSFlow): user -> process0
+  - flow3(NetworkFlow HTTPFlow): user -> process0
+  - flow4(NetworkFlow HTTPFlow): user -> process0
+  - flow5(NetworkFlow HTTPSFlow): user -> process0
+  - flow6(GenericStorageFlow ReadWriteFlow): process0 -> storage0
+  - flow7(GenericStorageFlow ReadWriteFlow): process0 -> storage1
+  - flow8(DependFlow): process0 -> process1

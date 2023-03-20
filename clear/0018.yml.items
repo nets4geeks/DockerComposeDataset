@@ -1,0 +1,36 @@
+Processes:
+  - process0(CertManager)
+  - process1(GenericService)
+  - process2(GenericService)
+  - process3(WebServer HTTPServer HTTPSServer)
+  - process4(PHPEnv DevelopmentEnvironment)
+  - process5(SQLDatabase Database)
+  - process6(TestingEnvironment)
+  - process7(BuildingEnvironment)
+Storages:
+  - storage0(DockerVolume)
+  - storage1(DockerVolume)
+  - storage2(DockerVolume)
+  - hostStorage(HostStorage)
+  - storage3(DockerVolume)
+Externals:
+  - user(RemoteUser)
+Flows:
+  - flow0(GenericStorageFlow ReadWriteFlow): process0 -> storage0
+  - flow1(GenericStorageFlow ReadWriteFlow): process0 -> storage1
+  - flow2(GenericStorageFlow ReadWriteFlow): process1 -> storage2
+  - flow3(GenericStorageFlow ReadWriteFlow): process2 -> storage2
+  - flow4(NetworkFlow HTTPFlow): user -> process3
+  - flow5(NetworkFlow HTTPSFlow): user -> process3
+  - flow6(ConfigStorageFlow ReadWriteFlow): process3 -> hostStorage
+  - flow7(GenericStorageFlow ReadWriteFlow): process3 -> storage0
+  - flow8(GenericStorageFlow ReadWriteFlow): process3 -> storage2
+  - flow9(GenericStorageFlow ReadWriteFlow): process4 -> storage2
+  - flow10(NetworkFlow DBFlow): user -> process5
+  - flow11(DataStorageFlow ReadWriteFlow): process5 -> storage3
+  - flow12(GenericStorageFlow ReadWriteFlow): process5 -> storage0
+  - flow13(ConfigStorageFlow ReadWriteFlow): process5 -> storage1
+  - flow14(GenericStorageFlow ReadWriteFlow): process6 -> storage2
+  - flow15(GenericStorageFlow ReadWriteFlow): process7 -> storage2
+  - flow16(DependFlow): process2 -> process5
+  - flow17(DependFlow): process3 -> process0

@@ -1,0 +1,15 @@
+Processes:
+  - process0(GenericService)
+  - process1(ObjectStorage Database HTTPServer)
+  - process2(GenericService)
+Storages:
+  - storage0(DockerVolume)
+  - storage1(DockerVolume)
+Externals:
+  - user(RemoteUser)
+Flows:
+  - flow0(GenericStorageFlow ReadWriteFlow): process0 -> storage0
+  - flow1(NetworkFlow HTTPFlow): user -> process1
+  - flow2(DataStorageFlow ReadWriteFlow): process1 -> storage1
+  - flow3(NetworkFlow GenericProtocolFlow): user -> process2
+  - flow4(GenericStorageFlow ReadWriteFlow): process2 -> storage0

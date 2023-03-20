@@ -1,0 +1,28 @@
+Processes:
+  - process0(GenericService HTTPServer)
+  - process1(GenericService)
+  - process2(ObjectStorage Database)
+  - process3(MessageBroker AMQPServer)
+  - process4(SQLDatabase Database)
+Storages:
+  - storage0(DockerVolume)
+  - storage1(DockerVolume)
+  - storage2(DockerVolume)
+  - storage3(DockerVolume)
+Externals:
+  - user(RemoteUser)
+Flows:
+  - flow0(NetworkFlow HTTPFlow): user -> process0
+  - flow1(GenericStorageFlow ReadWriteFlow): process0 -> storage0
+  - flow2(GenericStorageFlow ReadWriteFlow): process1 -> storage1
+  - flow3(NetworkFlow GenericProtocolFlow): user -> process2
+  - flow4(DataStorageFlow ReadWriteFlow): process2 -> storage2
+  - flow5(NetworkFlow HTTPFlow): user -> process3
+  - flow6(NetworkFlow AMQPFlow): user -> process3
+  - flow7(NetworkFlow DBFlow): user -> process4
+  - flow8(DataStorageFlow ReadWriteFlow): process4 -> storage3
+  - flow9(DependFlow): process0 -> process2
+  - flow10(DependFlow): process0 -> process3
+  - flow11(DependFlow): process1 -> process0
+  - flow12(DependFlow): process1 -> process2
+  - flow13(DependFlow): process1 -> process3

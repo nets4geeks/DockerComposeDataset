@@ -1,0 +1,19 @@
+Processes:
+  - process0(SQLDatabase Database)
+  - process1(CacheDatabase)
+  - process2(WebServer)
+  - process3(GenericService)
+  - process4(NodeJsEnv DevelopmentEnvironment)
+  - process5(GenericService)
+Storages:
+Externals:
+  - user(RemoteUser)
+Flows:
+  - flow0(NetworkFlow GenericProtocolFlow): user -> process2
+  - flow1(NetworkFlow GenericProtocolFlow): user -> process3
+  - flow2(NetworkFlow GenericProtocolFlow): user -> process4
+  - flow3(LinkFlow): process2 -> process3
+  - flow4(LinkFlow): process3 -> process0
+  - flow5(LinkFlow): process3 -> process1
+  - flow6(LinkFlow): process5 -> process0
+  - flow7(LinkFlow): process5 -> process1

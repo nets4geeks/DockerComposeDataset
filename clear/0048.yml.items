@@ -1,0 +1,13 @@
+Processes:
+  - process0(SQLDatabase Database)
+  - process1(WebApplication WebServer HTTPServer HTTPSServer)
+Storages:
+  - hostStorage(HostStorage)
+Externals:
+  - user(RemoteUser)
+Flows:
+  - flow0(NetworkFlow HTTPFlow): user -> process1
+  - flow1(NetworkFlow HTTPSFlow): user -> process1
+  - flow2(GenericStorageFlow ReadWriteFlow): process1 -> hostStorage
+  - flow3(DependFlow): process1 -> process0
+  - flow4(LinkFlow): process1 -> process0

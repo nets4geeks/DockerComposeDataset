@@ -1,0 +1,19 @@
+Processes:
+  - process0(SQLDatabase Database)
+  - process1(GenericService HTTPServer SMTPServer)
+  - process2(CacheDatabase)
+  - process3(NodeJsEnv DevelopmentEnvironment)
+Storages:
+  - hostStorage(HostStorage)
+Externals:
+  - user(RemoteUser)
+Flows:
+  - flow0(NetworkFlow DBFlow): user -> process0
+  - flow1(NetworkFlow HTTPFlow): user -> process1
+  - flow2(NetworkFlow SMTPFlow): user -> process1
+  - flow3(NetworkFlow RESPFlow): user -> process2
+  - flow4(NetworkFlow GenericProtocolFlow): user -> process3
+  - flow5(NetworkFlow GenericProtocolFlow): user -> process3
+  - flow6(GenericStorageFlow ReadWriteFlow): process3 -> hostStorage
+  - flow7(DependFlow): process3 -> process0
+  - flow8(DependFlow): process3 -> process1

@@ -1,0 +1,13 @@
+Processes:
+  - process0(GenericDevelopment)
+  - process1(AgentApplication)
+Storages:
+  - hostStorage(HostStorage)
+  - dockerSocket(DockerSocket)
+Externals:
+  - user(RemoteUser)
+Flows:
+  - flow0(NetworkFlow GenericProtocolFlow): user -> process0
+  - flow1(DataStorageFlow ReadWriteFlow): process0 -> hostStorage
+  - flow2(NetworkFlow GenericProtocolFlow): user -> process1
+  - flow3(DockerSocketFlow ReadWriteFlow SensitiveHostPath): process1 -> dockerSocket

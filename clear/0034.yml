@@ -1,0 +1,131 @@
+---
+name: "0034.yml"
+id: "182b9787-7c40-409a-85af-615ab8c186ca"
+processes:
+- name: "process0"
+  realName: null
+  model: "RubyEnv"
+  id: "07a45da8-91d1-42f2-a838-2e22e28aa05a"
+  labels:
+  - "DevelopmentEnvironment"
+  - "HTTPServer"
+- name: "process1"
+  realName: null
+  model: "SQLDatabase"
+  id: "c1fe4d23-e8bb-4819-9ad9-0e7ca32f2be0"
+  labels:
+  - "Database"
+externals:
+- name: "user"
+  model: "RemoteUser"
+  id: "a360fade-c89a-4d48-a8ae-f7d8407cce19"
+flows:
+- name: "flow0"
+  model: "NetworkFlow"
+  realPortMapping: null
+  id: "50ec25ba-7fcc-4e6b-ba7f-e031f4a823eb"
+  localPort: null
+  source:
+    name: "user"
+    id: "a360fade-c89a-4d48-a8ae-f7d8407cce19"
+  target:
+    name: "process0"
+    id: "07a45da8-91d1-42f2-a838-2e22e28aa05a"
+  labels:
+  - "HTTPFlow"
+  realStorageMappings: null
+- name: "flow1"
+  model: "NetworkFlow"
+  realPortMapping: null
+  id: "c933db07-8e93-4374-b91d-df8c105be99d"
+  localPort: null
+  source:
+    name: "user"
+    id: "a360fade-c89a-4d48-a8ae-f7d8407cce19"
+  target:
+    name: "process0"
+    id: "07a45da8-91d1-42f2-a838-2e22e28aa05a"
+  labels:
+  - "GenericProtocolFlow"
+  realStorageMappings: null
+- name: "flow2"
+  model: "DockerSocketFlow"
+  realPortMapping: null
+  id: "21d89e2b-7465-440c-8999-a581ad7ab903"
+  localPort: null
+  source:
+    name: "process0"
+    id: "07a45da8-91d1-42f2-a838-2e22e28aa05a"
+  target:
+    name: "dockerSocket"
+    id: "bb7f6d1e-593f-4452-953e-65204d73ff7c"
+  labels:
+  - "ReadOnlyFlow"
+  - "SensitiveHostPath"
+  realStorageMappings: null
+- name: "flow3"
+  model: "GenericStorageFlow"
+  realPortMapping: null
+  id: "f7050317-22b0-4412-877e-5f8ce0c7aa14"
+  localPort: null
+  source:
+    name: "process0"
+    id: "07a45da8-91d1-42f2-a838-2e22e28aa05a"
+  target:
+    name: "hostStorage"
+    id: "49e1c7e6-c3ee-4205-af87-c729cf77a270"
+  labels:
+  - "ReadOnlyFlow"
+  realStorageMappings: null
+- name: "flow4"
+  model: "CertStorageFlow"
+  realPortMapping: null
+  id: "02c669ee-dd35-4905-b615-11d0070e0400"
+  localPort: null
+  source:
+    name: "process0"
+    id: "07a45da8-91d1-42f2-a838-2e22e28aa05a"
+  target:
+    name: "hostStorage"
+    id: "49e1c7e6-c3ee-4205-af87-c729cf77a270"
+  labels:
+  - "ReadWriteFlow"
+  realStorageMappings: null
+- name: "flow5"
+  model: "DataStorageFlow"
+  realPortMapping: null
+  id: "26d0bc4a-ad7d-4a37-9379-6e966c06da8e"
+  localPort: null
+  source:
+    name: "process1"
+    id: "c1fe4d23-e8bb-4819-9ad9-0e7ca32f2be0"
+  target:
+    name: "hostStorage"
+    id: "49e1c7e6-c3ee-4205-af87-c729cf77a270"
+  labels:
+  - "ReadWriteFlow"
+  realStorageMappings: null
+- name: "flow6"
+  model: "DependFlow"
+  realPortMapping: null
+  id: "ee6fa732-9c20-402e-8b93-5757d751d719"
+  localPort: null
+  source:
+    name: "process0"
+    id: "07a45da8-91d1-42f2-a838-2e22e28aa05a"
+  target:
+    name: "process1"
+    id: "c1fe4d23-e8bb-4819-9ad9-0e7ca32f2be0"
+  labels: null
+  realStorageMappings: null
+storages:
+- name: "dockerSocket"
+  model: "DockerSocket"
+  realName: null
+  realService: null
+  id: "bb7f6d1e-593f-4452-953e-65204d73ff7c"
+- name: "hostStorage"
+  model: "HostStorage"
+  realName: null
+  realService: null
+  id: "49e1c7e6-c3ee-4205-af87-c729cf77a270"

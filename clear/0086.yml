@@ -1,0 +1,96 @@
+---
+name: "0086.yml"
+id: "19e6904f-5cb0-487c-b80c-2ec35be04acb"
+processes:
+- name: "process0"
+  realName: null
+  model: "CommunicationPlatform"
+  id: "081f2c35-45b2-48fb-8254-319cb815fc1c"
+  labels: null
+- name: "process1"
+  realName: null
+  model: "WebServer"
+  id: "0ca065f7-f186-401c-8cd3-c7b954482f3f"
+  labels:
+  - "HTTPServer"
+  - "HTTPSServer"
+externals:
+- name: "user"
+  model: "RemoteUser"
+  id: "ec96d056-2e22-4164-ad19-fb920743af60"
+flows:
+- name: "flow0"
+  model: "NetworkFlow"
+  realPortMapping: null
+  id: "a2ba9b74-6203-4823-9bd8-6bfe936a5e7a"
+  localPort: null
+  source:
+    name: "user"
+    id: "ec96d056-2e22-4164-ad19-fb920743af60"
+  target:
+    name: "process0"
+    id: "081f2c35-45b2-48fb-8254-319cb815fc1c"
+  labels:
+  - "GenericProtocolFlow"
+  realStorageMappings: null
+- name: "flow1"
+  model: "NetworkFlow"
+  realPortMapping: null
+  id: "615a4fa0-9c46-4bf5-9339-d2c823482aa9"
+  localPort: null
+  source:
+    name: "user"
+    id: "ec96d056-2e22-4164-ad19-fb920743af60"
+  target:
+    name: "process1"
+    id: "0ca065f7-f186-401c-8cd3-c7b954482f3f"
+  labels:
+  - "HTTPFlow"
+  realStorageMappings: null
+- name: "flow2"
+  model: "NetworkFlow"
+  realPortMapping: null
+  id: "29f23006-0578-455d-aec8-15f99090b6ab"
+  localPort: null
+  source:
+    name: "user"
+    id: "ec96d056-2e22-4164-ad19-fb920743af60"
+  target:
+    name: "process1"
+    id: "0ca065f7-f186-401c-8cd3-c7b954482f3f"
+  labels:
+  - "HTTPSFlow"
+  realStorageMappings: null
+- name: "flow3"
+  model: "ConfigStorageFlow"
+  realPortMapping: null
+  id: "f2f0371c-dece-4c57-9365-6c38cbf817e9"
+  localPort: null
+  source:
+    name: "process1"
+    id: "0ca065f7-f186-401c-8cd3-c7b954482f3f"
+  target:
+    name: "hostStorage"
+    id: "772b7f1e-0bb4-43c5-8686-351b9620856b"
+  labels:
+  - "ReadWriteFlow"
+  realStorageMappings: null
+- name: "flow4"
+  model: "DependFlow"
+  realPortMapping: null
+  id: "1df89097-c798-42f5-8a15-7c3352d40589"
+  localPort: null
+  source:
+    name: "process1"
+    id: "0ca065f7-f186-401c-8cd3-c7b954482f3f"
+  target:
+    name: "process0"
+    id: "081f2c35-45b2-48fb-8254-319cb815fc1c"
+  labels: null
+  realStorageMappings: null
+storages:
+- name: "hostStorage"
+  model: "HostStorage"
+  realName: null
+  realService: null
+  id: "772b7f1e-0bb4-43c5-8686-351b9620856b"

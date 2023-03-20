@@ -1,0 +1,30 @@
+Processes:
+  - process0(NoSQLDatabase Database)
+  - process1(GenericService)
+  - process2(GenericService HTTPServer)
+  - process3(SQLDatabase Database)
+  - process4(NoSQLDatabase Database)
+  - process5(GenericService)
+  - process6(GenericService)
+Storages:
+  - storage0(DockerVolume)
+  - hostStorage(HostStorage)
+Externals:
+  - user(RemoteUser)
+Flows:
+  - flow0(NetworkFlow GenericProtocolFlow): user -> process1
+  - flow1(NetworkFlow HTTPFlow): user -> process2
+  - flow2(NetworkFlow GenericProtocolFlow): user -> process2
+  - flow3(NetworkFlow HTTPFlow): user -> process2
+  - flow4(NetworkFlow DBFlow): user -> process3
+  - flow5(DataStorageFlow ReadWriteFlow): process3 -> storage0
+  - flow6(NetworkFlow DBFlow): user -> process4
+  - flow7(DataStorageFlow ReadWriteFlow): process4 -> hostStorage
+  - flow8(NetworkFlow GenericProtocolFlow): user -> process5
+  - flow9(NetworkFlow GenericProtocolFlow): user -> process5
+  - flow10(GenericStorageFlow ReadWriteFlow): process5 -> hostStorage
+  - flow11(LinkFlow): process1 -> process0
+  - flow12(LinkFlow): process5 -> process4
+  - flow13(LinkFlow): process5 -> process1
+  - flow14(LinkFlow): process6 -> process1
+  - flow15(LinkFlow): process6 -> process3

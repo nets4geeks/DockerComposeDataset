@@ -1,0 +1,20 @@
+Processes:
+  - process0(MessageBroker AMQPServer)
+  - process1(NoSQLDatabase Database)
+  - process2(PythonEnv DevelopmentEnvironment)
+  - process3(PythonEnv DevelopmentEnvironment)
+Storages:
+  - hostStorage(HostStorage)
+Externals:
+  - user(RemoteUser)
+Flows:
+  - flow0(NetworkFlow HTTPFlow): user -> process0
+  - flow1(NetworkFlow AMQPFlow): user -> process0
+  - flow2(GenericStorageFlow ReadWriteFlow): process0 -> hostStorage
+  - flow3(DataStorageFlow ReadWriteFlow): process1 -> hostStorage
+  - flow4(GenericStorageFlow ReadWriteFlow): process2 -> hostStorage
+  - flow5(GenericStorageFlow ReadWriteFlow): process3 -> hostStorage
+  - flow6(DependFlow): process2 -> process0
+  - flow7(DependFlow): process2 -> process1
+  - flow8(DependFlow): process3 -> process0
+  - flow9(DependFlow): process3 -> process1

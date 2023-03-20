@@ -1,0 +1,85 @@
+---
+name: "0114.yml"
+id: "9072dfcf-5d13-4c35-bcbf-4268c0225080"
+processes:
+- name: "process0"
+  realName: null
+  model: "NoSQLDatabase"
+  id: "c13a231b-8f9c-464b-ae94-0c0782d0927b"
+  labels:
+  - "Database"
+- name: "process1"
+  realName: null
+  model: "GenericService"
+  id: "5dff2ffe-14c8-4315-a555-d2f46a4a95e8"
+  labels: null
+- name: "process2"
+  realName: null
+  model: "GenericService"
+  id: "5f859dd6-5923-413d-9f78-53e5cc7fdcde"
+  labels: null
+externals:
+- name: "user"
+  model: "RemoteUser"
+  id: "dd11cade-30b8-49da-89df-5896ba0ff2e2"
+flows:
+- name: "flow0"
+  model: "DataStorageFlow"
+  realPortMapping: null
+  id: "db3841d3-3903-45e2-8378-861db3c7d874"
+  localPort: null
+  source:
+    name: "process0"
+    id: "c13a231b-8f9c-464b-ae94-0c0782d0927b"
+  target:
+    name: "hostStorage"
+    id: "b9e7b076-6213-4b02-8f60-e7a961b5384a"
+  labels:
+  - "ReadWriteFlow"
+  realStorageMappings: null
+- name: "flow1"
+  model: "NetworkFlow"
+  realPortMapping: null
+  id: "bbbca49a-ed10-473d-810e-918b02e28675"
+  localPort: null
+  source:
+    name: "user"
+    id: "dd11cade-30b8-49da-89df-5896ba0ff2e2"
+  target:
+    name: "process2"
+    id: "5f859dd6-5923-413d-9f78-53e5cc7fdcde"
+  labels:
+  - "GenericProtocolFlow"
+  realStorageMappings: null
+- name: "flow2"
+  model: "DependFlow"
+  realPortMapping: null
+  id: "31595a61-1f66-4869-9e09-930efa861a6b"
+  localPort: null
+  source:
+    name: "process1"
+    id: "5dff2ffe-14c8-4315-a555-d2f46a4a95e8"
+  target:
+    name: "process0"
+    id: "c13a231b-8f9c-464b-ae94-0c0782d0927b"
+  labels: null
+  realStorageMappings: null
+- name: "flow3"
+  model: "DependFlow"
+  realPortMapping: null
+  id: "eb65f056-bff4-4442-bb33-8fe61321a61c"
+  localPort: null
+  source:
+    name: "process2"
+    id: "5f859dd6-5923-413d-9f78-53e5cc7fdcde"
+  target:
+    name: "process1"
+    id: "5dff2ffe-14c8-4315-a555-d2f46a4a95e8"
+  labels: null
+  realStorageMappings: null
+storages:
+- name: "hostStorage"
+  model: "HostStorage"
+  realName: null
+  realService: null
+  id: "b9e7b076-6213-4b02-8f60-e7a961b5384a"

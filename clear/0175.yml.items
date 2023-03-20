@@ -1,0 +1,27 @@
+Processes:
+  - process0(DirectoryService)
+  - process1(SQLDatabase Database)
+  - process2(GenericService HTTPServer)
+  - process3(MessageBroker AMQPServer)
+  - process4(GenericService)
+  - process5(GenericService)
+Storages:
+  - hostStorage(HostStorage)
+Externals:
+  - user(RemoteUser)
+Flows:
+  - flow0(NetworkFlow GenericProtocolFlow): user -> process0
+  - flow1(NetworkFlow DBFlow): user -> process1
+  - flow2(DataStorageFlow ReadWriteFlow): process1 -> hostStorage
+  - flow3(NetworkFlow HTTPFlow): user -> process2
+  - flow4(NetworkFlow AMQPFlow): user -> process3
+  - flow5(NetworkFlow HTTPFlow): user -> process3
+  - flow6(GenericStorageFlow ReadWriteFlow): process4 -> hostStorage
+  - flow7(NetworkFlow GenericProtocolFlow): user -> process5
+  - flow8(DependFlow): process2 -> process0
+  - flow9(DependFlow): process2 -> process1
+  - flow10(DependFlow): process2 -> process3
+  - flow11(DependFlow): process4 -> process0
+  - flow12(DependFlow): process4 -> process1
+  - flow13(DependFlow): process4 -> process3
+  - flow14(DependFlow): process5 -> process3

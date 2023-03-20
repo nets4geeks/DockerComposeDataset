@@ -1,0 +1,25 @@
+Processes:
+  - process0(HostingPanel WebServer HTTPServer HTTPSServer)
+  - process1(SQLDatabase Database)
+  - process2(SQLDatabase Database)
+Storages:
+  - hostStorage(HostStorage)
+  - storage0(DockerVolume)
+  - storage1(DockerVolume)
+  - storage2(DockerVolume)
+  - storage3(DockerVolume)
+Externals:
+  - user(RemoteUser)
+Flows:
+  - flow0(NetworkFlow GenericProtocolFlow): user -> process0
+  - flow1(NetworkFlow HTTPFlow): user -> process0
+  - flow2(NetworkFlow HTTPSFlow): user -> process0
+  - flow3(GenericStorageFlow ReadWriteFlow): process0 -> hostStorage
+  - flow4(GenericStorageFlow ReadWriteFlow): process0 -> storage0
+  - flow5(GenericStorageFlow ReadWriteFlow): process0 -> storage1
+  - flow6(NetworkFlow DBFlow): user -> process1
+  - flow7(DataStorageFlow ReadWriteFlow): process1 -> storage2
+  - flow8(NetworkFlow DBFlow): user -> process2
+  - flow9(DataStorageFlow ReadWriteFlow): process2 -> storage3
+  - flow10(LinkFlow): process0 -> process1
+  - flow11(LinkFlow): process0 -> process2

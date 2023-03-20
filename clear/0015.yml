@@ -1,0 +1,86 @@
+---
+name: "0015.yml"
+id: "a3fce187-581b-4dce-8fb5-993adb6b7442"
+processes:
+- name: "process0"
+  realName: null
+  model: "CacheDatabase"
+  id: "f627fe4f-6c74-4093-a9a1-6918b33434e2"
+  labels: null
+- name: "process1"
+  realName: null
+  model: "NodeJsEnv"
+  id: "55361f47-780b-40ad-8e58-e0072b024eb5"
+  labels:
+  - "DevelopmentEnvironment"
+externals:
+- name: "user"
+  model: "RemoteUser"
+  id: "42d631e9-e9d0-409f-8d2c-b4e19b057342"
+flows:
+- name: "flow0"
+  model: "NetworkFlow"
+  realPortMapping: null
+  id: "ae62e027-dbed-430b-bd2d-877aaaa955b9"
+  localPort: null
+  source:
+    name: "user"
+    id: "42d631e9-e9d0-409f-8d2c-b4e19b057342"
+  target:
+    name: "process1"
+    id: "55361f47-780b-40ad-8e58-e0072b024eb5"
+  labels:
+  - "GenericProtocolFlow"
+  realStorageMappings: null
+- name: "flow1"
+  model: "GenericStorageFlow"
+  realPortMapping: null
+  id: "891d71ae-9568-4a80-9872-d11a47118a19"
+  localPort: null
+  source:
+    name: "process1"
+    id: "55361f47-780b-40ad-8e58-e0072b024eb5"
+  target:
+    name: "hostStorage"
+    id: "3d1d93a0-4b10-454a-8eb7-6dd2ac91e6be"
+  labels:
+  - "ReadWriteFlow"
+  realStorageMappings: null
+- name: "flow2"
+  model: "GenericStorageFlow"
+  realPortMapping: null
+  id: "a2e561ff-38c9-4f2d-8056-bab71718967b"
+  localPort: null
+  source:
+    name: "process1"
+    id: "55361f47-780b-40ad-8e58-e0072b024eb5"
+  target:
+    name: "storage0"
+    id: "8612221d-8df5-4d28-b38e-0737647caf28"
+  labels:
+  - "ReadWriteFlow"
+  realStorageMappings: null
+- name: "flow3"
+  model: "LinkFlow"
+  realPortMapping: null
+  id: "9e770a4c-154e-487c-b6b1-d880f09b2b84"
+  localPort: null
+  source:
+    name: "process1"
+    id: "55361f47-780b-40ad-8e58-e0072b024eb5"
+  target:
+    name: "process0"
+    id: "f627fe4f-6c74-4093-a9a1-6918b33434e2"
+  labels: null
+  realStorageMappings: null
+storages:
+- name: "hostStorage"
+  model: "HostStorage"
+  realName: null
+  realService: null
+  id: "3d1d93a0-4b10-454a-8eb7-6dd2ac91e6be"
+- name: "storage0"
+  model: "DockerAnonymousVolume"
+  realName: null
+  realService: null
+  id: "8612221d-8df5-4d28-b38e-0737647caf28"

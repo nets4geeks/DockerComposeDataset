@@ -1,0 +1,14 @@
+Processes:
+  - process0(DataCollector)
+  - process1(GenericService)
+  - process2(InfrastructureMonitoring)
+Storages:
+  - hostStorage(HostStorage)
+Externals:
+  - user(RemoteUser)
+Flows:
+  - flow0(NetworkFlow GenericProtocolFlow): user -> process0
+  - flow1(GenericStorageFlow ReadWriteFlow): process0 -> hostStorage
+  - flow2(NetworkFlow GenericProtocolFlow): user -> process1
+  - flow3(NetworkFlow GenericProtocolFlow): user -> process2
+  - flow4(ConfigStorageFlow ReadWriteFlow): process2 -> hostStorage
