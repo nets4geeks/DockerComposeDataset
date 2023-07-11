@@ -1,0 +1,46 @@
+Processes:
+  - process0(PHPEnv DevelopmentEnvironment)
+  - process1(SearchEngine Database)
+  - process2(DataVisualizer)
+  - process3(DataCollector)
+  - process4(DataCollector)
+  - process5(CacheDatabase)
+  - process6(SQLDatabase Database CloudStorage)
+  - process7(WebServer HTTPServer HTTPSServer)
+Storages:
+  - hostStorage(HostStorage)
+  - storage0(DockerVolume)
+  - dockerSocket(DockerSocket)
+  - storage1(DockerVolume)
+  - storage2(DockerVolume)
+Externals:
+  - user(RemoteUser)
+Flows:
+  - flow0(DataStorageFlow ReadWriteFlow): process0 -> hostStorage
+  - flow1(GenericStorageFlow ReadWriteFlow): process0 -> hostStorage
+  - flow2(DataStorageFlow ReadWriteFlow): process1 -> storage0
+  - flow3(ConfigStorageFlow ReadWriteFlow): process1 -> hostStorage
+  - flow4(NetworkFlow HTTPFlow): user -> process2
+  - flow5(ConfigStorageFlow ReadWriteFlow): process2 -> hostStorage
+  - flow6(NetworkFlow GenericProtocolFlow): user -> process3
+  - flow7(GenericStorageFlow ReadWriteFlow): process4 -> hostStorage
+  - flow8(DockerSocketFlow ReadWriteFlow SensitiveHostPath): process4 -> dockerSocket
+  - flow9(DataStorageFlow ReadWriteFlow): process5 -> storage1
+  - flow10(DataStorageFlow ReadWriteFlow): process6 -> storage2
+  - flow11(NetworkFlow HTTPFlow): user -> process7
+  - flow12(NetworkFlow HTTPSFlow): user -> process7
+  - flow13(CertStorageFlow ReadWriteFlow): process7 -> hostStorage
+  - flow14(ConfigStorageFlow ReadWriteFlow): process7 -> hostStorage
+  - flow15(GenericStorageFlow ReadWriteFlow): process7 -> hostStorage
+  - flow16(DataStorageFlow ReadWriteFlow): process7 -> hostStorage
+  - flow17(LinkFlow): process0 -> process6
+  - flow18(DependFlow): process1 -> process0
+  - flow19(LinkFlow): process1 -> process0
+  - flow20(DependFlow): process2 -> process1
+  - flow21(LinkFlow): process2 -> process1
+  - flow22(DependFlow): process3 -> process1
+  - flow23(LinkFlow): process3 -> process1
+  - flow24(LinkFlow): process4 -> process3
+  - flow25(DependFlow): process7 -> process0
+  - flow26(LinkFlow): process7 -> process0
+  - flow27(LinkFlow): process7 -> process2

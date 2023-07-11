@@ -1,0 +1,107 @@
+---
+name: "0015.yml"
+id: "a02065bc-1232-4fc8-a75d-cf7128edf375"
+processes:
+- name: "process0"
+  realName: null
+  model: "NodeJsEnv"
+  id: "8b771ed0-1cf2-4d66-bb58-5d6503cd9a79"
+  labels:
+  - "DevelopmentEnvironment"
+  labels2:
+  - "CloudApplication"
+- name: "process1"
+  realName: null
+  model: "NodeJsEnv"
+  id: "5bc1b5bb-7284-4d22-a38d-d4b37eb95751"
+  labels:
+  - "DevelopmentEnvironment"
+  labels2:
+  - "CloudApplication"
+- name: "process2"
+  realName: null
+  model: "NoSQLDatabase"
+  id: "d5fc15be-9003-429f-83c4-92ada82a4f59"
+  labels:
+  - "Database"
+  labels2: null
+externals:
+- name: "user"
+  model: "RemoteUser"
+  id: "a4788a9d-624f-4020-8321-968c9ecc9bbd"
+flows:
+- name: "flow0"
+  model: "GenericStorageFlow"
+  realPortMapping: null
+  id: "124e5bbd-9548-46a8-8dc1-e9df19dd0639"
+  localPort: null
+  source:
+    name: "process0"
+    id: "8b771ed0-1cf2-4d66-bb58-5d6503cd9a79"
+  target:
+    name: "hostStorage"
+    id: "db2f4779-c9c8-44e2-a485-3221a8afd6c9"
+  labels:
+  - "ReadWriteFlow"
+  realStorageMappings: null
+- name: "flow1"
+  model: "NetworkFlow"
+  realPortMapping: null
+  id: "2f12941f-534a-4527-8550-5eea626b3838"
+  localPort: null
+  source:
+    name: "user"
+    id: "a4788a9d-624f-4020-8321-968c9ecc9bbd"
+  target:
+    name: "process1"
+    id: "5bc1b5bb-7284-4d22-a38d-d4b37eb95751"
+  labels:
+  - "GenericProtocolFlow"
+  realStorageMappings: null
+- name: "flow2"
+  model: "ConfigStorageFlow"
+  realPortMapping: null
+  id: "3159d78b-b9dd-4a23-a7b7-a53bcea7db37"
+  localPort: null
+  source:
+    name: "process2"
+    id: "d5fc15be-9003-429f-83c4-92ada82a4f59"
+  target:
+    name: "hostStorage"
+    id: "db2f4779-c9c8-44e2-a485-3221a8afd6c9"
+  labels:
+  - "ReadOnlyFlow"
+  realStorageMappings: null
+- name: "flow3"
+  model: "DataStorageFlow"
+  realPortMapping: null
+  id: "f9a8d533-1bac-4378-b5a1-abb78aa95642"
+  localPort: null
+  source:
+    name: "process2"
+    id: "d5fc15be-9003-429f-83c4-92ada82a4f59"
+  target:
+    name: "hostStorage"
+    id: "db2f4779-c9c8-44e2-a485-3221a8afd6c9"
+  labels:
+  - "ReadWriteFlow"
+  realStorageMappings: null
+- name: "flow4"
+  model: "LinkFlow"
+  realPortMapping: null
+  id: "3296037b-e5dc-4f25-aa14-d1c2ee0a40ed"
+  localPort: null
+  source:
+    name: "process1"
+    id: "5bc1b5bb-7284-4d22-a38d-d4b37eb95751"
+  target:
+    name: "process2"
+    id: "d5fc15be-9003-429f-83c4-92ada82a4f59"
+  labels: null
+  realStorageMappings: null
+storages:
+- name: "hostStorage"
+  model: "HostStorage"
+  realName: null
+  realService: null
+  id: "db2f4779-c9c8-44e2-a485-3221a8afd6c9"

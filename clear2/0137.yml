@@ -1,0 +1,85 @@
+---
+name: "0137.yml"
+id: "f623ffe3-771e-4b5d-965c-ccdad3f100a4"
+processes:
+- name: "process0"
+  realName: null
+  model: "WebServer"
+  id: "fbe49e78-c4db-4462-85fe-f50eaddaaf54"
+  labels:
+  - "HTTPServer"
+  labels2: null
+- name: "process1"
+  realName: null
+  model: "PHPEnv"
+  id: "85489e34-9de2-4926-94a8-08074718c302"
+  labels:
+  - "DevelopmentEnvironment"
+  labels2: null
+externals:
+- name: "user"
+  model: "RemoteUser"
+  id: "352d4e82-a22f-41c9-b7ce-aaa6104dc65f"
+flows:
+- name: "flow0"
+  model: "NetworkFlow"
+  realPortMapping: null
+  id: "580cbe49-78a1-418a-bd81-090b72617253"
+  localPort: null
+  source:
+    name: "user"
+    id: "352d4e82-a22f-41c9-b7ce-aaa6104dc65f"
+  target:
+    name: "process0"
+    id: "fbe49e78-c4db-4462-85fe-f50eaddaaf54"
+  labels:
+  - "HTTPFlow"
+  realStorageMappings: null
+- name: "flow1"
+  model: "GenericStorageFlow"
+  realPortMapping: null
+  id: "7ad36071-08fd-4983-b2aa-eee1390b1a35"
+  localPort: null
+  source:
+    name: "process0"
+    id: "fbe49e78-c4db-4462-85fe-f50eaddaaf54"
+  target:
+    name: "hostStorage"
+    id: "7d9592ad-89f6-4869-8642-fa9eaa328b9c"
+  labels:
+  - "ReadWriteFlow"
+  realStorageMappings: null
+- name: "flow2"
+  model: "ConfigStorageFlow"
+  realPortMapping: null
+  id: "05a4dc47-821b-467b-9d17-c2693ef6f81a"
+  localPort: null
+  source:
+    name: "process0"
+    id: "fbe49e78-c4db-4462-85fe-f50eaddaaf54"
+  target:
+    name: "hostStorage"
+    id: "7d9592ad-89f6-4869-8642-fa9eaa328b9c"
+  labels:
+  - "ReadWriteFlow"
+  realStorageMappings: null
+- name: "flow3"
+  model: "GenericStorageFlow"
+  realPortMapping: null
+  id: "f3d431de-9d19-4ff9-8ae6-123698f8fa3e"
+  localPort: null
+  source:
+    name: "process1"
+    id: "85489e34-9de2-4926-94a8-08074718c302"
+  target:
+    name: "hostStorage"
+    id: "7d9592ad-89f6-4869-8642-fa9eaa328b9c"
+  labels:
+  - "ReadWriteFlow"
+  realStorageMappings: null
+storages:
+- name: "hostStorage"
+  model: "HostStorage"
+  realName: null
+  realService: null
+  id: "7d9592ad-89f6-4869-8642-fa9eaa328b9c"

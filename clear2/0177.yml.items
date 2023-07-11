@@ -1,0 +1,10 @@
+Processes:
+  - process0(GoEnv DevelopmentEnvironment)
+  - process1(CredentialsManager)
+Storages:
+  - hostStorage(HostStorage)
+Externals:
+  - user(RemoteUser)
+Flows:
+  - flow0(GenericStorageFlow ReadWriteFlow): process0 -> hostStorage
+  - flow1(NetworkFlow GenericProtocolFlow): user -> process1

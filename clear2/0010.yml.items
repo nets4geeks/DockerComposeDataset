@@ -1,0 +1,32 @@
+Processes:
+  - process0(NodeJsEnv DevelopmentEnvironment CloudApplication)
+  - process1(SQLDatabase Database CloudStorage)
+  - process2(CacheDatabase)
+  - process3(GenericService)
+  - process4(SQLDatabase Database CloudStorage)
+  - process5(CredentialsManager)
+  - process6(GenericService)
+  - process7(GenericService)
+  - process8(GenericService SMTPLocalServer)
+Storages:
+  - storage0(DockerVolume)
+  - hostStorage(HostStorage)
+Externals:
+  - user(RemoteUser)
+Flows:
+  - flow0(GenericStorageFlow ReadWriteFlow): process0 -> storage0
+  - flow1(ConfigStorageFlow ReadWriteFlow): process1 -> hostStorage
+  - flow2(ConfigStorageFlow ReadWriteFlow): process4 -> hostStorage
+  - flow3(GenericStorageFlow ReadWriteFlow): process4 -> hostStorage
+  - flow4(NetworkFlow GenericProtocolFlow): user -> process5
+  - flow5(GenericStorageFlow ReadWriteFlow): process7 -> hostStorage
+  - flow6(GenericStorageFlow ReadWriteFlow): process7 -> storage0
+  - flow7(NetworkFlow SMTPLocalFlow): user -> process8
+  - flow8(NetworkFlow GenericProtocolFlow): user -> process8
+  - flow9(DependFlow): process0 -> process1
+  - flow10(DependFlow): process0 -> process2
+  - flow11(DependFlow): process0 -> process8
+  - flow12(DependFlow): process3 -> process2
+  - flow13(DependFlow): process3 -> process1
+  - flow14(DependFlow): process3 -> process8
+  - flow15(DependFlow): process5 -> process4

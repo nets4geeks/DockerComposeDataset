@@ -1,0 +1,24 @@
+Processes:
+  - process0(RubyEnv DevelopmentEnvironment HTTPServer)
+  - process1(SQLDatabase Database CloudStorage)
+  - process2(CacheDatabase)
+Storages:
+  - hostStorage(HostStorage)
+  - storage0(DockerVolume)
+  - storage1(DockerVolume)
+  - storage2(DockerVolume)
+  - storage3(DockerVolume)
+Externals:
+  - user(RemoteUser)
+Flows:
+  - flow0(NetworkFlow HTTPFlow): user -> process0
+  - flow1(GenericStorageFlow ReadWriteFlow): process0 -> hostStorage
+  - flow2(GenericStorageFlow ReadWriteFlow): process0 -> storage0
+  - flow3(GenericStorageFlow ReadWriteFlow): process0 -> storage1
+  - flow4(GenericStorageFlow ReadWriteFlow): process0 -> storage2
+  - flow5(NetworkFlow DBFlow): user -> process1
+  - flow6(ConfigStorageFlow ReadWriteFlow): process1 -> hostStorage
+  - flow7(DataStorageFlow ReadWriteFlow): process1 -> storage3
+  - flow8(NetworkFlow RESPFlow): user -> process2
+  - flow9(DependFlow): process0 -> process1
+  - flow10(DependFlow): process0 -> process2

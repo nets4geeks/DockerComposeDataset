@@ -1,0 +1,22 @@
+Processes:
+  - process0(SearchEngine Database)
+  - process1(NodeJsEnv DevelopmentEnvironment HTTPServer CloudApplication)
+  - process2(NodeJsEnv DevelopmentEnvironment CloudApplication)
+Storages:
+  - storage0(DockerVolume)
+  - hostStorage(HostStorage)
+  - storage1(DockerVolume)
+  - storage2(DockerVolume)
+Externals:
+  - user(RemoteUser)
+Flows:
+  - flow0(NetworkFlow HTTPFlow): user -> process0
+  - flow1(DataStorageFlow ReadWriteFlow): process0 -> storage0
+  - flow2(NetworkFlow HTTPFlow): user -> process1
+  - flow3(GenericStorageFlow ReadWriteFlow): process1 -> hostStorage
+  - flow4(GenericStorageFlow ReadWriteFlow): process1 -> storage1
+  - flow5(NetworkFlow GenericProtocolFlow): user -> process2
+  - flow6(GenericStorageFlow ReadWriteFlow): process2 -> hostStorage
+  - flow7(GenericStorageFlow ReadWriteFlow): process2 -> storage2
+  - flow8(DependFlow): process1 -> process2
+  - flow9(DependFlow): process2 -> process0

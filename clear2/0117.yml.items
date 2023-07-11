@@ -1,0 +1,19 @@
+Processes:
+  - process0(NoSQLDatabase Database)
+  - process1(DataCollector)
+  - process2(DataVisualizer HTTPServer)
+Storages:
+  - storage0(DockerVolume)
+  - hostStorage(HostStorage)
+  - dockerSocket(DockerSocket)
+  - storage1(DockerVolume)
+Externals:
+  - user(RemoteUser)
+Flows:
+  - flow0(NetworkFlow HTTPFlow): user -> process0
+  - flow1(DataStorageFlow ReadWriteFlow): process0 -> storage0
+  - flow2(ConfigStorageFlow ReadWriteFlow): process1 -> hostStorage
+  - flow3(DockerSocketFlow ReadWriteFlow SensitiveHostPath): process1 -> dockerSocket
+  - flow4(NetworkFlow HTTPFlow): user -> process2
+  - flow5(DataStorageFlow ReadWriteFlow): process2 -> storage1
+  - flow6(DependFlow): process1 -> process0

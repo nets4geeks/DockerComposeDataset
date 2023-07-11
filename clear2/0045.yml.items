@@ -1,0 +1,18 @@
+Processes:
+  - process0(GenericService)
+  - process1(ObjectStorage Database)
+  - process2(GenericService)
+  - process3(NodeJsEnv DevelopmentEnvironment CloudApplication)
+  - process4(WebProxy HTTPServer)
+Storages:
+  - hostStorage(HostStorage)
+Externals:
+  - user(RemoteUser)
+Flows:
+  - flow0(GenericStorageFlow ReadWriteFlow): process0 -> hostStorage
+  - flow1(NetworkFlow GenericProtocolFlow): user -> process1
+  - flow2(NetworkFlow GenericProtocolFlow): user -> process2
+  - flow3(NetworkFlow HTTPFlow): user -> process4
+  - flow4(LinkFlow): process0 -> process4
+  - flow5(DependFlow): process3 -> process1
+  - flow6(DependFlow): process4 -> process1

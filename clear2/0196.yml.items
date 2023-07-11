@@ -1,0 +1,17 @@
+Processes:
+  - process0(SQLDatabase Database CloudStorage)
+  - process1(GenericService HTTPServer)
+Storages:
+  - storage0(DockerVolume)
+  - storage1(DockerVolume)
+  - dockerSocket(DockerSocket)
+  - hostStorage(HostStorage)
+Externals:
+  - user(RemoteUser)
+Flows:
+  - flow0(DataStorageFlow ReadWriteFlow): process0 -> storage0
+  - flow1(NetworkFlow HTTPFlow): user -> process1
+  - flow2(GenericStorageFlow ReadWriteFlow): process1 -> storage1
+  - flow3(DockerSocketFlow ReadWriteFlow SensitiveHostPath): process1 -> dockerSocket
+  - flow4(GenericStorageFlow ReadWriteFlow): process1 -> hostStorage
+  - flow5(DependFlow): process1 -> process0

@@ -1,0 +1,98 @@
+---
+name: "0157.yml"
+id: "a4ae4551-8b0a-4389-840d-3fa3144de642"
+processes:
+- name: "process0"
+  realName: null
+  model: "SSOService"
+  id: "aa537a04-a328-4065-b619-2d3edce75656"
+  labels: null
+  labels2: null
+- name: "process1"
+  realName: null
+  model: "SQLDatabase"
+  id: "bae6328c-9c10-407c-a052-b4bfd4d4eeb8"
+  labels:
+  - "Database"
+  labels2:
+  - "CloudStorage"
+externals:
+- name: "user"
+  model: "RemoteUser"
+  id: "f7e9a0d4-fa5b-4565-ae8f-d76be2f4a2b9"
+flows:
+- name: "flow0"
+  model: "NetworkFlow"
+  realPortMapping: null
+  id: "bf81f6ee-c28c-4a8e-8d5f-9bde00e5a1d9"
+  localPort: null
+  source:
+    name: "user"
+    id: "f7e9a0d4-fa5b-4565-ae8f-d76be2f4a2b9"
+  target:
+    name: "process0"
+    id: "aa537a04-a328-4065-b619-2d3edce75656"
+  labels:
+  - "GenericProtocolFlow"
+  realStorageMappings: null
+- name: "flow1"
+  model: "GenericStorageFlow"
+  realPortMapping: null
+  id: "4a9b0a8b-1aa4-4bd6-8785-e75b78f90118"
+  localPort: null
+  source:
+    name: "process0"
+    id: "aa537a04-a328-4065-b619-2d3edce75656"
+  target:
+    name: "hostStorage"
+    id: "0503964b-fddf-4c6b-b9e8-50eec534dd01"
+  labels:
+  - "ReadWriteFlow"
+  realStorageMappings: null
+- name: "flow2"
+  model: "NetworkFlow"
+  realPortMapping: null
+  id: "00e83604-57c6-49ef-abfd-ec1506131d97"
+  localPort: null
+  source:
+    name: "user"
+    id: "f7e9a0d4-fa5b-4565-ae8f-d76be2f4a2b9"
+  target:
+    name: "process1"
+    id: "bae6328c-9c10-407c-a052-b4bfd4d4eeb8"
+  labels:
+  - "DBFlow"
+  realStorageMappings: null
+- name: "flow3"
+  model: "DataStorageFlow"
+  realPortMapping: null
+  id: "4329854f-efca-4638-9ef7-2b105f963426"
+  localPort: null
+  source:
+    name: "process1"
+    id: "bae6328c-9c10-407c-a052-b4bfd4d4eeb8"
+  target:
+    name: "hostStorage"
+    id: "0503964b-fddf-4c6b-b9e8-50eec534dd01"
+  labels:
+  - "ReadWriteFlow"
+  realStorageMappings: null
+- name: "flow4"
+  model: "DependFlow"
+  realPortMapping: null
+  id: "125a47d7-b2d4-4a54-b9d0-ad510d48cb6b"
+  localPort: null
+  source:
+    name: "process0"
+    id: "aa537a04-a328-4065-b619-2d3edce75656"
+  target:
+    name: "process1"
+    id: "bae6328c-9c10-407c-a052-b4bfd4d4eeb8"
+  labels: null
+  realStorageMappings: null
+storages:
+- name: "hostStorage"
+  model: "HostStorage"
+  realName: null
+  realService: null
+  id: "0503964b-fddf-4c6b-b9e8-50eec534dd01"

@@ -1,0 +1,168 @@
+---
+name: "0174.yml"
+id: "e325b0fc-cf97-4465-9319-395192fa8ba9"
+processes:
+- name: "process0"
+  realName: null
+  model: "CMS"
+  id: "146c3598-9874-476d-9853-05f153bf7702"
+  labels:
+  - "WebApplication"
+  - "WebServer"
+  - "HTTPServer"
+  labels2: null
+- name: "process1"
+  realName: null
+  model: "SQLDatabase"
+  id: "e83c7c1b-cc98-45da-b932-f61cd19b583f"
+  labels:
+  - "Database"
+  labels2:
+  - "CloudStorage"
+- name: "process2"
+  realName: null
+  model: "DatabaseManagement"
+  id: "3b4fe6b5-3261-4652-9270-b4a8e594276a"
+  labels:
+  - "HTTPServer"
+  labels2: null
+externals:
+- name: "user"
+  model: "RemoteUser"
+  id: "5e4e0cca-bd7e-4397-bd99-49157f5ff715"
+flows:
+- name: "flow0"
+  model: "NetworkFlow"
+  realPortMapping: null
+  id: "8f060c73-d598-4943-87d0-f4a1b2f259cb"
+  localPort: null
+  source:
+    name: "user"
+    id: "5e4e0cca-bd7e-4397-bd99-49157f5ff715"
+  target:
+    name: "process0"
+    id: "146c3598-9874-476d-9853-05f153bf7702"
+  labels:
+  - "HTTPFlow"
+  realStorageMappings: null
+- name: "flow1"
+  model: "DataStorageFlow"
+  realPortMapping: null
+  id: "f871794a-0ceb-40b7-97d2-3ca901b516da"
+  localPort: null
+  source:
+    name: "process0"
+    id: "146c3598-9874-476d-9853-05f153bf7702"
+  target:
+    name: "hostStorage"
+    id: "7fb32042-c23b-4ca8-a39c-7717b0fc9c73"
+  labels:
+  - "ReadWriteFlow"
+  realStorageMappings: null
+- name: "flow2"
+  model: "DataStorageFlow"
+  realPortMapping: null
+  id: "b7793619-79dd-48aa-af5b-efac01a7c5da"
+  localPort: null
+  source:
+    name: "process1"
+    id: "e83c7c1b-cc98-45da-b932-f61cd19b583f"
+  target:
+    name: "hostStorage"
+    id: "7fb32042-c23b-4ca8-a39c-7717b0fc9c73"
+  labels:
+  - "ReadWriteFlow"
+  realStorageMappings: null
+- name: "flow3"
+  model: "ConfigStorageFlow"
+  realPortMapping: null
+  id: "8519ffd3-aa35-490b-a30e-6758517131ec"
+  localPort: null
+  source:
+    name: "process1"
+    id: "e83c7c1b-cc98-45da-b932-f61cd19b583f"
+  target:
+    name: "hostStorage"
+    id: "7fb32042-c23b-4ca8-a39c-7717b0fc9c73"
+  labels:
+  - "ReadWriteFlow"
+  realStorageMappings: null
+- name: "flow4"
+  model: "LogStorageFlow"
+  realPortMapping: null
+  id: "1648a5d2-d9ff-4bf6-ab8e-de7464f8cc5f"
+  localPort: null
+  source:
+    name: "process1"
+    id: "e83c7c1b-cc98-45da-b932-f61cd19b583f"
+  target:
+    name: "hostStorage"
+    id: "7fb32042-c23b-4ca8-a39c-7717b0fc9c73"
+  labels:
+  - "ReadWriteFlow"
+  realStorageMappings: null
+- name: "flow5"
+  model: "NetworkFlow"
+  realPortMapping: null
+  id: "00a37ca6-b034-4ef9-9f10-5c855a0b2d82"
+  localPort: null
+  source:
+    name: "user"
+    id: "5e4e0cca-bd7e-4397-bd99-49157f5ff715"
+  target:
+    name: "process2"
+    id: "3b4fe6b5-3261-4652-9270-b4a8e594276a"
+  labels:
+  - "HTTPFlow"
+  realStorageMappings: null
+- name: "flow6"
+  model: "GenericStorageFlow"
+  realPortMapping: null
+  id: "0ae48ba8-8909-4302-a8fe-63783dabcf78"
+  localPort: null
+  source:
+    name: "process2"
+    id: "3b4fe6b5-3261-4652-9270-b4a8e594276a"
+  target:
+    name: "storage0"
+    id: "696e25c5-8f4d-4125-9d13-70203083c02c"
+  labels:
+  - "ReadWriteFlow"
+  realStorageMappings: null
+- name: "flow7"
+  model: "DependFlow"
+  realPortMapping: null
+  id: "938d2671-90ae-4beb-a149-3d3f919058da"
+  localPort: null
+  source:
+    name: "process0"
+    id: "146c3598-9874-476d-9853-05f153bf7702"
+  target:
+    name: "process1"
+    id: "e83c7c1b-cc98-45da-b932-f61cd19b583f"
+  labels: null
+  realStorageMappings: null
+- name: "flow8"
+  model: "DependFlow"
+  realPortMapping: null
+  id: "92815043-34fa-4518-974b-0bdf63058be6"
+  localPort: null
+  source:
+    name: "process2"
+    id: "3b4fe6b5-3261-4652-9270-b4a8e594276a"
+  target:
+    name: "process1"
+    id: "e83c7c1b-cc98-45da-b932-f61cd19b583f"
+  labels: null
+  realStorageMappings: null
+storages:
+- name: "hostStorage"
+  model: "HostStorage"
+  realName: null
+  realService: null
+  id: "7fb32042-c23b-4ca8-a39c-7717b0fc9c73"
+- name: "storage0"
+  model: "DockerAnonymousVolume"
+  realName: null
+  realService: null
+  id: "696e25c5-8f4d-4125-9d13-70203083c02c"

@@ -1,0 +1,14 @@
+Processes:
+  - process0(SQLDatabase Database CloudStorage)
+  - process1(PythonEnv DevelopmentEnvironment HTTPServer)
+  - process2(PythonEnv DevelopmentEnvironment)
+Storages:
+  - hostStorage(HostStorage)
+Externals:
+  - user(RemoteUser)
+Flows:
+  - flow0(NetworkFlow HTTPFlow): user -> process1
+  - flow1(GenericStorageFlow ReadWriteFlow): process1 -> hostStorage
+  - flow2(GenericStorageFlow ReadWriteFlow): process2 -> hostStorage
+  - flow3(DependFlow): process1 -> process2
+  - flow4(DependFlow): process2 -> process0

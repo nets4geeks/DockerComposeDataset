@@ -1,0 +1,93 @@
+---
+name: "0090.yml"
+id: "02c60b31-a392-499d-9a94-ff36c2911a0c"
+processes:
+- name: "process0"
+  realName: null
+  model: "SQLDatabase"
+  id: "81eccbf6-5876-495a-b252-ed6fe62e4a99"
+  labels:
+  - "Database"
+  labels2:
+  - "CloudStorage"
+- name: "process1"
+  realName: null
+  model: "SQLDatabase"
+  id: "ddbd5f83-3bce-4b21-ade3-bc4563c02f60"
+  labels:
+  - "Database"
+  labels2:
+  - "CloudStorage"
+- name: "process2"
+  realName: null
+  model: "CacheDatabase"
+  id: "30c7ff9f-1aab-4b73-81c1-1bfacabf2f55"
+  labels: null
+  labels2: null
+externals:
+- name: "user"
+  model: "RemoteUser"
+  id: "3468b3a0-eac2-4b07-8ad3-bc2e02bfb06a"
+flows:
+- name: "flow0"
+  model: "NetworkFlow"
+  realPortMapping: null
+  id: "2b9398ff-3273-4a1d-8048-d52bbaa659d0"
+  localPort: null
+  source:
+    name: "user"
+    id: "3468b3a0-eac2-4b07-8ad3-bc2e02bfb06a"
+  target:
+    name: "process0"
+    id: "81eccbf6-5876-495a-b252-ed6fe62e4a99"
+  labels:
+  - "DBFlow"
+  realStorageMappings: null
+- name: "flow1"
+  model: "DataStorageFlow"
+  realPortMapping: null
+  id: "ee47c7cf-443d-4ea4-81df-63bc5c78389d"
+  localPort: null
+  source:
+    name: "process0"
+    id: "81eccbf6-5876-495a-b252-ed6fe62e4a99"
+  target:
+    name: "storage0"
+    id: "edfb0516-dc1c-4a89-8ce0-543b0792d7c3"
+  labels:
+  - "ReadWriteFlow"
+  realStorageMappings: null
+- name: "flow2"
+  model: "NetworkFlow"
+  realPortMapping: null
+  id: "eb70541d-ab3d-41db-a38a-657ea7fba006"
+  localPort: null
+  source:
+    name: "user"
+    id: "3468b3a0-eac2-4b07-8ad3-bc2e02bfb06a"
+  target:
+    name: "process1"
+    id: "ddbd5f83-3bce-4b21-ade3-bc4563c02f60"
+  labels:
+  - "DBFlow"
+  realStorageMappings: null
+- name: "flow3"
+  model: "NetworkFlow"
+  realPortMapping: null
+  id: "902847b9-7c8f-47ee-b0ff-603ced071eed"
+  localPort: null
+  source:
+    name: "user"
+    id: "3468b3a0-eac2-4b07-8ad3-bc2e02bfb06a"
+  target:
+    name: "process2"
+    id: "30c7ff9f-1aab-4b73-81c1-1bfacabf2f55"
+  labels:
+  - "RESPFlow"
+  realStorageMappings: null
+storages:
+- name: "storage0"
+  model: "DockerVolume"
+  realName: null
+  realService: null
+  id: "edfb0516-dc1c-4a89-8ce0-543b0792d7c3"

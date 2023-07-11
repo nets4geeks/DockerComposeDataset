@@ -1,0 +1,13 @@
+Processes:
+  - process0(JavaEnv DevelopmentEnvironment HTTPServer)
+  - process1(SQLDatabase Database CloudStorage)
+Storages:
+  - hostStorage(HostStorage)
+Externals:
+  - user(RemoteUser)
+Flows:
+  - flow0(NetworkFlow HTTPFlow): user -> process0
+  - flow1(GenericStorageFlow ReadWriteFlow): process0 -> hostStorage
+  - flow2(NetworkFlow DBFlow): user -> process1
+  - flow3(GenericStorageFlow ReadWriteFlow): process1 -> hostStorage
+  - flow4(DependFlow): process0 -> process1

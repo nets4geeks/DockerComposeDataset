@@ -1,0 +1,91 @@
+---
+name: "0035.yml"
+id: "49d5a3ed-4096-4d75-a2b2-3ebdc00447de"
+processes:
+- name: "process0"
+  realName: null
+  model: "SQLDatabase"
+  id: "368f7b3e-ff5d-40ff-a77f-557f842f6f17"
+  labels:
+  - "Database"
+  labels2:
+  - "CloudStorage"
+- name: "process1"
+  realName: null
+  model: "CacheDatabase"
+  id: "295f3669-b703-4d7f-b0a2-2969f01c2ddb"
+  labels: null
+  labels2: null
+- name: "process2"
+  realName: null
+  model: "CacheDatabase"
+  id: "99a62ac4-a59c-477f-b100-c778a7b0e3b7"
+  labels: null
+  labels2: null
+externals:
+- name: "user"
+  model: "RemoteUser"
+  id: "a710f2b0-aa10-4c10-91da-60e00714201b"
+flows:
+- name: "flow0"
+  model: "NetworkFlow"
+  realPortMapping: null
+  id: "a5c61b0e-8c78-4251-9a2d-5fa82d19f405"
+  localPort: null
+  source:
+    name: "user"
+    id: "a710f2b0-aa10-4c10-91da-60e00714201b"
+  target:
+    name: "process0"
+    id: "368f7b3e-ff5d-40ff-a77f-557f842f6f17"
+  labels:
+  - "DBFlow"
+  realStorageMappings: null
+- name: "flow1"
+  model: "DataStorageFlow"
+  realPortMapping: null
+  id: "bc4b64c5-9f1b-4879-8131-d9ef967d948e"
+  localPort: null
+  source:
+    name: "process0"
+    id: "368f7b3e-ff5d-40ff-a77f-557f842f6f17"
+  target:
+    name: "storage0"
+    id: "e7b27d41-e693-429c-a57d-97f319b6dde3"
+  labels:
+  - "ReadWriteFlow"
+  realStorageMappings: null
+- name: "flow2"
+  model: "NetworkFlow"
+  realPortMapping: null
+  id: "5d66ef0d-8d0b-47cf-81da-932543e4215e"
+  localPort: null
+  source:
+    name: "user"
+    id: "a710f2b0-aa10-4c10-91da-60e00714201b"
+  target:
+    name: "process1"
+    id: "295f3669-b703-4d7f-b0a2-2969f01c2ddb"
+  labels:
+  - "RESPFlow"
+  realStorageMappings: null
+- name: "flow3"
+  model: "NetworkFlow"
+  realPortMapping: null
+  id: "a2ca57c5-0294-4fd9-a9a4-0359e734522c"
+  localPort: null
+  source:
+    name: "user"
+    id: "a710f2b0-aa10-4c10-91da-60e00714201b"
+  target:
+    name: "process2"
+    id: "99a62ac4-a59c-477f-b100-c778a7b0e3b7"
+  labels:
+  - "RESPFlow"
+  realStorageMappings: null
+storages:
+- name: "storage0"
+  model: "DockerVolume"
+  realName: null
+  realService: null
+  id: "e7b27d41-e693-429c-a57d-97f319b6dde3"

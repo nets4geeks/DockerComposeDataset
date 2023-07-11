@@ -1,0 +1,107 @@
+---
+name: "0193.yml"
+id: "922851af-85a0-488e-8039-553ff3637b9b"
+processes:
+- name: "process0"
+  realName: null
+  model: "NodeJsEnv"
+  id: "b15206f1-d47d-4633-aef4-32e6f58a2337"
+  labels:
+  - "DevelopmentEnvironment"
+  labels2:
+  - "CloudApplication"
+- name: "process1"
+  realName: null
+  model: "PythonEnv"
+  id: "a9b84b2f-af99-489c-abe7-f4dd792cf531"
+  labels:
+  - "DevelopmentEnvironment"
+  labels2: null
+- name: "process2"
+  realName: null
+  model: "SearchEngine"
+  id: "599fc920-cc5f-4d3a-9644-02950239947b"
+  labels:
+  - "Database"
+  labels2: null
+externals:
+- name: "user"
+  model: "RemoteUser"
+  id: "05bcf740-f420-468b-8463-95b73f28f7c0"
+flows:
+- name: "flow0"
+  model: "NetworkFlow"
+  realPortMapping: null
+  id: "0ecf94d3-36c4-44c0-91e9-a2afff4f0c56"
+  localPort: null
+  source:
+    name: "user"
+    id: "05bcf740-f420-468b-8463-95b73f28f7c0"
+  target:
+    name: "process0"
+    id: "b15206f1-d47d-4633-aef4-32e6f58a2337"
+  labels:
+  - "GenericProtocolFlow"
+  realStorageMappings: null
+- name: "flow1"
+  model: "NetworkFlow"
+  realPortMapping: null
+  id: "52c8625a-6721-443b-8828-3ef51b37dd97"
+  localPort: null
+  source:
+    name: "user"
+    id: "05bcf740-f420-468b-8463-95b73f28f7c0"
+  target:
+    name: "process1"
+    id: "a9b84b2f-af99-489c-abe7-f4dd792cf531"
+  labels:
+  - "GenericProtocolFlow"
+  realStorageMappings: null
+- name: "flow2"
+  model: "NetworkFlow"
+  realPortMapping: null
+  id: "f9531446-a1d2-4923-b11c-937c69e8b6ab"
+  localPort: null
+  source:
+    name: "user"
+    id: "05bcf740-f420-468b-8463-95b73f28f7c0"
+  target:
+    name: "process2"
+    id: "599fc920-cc5f-4d3a-9644-02950239947b"
+  labels:
+  - "HTTPFlow"
+  realStorageMappings: null
+- name: "flow3"
+  model: "NetworkFlow"
+  realPortMapping: null
+  id: "4849440a-75d5-4f15-b886-429481d2e403"
+  localPort: null
+  source:
+    name: "user"
+    id: "05bcf740-f420-468b-8463-95b73f28f7c0"
+  target:
+    name: "process2"
+    id: "599fc920-cc5f-4d3a-9644-02950239947b"
+  labels:
+  - "ClusterFlow"
+  realStorageMappings: null
+- name: "flow4"
+  model: "GenericStorageFlow"
+  realPortMapping: null
+  id: "eab243f3-1f62-4f9a-b4ec-c98046d87040"
+  localPort: null
+  source:
+    name: "process2"
+    id: "599fc920-cc5f-4d3a-9644-02950239947b"
+  target:
+    name: "hostStorage"
+    id: "c7ddedb0-ef18-4973-94ad-5db4a4746785"
+  labels:
+  - "ReadWriteFlow"
+  realStorageMappings: null
+storages:
+- name: "hostStorage"
+  model: "HostStorage"
+  realName: null
+  realService: null
+  id: "c7ddedb0-ef18-4973-94ad-5db4a4746785"

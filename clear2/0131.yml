@@ -1,0 +1,63 @@
+---
+name: "0131.yml"
+id: "1e342630-082c-4070-85ab-a65901cd8fbf"
+processes:
+- name: "process0"
+  realName: null
+  model: "SQLDatabase"
+  id: "e0e8acdc-93c6-4bcf-a9ac-d17a2304538c"
+  labels:
+  - "Database"
+  labels2:
+  - "CloudStorage"
+- name: "process1"
+  realName: null
+  model: "RubyEnv"
+  id: "58e1d8f9-5914-4b81-95e9-56d84711c2e6"
+  labels:
+  - "DevelopmentEnvironment"
+  labels2: null
+externals:
+- name: "user"
+  model: "RemoteUser"
+  id: "0ca479fa-8b40-4161-b0f4-cd2fa48f1caf"
+flows:
+- name: "flow0"
+  model: "DataStorageFlow"
+  realPortMapping: null
+  id: "4a0d18bc-bcd3-4929-b746-7dce0d084359"
+  localPort: null
+  source:
+    name: "process0"
+    id: "e0e8acdc-93c6-4bcf-a9ac-d17a2304538c"
+  target:
+    name: "storage0"
+    id: "e45dd7ad-6953-41d5-a609-c52b3aba70df"
+  labels:
+  - "ReadWriteFlow"
+  realStorageMappings: null
+- name: "flow1"
+  model: "GenericStorageFlow"
+  realPortMapping: null
+  id: "2c934b8f-ae00-4dbd-9068-fe27302a5337"
+  localPort: null
+  source:
+    name: "process1"
+    id: "58e1d8f9-5914-4b81-95e9-56d84711c2e6"
+  target:
+    name: "hostStorage"
+    id: "f33066fb-a0be-4e77-822c-ba575da88697"
+  labels:
+  - "ReadWriteFlow"
+  realStorageMappings: null
+storages:
+- name: "storage0"
+  model: "DockerVolume"
+  realName: null
+  realService: null
+  id: "e45dd7ad-6953-41d5-a609-c52b3aba70df"
+- name: "hostStorage"
+  model: "HostStorage"
+  realName: null
+  realService: null
+  id: "f33066fb-a0be-4e77-822c-ba575da88697"

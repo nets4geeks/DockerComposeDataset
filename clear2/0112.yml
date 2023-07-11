@@ -1,0 +1,71 @@
+---
+name: "0112.yml"
+id: "2f9b43de-f074-432e-ad57-31408e1f3efe"
+processes:
+- name: "process0"
+  realName: null
+  model: "WebServer"
+  id: "302bdeb3-5ca0-449a-9e6b-8042c7e1a435"
+  labels:
+  - "HTTPServer"
+  labels2: null
+- name: "process1"
+  realName: null
+  model: "PHPEnv"
+  id: "f81e22bb-8f0e-4298-83e9-575b3d362489"
+  labels:
+  - "DevelopmentEnvironment"
+  labels2: null
+externals:
+- name: "user"
+  model: "RemoteUser"
+  id: "ac9f85b8-6483-45ee-a0cc-6a9b8898ce04"
+flows:
+- name: "flow0"
+  model: "NetworkFlow"
+  realPortMapping: null
+  id: "0025e519-be89-4709-a86e-df5314a79c2f"
+  localPort: null
+  source:
+    name: "user"
+    id: "ac9f85b8-6483-45ee-a0cc-6a9b8898ce04"
+  target:
+    name: "process0"
+    id: "302bdeb3-5ca0-449a-9e6b-8042c7e1a435"
+  labels:
+  - "HTTPFlow"
+  realStorageMappings: null
+- name: "flow1"
+  model: "ConfigStorageFlow"
+  realPortMapping: null
+  id: "e49fd93b-b081-4e53-ae25-107699005da3"
+  localPort: null
+  source:
+    name: "process0"
+    id: "302bdeb3-5ca0-449a-9e6b-8042c7e1a435"
+  target:
+    name: "hostStorage"
+    id: "ce6368dc-5f56-4bf8-9111-b78e34c70581"
+  labels:
+  - "ReadWriteFlow"
+  realStorageMappings: null
+- name: "flow2"
+  model: "GenericStorageFlow"
+  realPortMapping: null
+  id: "38f9372e-df79-4a02-9964-79c2960ca077"
+  localPort: null
+  source:
+    name: "process1"
+    id: "f81e22bb-8f0e-4298-83e9-575b3d362489"
+  target:
+    name: "hostStorage"
+    id: "ce6368dc-5f56-4bf8-9111-b78e34c70581"
+  labels:
+  - "ReadWriteFlow"
+  realStorageMappings: null
+storages:
+- name: "hostStorage"
+  model: "HostStorage"
+  realName: null
+  realService: null
+  id: "ce6368dc-5f56-4bf8-9111-b78e34c70581"

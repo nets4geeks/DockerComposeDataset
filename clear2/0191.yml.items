@@ -1,0 +1,28 @@
+Processes:
+  - process0(WebServer HTTPServer)
+  - process1(PHPEnv DevelopmentEnvironment)
+  - process2(PHPEnv DevelopmentEnvironment)
+  - process3(PHPEnv DevelopmentEnvironment)
+  - process4(CacheDatabase)
+  - process5(DatabaseManagement)
+  - process6(GenericService SMTPServer)
+Storages:
+  - hostStorage(HostStorage)
+Externals:
+  - user(RemoteUser)
+Flows:
+  - flow0(NetworkFlow HTTPFlow): user -> process0
+  - flow1(GenericStorageFlow ReadWriteFlow): process0 -> hostStorage
+  - flow2(GenericStorageFlow ReadWriteFlow): process1 -> hostStorage
+  - flow3(GenericStorageFlow ReadWriteFlow): process2 -> hostStorage
+  - flow4(GenericStorageFlow ReadWriteFlow): process3 -> hostStorage
+  - flow5(NetworkFlow GenericProtocolFlow): user -> process5
+  - flow6(NetworkFlow SMTPFlow): user -> process6
+  - flow7(NetworkFlow GenericProtocolFlow): user -> process6
+  - flow8(DependFlow): process0 -> process1
+  - flow9(DependFlow): process1 -> process4
+  - flow10(DependFlow): process2 -> process1
+  - flow11(DependFlow): process2 -> process0
+  - flow12(DependFlow): process2 -> process4
+  - flow13(DependFlow): process3 -> process1
+  - flow14(DependFlow): process3 -> process4

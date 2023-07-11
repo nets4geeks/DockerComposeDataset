@@ -1,0 +1,23 @@
+Processes:
+  - process0(MessageBroker)
+  - process1(DataVisualizer)
+  - process2(NoSQLDatabase Database)
+  - process3(GenericService)
+  - process4(SearchEngine Database)
+  - process5(DataCollector)
+  - process6(DataVisualizer)
+Storages:
+  - hostStorage(HostStorage)
+Externals:
+  - user(RemoteUser)
+Flows:
+  - flow0(NetworkFlow HTTPFlow): user -> process4
+  - flow1(NetworkFlow ClusterFlow): user -> process4
+  - flow2(ConfigStorageFlow ReadOnlyFlow): process4 -> hostStorage
+  - flow3(GenericStorageFlow ReadOnlyFlow): process5 -> hostStorage
+  - flow4(ConfigStorageFlow ReadOnlyFlow): process6 -> hostStorage
+  - flow5(DependFlow): process3 -> process0
+  - flow6(DependFlow): process3 -> process5
+  - flow7(DependFlow): process3 -> process2
+  - flow8(DependFlow): process5 -> process4
+  - flow9(DependFlow): process6 -> process4

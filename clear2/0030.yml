@@ -1,0 +1,89 @@
+---
+name: "0030.yml"
+id: "8c9d5940-2570-468b-8705-c6626c2e2325"
+processes:
+- name: "process0"
+  realName: null
+  model: "CacheDatabase"
+  id: "15706791-e820-44cb-9212-0558167d4fc8"
+  labels: null
+  labels2: null
+- name: "process1"
+  realName: null
+  model: "NodeJsEnv"
+  id: "da43d957-97ab-4045-9e52-31877be111ea"
+  labels:
+  - "DevelopmentEnvironment"
+  labels2:
+  - "CloudApplication"
+externals:
+- name: "user"
+  model: "RemoteUser"
+  id: "1a7d6319-2c3a-4178-bcd7-bcea202541ee"
+flows:
+- name: "flow0"
+  model: "NetworkFlow"
+  realPortMapping: null
+  id: "8d327376-5592-44bb-8ecb-04c1f049aff3"
+  localPort: null
+  source:
+    name: "user"
+    id: "1a7d6319-2c3a-4178-bcd7-bcea202541ee"
+  target:
+    name: "process1"
+    id: "da43d957-97ab-4045-9e52-31877be111ea"
+  labels:
+  - "GenericProtocolFlow"
+  realStorageMappings: null
+- name: "flow1"
+  model: "GenericStorageFlow"
+  realPortMapping: null
+  id: "49fd6dec-9a42-459d-99a1-eb11ee169e95"
+  localPort: null
+  source:
+    name: "process1"
+    id: "da43d957-97ab-4045-9e52-31877be111ea"
+  target:
+    name: "hostStorage"
+    id: "370ee10b-02a4-4da2-b50a-28fffd2f22db"
+  labels:
+  - "ReadWriteFlow"
+  realStorageMappings: null
+- name: "flow2"
+  model: "GenericStorageFlow"
+  realPortMapping: null
+  id: "cbc9de05-2405-4d2b-b618-4a7deab03161"
+  localPort: null
+  source:
+    name: "process1"
+    id: "da43d957-97ab-4045-9e52-31877be111ea"
+  target:
+    name: "storage0"
+    id: "28380c02-a949-48d3-b726-01a46c3eaea1"
+  labels:
+  - "ReadWriteFlow"
+  realStorageMappings: null
+- name: "flow3"
+  model: "LinkFlow"
+  realPortMapping: null
+  id: "a8e0c817-3b15-4978-8c1b-a9fbfe8df0ce"
+  localPort: null
+  source:
+    name: "process1"
+    id: "da43d957-97ab-4045-9e52-31877be111ea"
+  target:
+    name: "process0"
+    id: "15706791-e820-44cb-9212-0558167d4fc8"
+  labels: null
+  realStorageMappings: null
+storages:
+- name: "hostStorage"
+  model: "HostStorage"
+  realName: null
+  realService: null
+  id: "370ee10b-02a4-4da2-b50a-28fffd2f22db"
+- name: "storage0"
+  model: "DockerAnonymousVolume"
+  realName: null
+  realService: null
+  id: "28380c02-a949-48d3-b726-01a46c3eaea1"

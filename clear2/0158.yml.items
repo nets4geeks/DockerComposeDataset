@@ -1,0 +1,41 @@
+Processes:
+  - process0(NoSQLDatabase Database)
+  - process1(SQLDatabase Database CloudStorage)
+  - process2(SQLDatabase Database CloudStorage)
+  - process3(MessageBroker)
+  - process4(GenericService)
+  - process5(WebProxy)
+  - process6(GenericService)
+  - process7(SSOService)
+  - process8(GenericService)
+  - process9(WebApplication WebServer)
+  - process10(GenericService)
+  - process11(ApplicationGateway)
+Storages:
+  - storage0(DockerVolume)
+  - storage1(DockerVolume)
+  - storage2(DockerVolume)
+  - storage3(DockerVolume)
+Externals:
+  - user(RemoteUser)
+Flows:
+  - flow0(GenericStorageFlow ReadWriteFlow): process0 -> storage0
+  - flow1(DataStorageFlow ReadWriteFlow): process1 -> storage1
+  - flow2(DataStorageFlow ReadWriteFlow): process2 -> storage2
+  - flow3(GenericStorageFlow ReadWriteFlow): process3 -> storage3
+  - flow4(DependFlow): process4 -> process0
+  - flow5(DependFlow): process4 -> process3
+  - flow6(DependFlow): process5 -> process3
+  - flow7(DependFlow): process5 -> process7
+  - flow8(DependFlow): process6 -> process3
+  - flow9(DependFlow): process6 -> process7
+  - flow10(DependFlow): process7 -> process1
+  - flow11(DependFlow): process7 -> process3
+  - flow12(DependFlow): process8 -> process2
+  - flow13(DependFlow): process8 -> process3
+  - flow14(DependFlow): process11 -> process4
+  - flow15(DependFlow): process11 -> process7
+  - flow16(DependFlow): process11 -> process6
+  - flow17(DependFlow): process11 -> process5
+  - flow18(DependFlow): process11 -> process8
+  - flow19(DependFlow): process11 -> process9

@@ -1,0 +1,54 @@
+---
+name: "0040.yml"
+id: "1a1637cb-7e9d-4ea8-98e1-c258f2cbeb78"
+processes:
+- name: "process0"
+  realName: null
+  model: "SQLDatabase"
+  id: "15596d48-80fe-431b-84ca-ec69a378f2af"
+  labels:
+  - "Database"
+  labels2:
+  - "CloudStorage"
+- name: "process1"
+  realName: null
+  model: "CMS"
+  id: "fe5aa3a3-2a2a-433d-a775-d8a54b8cc947"
+  labels:
+  - "WebApplication"
+  - "WebServer"
+  - "HTTPServer"
+  labels2: null
+externals:
+- name: "user"
+  model: "RemoteUser"
+  id: "765b097e-ebda-4dc8-99fe-b04bef95947a"
+flows:
+- name: "flow0"
+  model: "NetworkFlow"
+  realPortMapping: null
+  id: "932bd06c-a3c1-4e2c-a007-6a9b819049eb"
+  localPort: null
+  source:
+    name: "user"
+    id: "765b097e-ebda-4dc8-99fe-b04bef95947a"
+  target:
+    name: "process1"
+    id: "fe5aa3a3-2a2a-433d-a775-d8a54b8cc947"
+  labels:
+  - "HTTPFlow"
+  realStorageMappings: null
+- name: "flow1"
+  model: "LinkFlow"
+  realPortMapping: null
+  id: "33577399-40e2-4225-8ae5-cbe71ae04e10"
+  localPort: null
+  source:
+    name: "process1"
+    id: "fe5aa3a3-2a2a-433d-a775-d8a54b8cc947"
+  target:
+    name: "process0"
+    id: "15596d48-80fe-431b-84ca-ec69a378f2af"
+  labels: null
+  realStorageMappings: null
+storages: []

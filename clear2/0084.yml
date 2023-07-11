@@ -1,0 +1,88 @@
+---
+name: "0084.yml"
+id: "803d4765-7343-472b-8cb9-929e9f252815"
+processes:
+- name: "process0"
+  realName: null
+  model: "NoSQLDatabase"
+  id: "460fbe8b-68e6-4e5c-a886-cac477e68d4f"
+  labels:
+  - "Database"
+  labels2: null
+- name: "process1"
+  realName: null
+  model: "DataCollector"
+  id: "0b7623f2-f337-4a1e-af9d-536b4b22525b"
+  labels: null
+  labels2: null
+externals:
+- name: "user"
+  model: "RemoteUser"
+  id: "963e1392-61d6-4304-8d25-0a874cae632f"
+flows:
+- name: "flow0"
+  model: "NetworkFlow"
+  realPortMapping: null
+  id: "fa69b461-45db-40f7-85b9-d421a4bac0b7"
+  localPort: null
+  source:
+    name: "user"
+    id: "963e1392-61d6-4304-8d25-0a874cae632f"
+  target:
+    name: "process0"
+    id: "460fbe8b-68e6-4e5c-a886-cac477e68d4f"
+  labels:
+  - "HTTPFlow"
+  realStorageMappings: null
+- name: "flow1"
+  model: "DataStorageFlow"
+  realPortMapping: null
+  id: "da856a7c-3f15-43e9-955a-feb5b8a7a46d"
+  localPort: null
+  source:
+    name: "process0"
+    id: "460fbe8b-68e6-4e5c-a886-cac477e68d4f"
+  target:
+    name: "storage0"
+    id: "437d35de-af4e-4284-87fd-390ed158972e"
+  labels:
+  - "ReadWriteFlow"
+  realStorageMappings: null
+- name: "flow2"
+  model: "ConfigStorageFlow"
+  realPortMapping: null
+  id: "84de98bb-6255-4a35-a79b-02a4e18d9a8b"
+  localPort: null
+  source:
+    name: "process1"
+    id: "0b7623f2-f337-4a1e-af9d-536b4b22525b"
+  target:
+    name: "hostStorage"
+    id: "71873a3b-fb84-4b91-893c-47d519ee30e9"
+  labels:
+  - "ReadOnlyFlow"
+  realStorageMappings: null
+- name: "flow3"
+  model: "DependFlow"
+  realPortMapping: null
+  id: "2a03a9ef-d476-4d03-b822-031679ad534c"
+  localPort: null
+  source:
+    name: "process1"
+    id: "0b7623f2-f337-4a1e-af9d-536b4b22525b"
+  target:
+    name: "process0"
+    id: "460fbe8b-68e6-4e5c-a886-cac477e68d4f"
+  labels: null
+  realStorageMappings: null
+storages:
+- name: "storage0"
+  model: "DockerVolume"
+  realName: null
+  realService: null
+  id: "437d35de-af4e-4284-87fd-390ed158972e"
+- name: "hostStorage"
+  model: "HostStorage"
+  realName: null
+  realService: null
+  id: "71873a3b-fb84-4b91-893c-47d519ee30e9"

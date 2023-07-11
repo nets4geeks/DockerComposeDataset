@@ -1,0 +1,28 @@
+Processes:
+  - process0(InfrastructureMonitoring)
+  - process1(WebApplication WebServer HTTPServer)
+  - process2(SQLDatabase Database CloudStorage)
+  - process3(NoSQLDatabase Database)
+  - process4(DataVisualizer HTTPServer)
+Storages:
+  - hostStorage(HostStorage)
+  - storage0(DockerVolume)
+  - storage1(DockerVolume)
+  - storage2(DockerVolume)
+  - storage3(DockerVolume)
+Externals:
+  - user(RemoteUser)
+Flows:
+  - flow0(NetworkFlow GenericProtocolFlow): user -> process0
+  - flow1(GenericStorageFlow ReadWriteFlow): process0 -> hostStorage
+  - flow2(NetworkFlow HTTPFlow): user -> process1
+  - flow3(GenericStorageFlow ReadWriteFlow): process1 -> storage0
+  - flow4(NetworkFlow DBFlow): user -> process2
+  - flow5(DataStorageFlow ReadWriteFlow): process2 -> storage1
+  - flow6(DataStorageFlow ReadWriteFlow): process3 -> storage2
+  - flow7(NetworkFlow HTTPFlow): user -> process4
+  - flow8(DataStorageFlow ReadWriteFlow): process4 -> storage3
+  - flow9(DependFlow): process0 -> process2
+  - flow10(DependFlow): process0 -> process3
+  - flow11(DependFlow): process1 -> process2
+  - flow12(DependFlow): process4 -> process3

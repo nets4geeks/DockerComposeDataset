@@ -1,0 +1,85 @@
+---
+name: "0150.yml"
+id: "95b64bda-0a36-4edc-9e62-075b26318f6b"
+processes:
+- name: "process0"
+  realName: null
+  model: "RubyEnv"
+  id: "dd24e5f3-4ecb-4ff4-98b3-042eaf78b580"
+  labels:
+  - "DevelopmentEnvironment"
+  labels2: null
+- name: "process1"
+  realName: null
+  model: "SQLDatabase"
+  id: "c8b003d3-c817-44a2-be33-83a74296cc6f"
+  labels:
+  - "Database"
+  labels2:
+  - "CloudStorage"
+externals:
+- name: "user"
+  model: "RemoteUser"
+  id: "241dd6e6-b422-4d2a-b500-e01e4c5126f6"
+flows:
+- name: "flow0"
+  model: "NetworkFlow"
+  realPortMapping: null
+  id: "a6bf27ca-6aeb-45ea-baa9-da6c9dc859fe"
+  localPort: null
+  source:
+    name: "user"
+    id: "241dd6e6-b422-4d2a-b500-e01e4c5126f6"
+  target:
+    name: "process0"
+    id: "dd24e5f3-4ecb-4ff4-98b3-042eaf78b580"
+  labels:
+  - "GenericProtocolFlow"
+  realStorageMappings: null
+- name: "flow1"
+  model: "GenericStorageFlow"
+  realPortMapping: null
+  id: "e4400577-4d9d-4eb9-a6d9-cc95d92ede00"
+  localPort: null
+  source:
+    name: "process0"
+    id: "dd24e5f3-4ecb-4ff4-98b3-042eaf78b580"
+  target:
+    name: "storage0"
+    id: "e55bfd3f-0fa3-4efa-9cee-ca92898e2564"
+  labels:
+  - "ReadWriteFlow"
+  realStorageMappings: null
+- name: "flow2"
+  model: "NetworkFlow"
+  realPortMapping: null
+  id: "4f074648-4065-46de-926b-94e2a43a0964"
+  localPort: null
+  source:
+    name: "user"
+    id: "241dd6e6-b422-4d2a-b500-e01e4c5126f6"
+  target:
+    name: "process1"
+    id: "c8b003d3-c817-44a2-be33-83a74296cc6f"
+  labels:
+  - "DBFlow"
+  realStorageMappings: null
+- name: "flow3"
+  model: "DependFlow"
+  realPortMapping: null
+  id: "2bd8537a-7f62-43e2-a7b7-97f0b0bdb425"
+  localPort: null
+  source:
+    name: "process0"
+    id: "dd24e5f3-4ecb-4ff4-98b3-042eaf78b580"
+  target:
+    name: "process1"
+    id: "c8b003d3-c817-44a2-be33-83a74296cc6f"
+  labels: null
+  realStorageMappings: null
+storages:
+- name: "storage0"
+  model: "DockerVolume"
+  realName: null
+  realService: null
+  id: "e55bfd3f-0fa3-4efa-9cee-ca92898e2564"

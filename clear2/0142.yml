@@ -1,0 +1,51 @@
+---
+name: "0142.yml"
+id: "cd7df423-fc47-4d0e-a33a-226c34681393"
+processes:
+- name: "process0"
+  realName: null
+  model: "CacheDatabase"
+  id: "78e63ee1-446a-40d3-859b-c98d4cbe9d9e"
+  labels: null
+  labels2: null
+- name: "process1"
+  realName: null
+  model: "NodeJsEnv"
+  id: "f281896f-2560-4601-bbe8-a5327a3f3f6b"
+  labels:
+  - "DevelopmentEnvironment"
+  labels2:
+  - "CloudApplication"
+externals:
+- name: "user"
+  model: "RemoteUser"
+  id: "1e4cd7aa-a0ce-4155-938a-a00e074d8e01"
+flows:
+- name: "flow0"
+  model: "NetworkFlow"
+  realPortMapping: null
+  id: "160f45e3-2559-4d1f-ae45-e66f123cb68c"
+  localPort: null
+  source:
+    name: "user"
+    id: "1e4cd7aa-a0ce-4155-938a-a00e074d8e01"
+  target:
+    name: "process1"
+    id: "f281896f-2560-4601-bbe8-a5327a3f3f6b"
+  labels:
+  - "GenericProtocolFlow"
+  realStorageMappings: null
+- name: "flow1"
+  model: "DependFlow"
+  realPortMapping: null
+  id: "d50dfd77-a5a4-48af-9bc4-b546abe36161"
+  localPort: null
+  source:
+    name: "process1"
+    id: "f281896f-2560-4601-bbe8-a5327a3f3f6b"
+  target:
+    name: "process0"
+    id: "78e63ee1-446a-40d3-859b-c98d4cbe9d9e"
+  labels: null
+  realStorageMappings: null
+storages: []

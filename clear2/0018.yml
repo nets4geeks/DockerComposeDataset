@@ -1,0 +1,167 @@
+---
+name: "0018.yml"
+id: "7f6986a1-ad63-4242-ac85-b99116f44c74"
+processes:
+- name: "process0"
+  realName: null
+  model: "WebServer"
+  id: "3bb1070c-a20a-42da-a131-f3ee9fe2636b"
+  labels:
+  - "HTTPServer"
+  labels2: null
+- name: "process1"
+  realName: null
+  model: "PHPEnv"
+  id: "b49254c0-c592-4771-a2e6-59f2496bc0f1"
+  labels:
+  - "DevelopmentEnvironment"
+  labels2: null
+- name: "process2"
+  realName: null
+  model: "SQLDatabase"
+  id: "69bd06dd-7675-4133-988f-348ca1dfdddc"
+  labels:
+  - "Database"
+  labels2:
+  - "CloudStorage"
+- name: "process3"
+  realName: null
+  model: "ConsoleService"
+  id: "d6d5f4a2-74fd-4913-b49f-b592317fc016"
+  labels: null
+  labels2: null
+externals:
+- name: "user"
+  model: "RemoteUser"
+  id: "49a004fa-326c-4683-a629-d0c2c6d95f20"
+flows:
+- name: "flow0"
+  model: "NetworkFlow"
+  realPortMapping: null
+  id: "bb429d62-13bf-47b9-b8c2-df8b506f3d0b"
+  localPort: null
+  source:
+    name: "user"
+    id: "49a004fa-326c-4683-a629-d0c2c6d95f20"
+  target:
+    name: "process0"
+    id: "3bb1070c-a20a-42da-a131-f3ee9fe2636b"
+  labels:
+  - "HTTPFlow"
+  realStorageMappings: null
+- name: "flow1"
+  model: "ConfigStorageFlow"
+  realPortMapping: null
+  id: "84381796-071b-44f4-9042-cb506a447e9c"
+  localPort: null
+  source:
+    name: "process0"
+    id: "3bb1070c-a20a-42da-a131-f3ee9fe2636b"
+  target:
+    name: "hostStorage"
+    id: "95438f5b-b95d-469a-96c8-9c4ba99b1b13"
+  labels:
+  - "ReadOnlyFlow"
+  realStorageMappings: null
+- name: "flow2"
+  model: "GenericStorageFlow"
+  realPortMapping: null
+  id: "0250c29c-4628-4445-96da-b515f25719b9"
+  localPort: null
+  source:
+    name: "process0"
+    id: "3bb1070c-a20a-42da-a131-f3ee9fe2636b"
+  target:
+    name: "hostStorage"
+    id: "95438f5b-b95d-469a-96c8-9c4ba99b1b13"
+  labels:
+  - "ReadWriteFlow"
+  realStorageMappings: null
+- name: "flow3"
+  model: "GenericStorageFlow"
+  realPortMapping: null
+  id: "d98562bd-b3ce-4fa1-aa0e-bb0d1851a9c7"
+  localPort: null
+  source:
+    name: "process1"
+    id: "b49254c0-c592-4771-a2e6-59f2496bc0f1"
+  target:
+    name: "hostStorage"
+    id: "95438f5b-b95d-469a-96c8-9c4ba99b1b13"
+  labels:
+  - "ReadWriteFlow"
+  realStorageMappings: null
+- name: "flow4"
+  model: "NetworkFlow"
+  realPortMapping: null
+  id: "4725e1c6-bec9-4bc0-93f6-c810ea80d065"
+  localPort: null
+  source:
+    name: "user"
+    id: "49a004fa-326c-4683-a629-d0c2c6d95f20"
+  target:
+    name: "process2"
+    id: "69bd06dd-7675-4133-988f-348ca1dfdddc"
+  labels:
+  - "DBFlow"
+  realStorageMappings: null
+- name: "flow5"
+  model: "DataStorageFlow"
+  realPortMapping: null
+  id: "b7d0bd97-2432-4032-bce5-494f3c5befff"
+  localPort: null
+  source:
+    name: "process2"
+    id: "69bd06dd-7675-4133-988f-348ca1dfdddc"
+  target:
+    name: "hostStorage"
+    id: "95438f5b-b95d-469a-96c8-9c4ba99b1b13"
+  labels:
+  - "ReadWriteFlow"
+  realStorageMappings: null
+- name: "flow6"
+  model: "GenericStorageFlow"
+  realPortMapping: null
+  id: "7bbf2640-dd52-4e23-88cd-036aef210772"
+  localPort: null
+  source:
+    name: "process3"
+    id: "d6d5f4a2-74fd-4913-b49f-b592317fc016"
+  target:
+    name: "hostStorage"
+    id: "95438f5b-b95d-469a-96c8-9c4ba99b1b13"
+  labels:
+  - "ReadWriteFlow"
+  realStorageMappings: null
+- name: "flow7"
+  model: "DependFlow"
+  realPortMapping: null
+  id: "678b2914-6215-4520-b9da-42542a914bc9"
+  localPort: null
+  source:
+    name: "process0"
+    id: "3bb1070c-a20a-42da-a131-f3ee9fe2636b"
+  target:
+    name: "process1"
+    id: "b49254c0-c592-4771-a2e6-59f2496bc0f1"
+  labels: null
+  realStorageMappings: null
+- name: "flow8"
+  model: "DependFlow"
+  realPortMapping: null
+  id: "22a0331f-4c87-4261-ba20-fdfbbc26aa3f"
+  localPort: null
+  source:
+    name: "process1"
+    id: "b49254c0-c592-4771-a2e6-59f2496bc0f1"
+  target:
+    name: "process2"
+    id: "69bd06dd-7675-4133-988f-348ca1dfdddc"
+  labels: null
+  realStorageMappings: null
+storages:
+- name: "hostStorage"
+  model: "HostStorage"
+  realName: null
+  realService: null
+  id: "95438f5b-b95d-469a-96c8-9c4ba99b1b13"

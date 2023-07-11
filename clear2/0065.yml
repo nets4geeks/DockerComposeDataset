@@ -1,0 +1,167 @@
+---
+name: "0065.yml"
+id: "0ad0d709-385e-4372-9621-a142a6a29ae5"
+processes:
+- name: "process0"
+  realName: null
+  model: "SearchEngine"
+  id: "cc4559de-9979-45b8-9106-7ea5773dd8ae"
+  labels:
+  - "Database"
+  labels2: null
+- name: "process1"
+  realName: null
+  model: "NoSQLDatabase"
+  id: "f8bd5684-47b7-4924-a885-0ab2431fa720"
+  labels:
+  - "Database"
+  labels2: null
+- name: "process2"
+  realName: null
+  model: "DatabaseManagement"
+  id: "ddb12003-4b30-48e6-b412-3d97a1f0db06"
+  labels: null
+  labels2: null
+- name: "process3"
+  realName: null
+  model: "SQLDatabase"
+  id: "1045f2d5-54fa-40ae-b885-c3b04f7d0d95"
+  labels:
+  - "Database"
+  labels2:
+  - "CloudStorage"
+- name: "process4"
+  realName: null
+  model: "DatabaseManagement"
+  id: "f1d3aa66-b62f-4a6d-b46b-abc7fef5cd61"
+  labels:
+  - "HTTPServer"
+  labels2: null
+- name: "process5"
+  realName: null
+  model: "CacheDatabase"
+  id: "edcf4ddb-e8b4-4ae5-8e0a-d619053d8236"
+  labels: null
+  labels2: null
+- name: "process6"
+  realName: null
+  model: "MessageBroker"
+  id: "035005d4-577f-46b7-8002-afbb3191e0e1"
+  labels: null
+  labels2: null
+externals:
+- name: "user"
+  model: "RemoteUser"
+  id: "58ffb91b-6433-44df-bf52-8df349b66484"
+flows:
+- name: "flow0"
+  model: "NetworkFlow"
+  realPortMapping: null
+  id: "6416896a-bf37-4a50-95e6-c4fc63de8dda"
+  localPort: null
+  source:
+    name: "user"
+    id: "58ffb91b-6433-44df-bf52-8df349b66484"
+  target:
+    name: "process0"
+    id: "cc4559de-9979-45b8-9106-7ea5773dd8ae"
+  labels:
+  - "HTTPFlow"
+  realStorageMappings: null
+- name: "flow1"
+  model: "NetworkFlow"
+  realPortMapping: null
+  id: "458ca9b7-5607-45fb-a5ff-475b9a5dc6ff"
+  localPort: null
+  source:
+    name: "user"
+    id: "58ffb91b-6433-44df-bf52-8df349b66484"
+  target:
+    name: "process1"
+    id: "f8bd5684-47b7-4924-a885-0ab2431fa720"
+  labels:
+  - "DBFlow"
+  realStorageMappings: null
+- name: "flow2"
+  model: "NetworkFlow"
+  realPortMapping: null
+  id: "0425da43-4567-42b9-9d34-d203c4160ee8"
+  localPort: null
+  source:
+    name: "user"
+    id: "58ffb91b-6433-44df-bf52-8df349b66484"
+  target:
+    name: "process2"
+    id: "ddb12003-4b30-48e6-b412-3d97a1f0db06"
+  labels:
+  - "GenericProtocolFlow"
+  realStorageMappings: null
+- name: "flow3"
+  model: "NetworkFlow"
+  realPortMapping: null
+  id: "e62fedb9-b9ce-47e0-bb6e-341a6f6be6db"
+  localPort: null
+  source:
+    name: "user"
+    id: "58ffb91b-6433-44df-bf52-8df349b66484"
+  target:
+    name: "process3"
+    id: "1045f2d5-54fa-40ae-b885-c3b04f7d0d95"
+  labels:
+  - "DBFlow"
+  realStorageMappings: null
+- name: "flow4"
+  model: "NetworkFlow"
+  realPortMapping: null
+  id: "67371f8f-0fbd-4863-9913-385c1c08ebd6"
+  localPort: null
+  source:
+    name: "user"
+    id: "58ffb91b-6433-44df-bf52-8df349b66484"
+  target:
+    name: "process4"
+    id: "f1d3aa66-b62f-4a6d-b46b-abc7fef5cd61"
+  labels:
+  - "HTTPFlow"
+  realStorageMappings: null
+- name: "flow5"
+  model: "NetworkFlow"
+  realPortMapping: null
+  id: "610f8a94-b53e-47e0-9cc7-1e45f0c4dda9"
+  localPort: null
+  source:
+    name: "user"
+    id: "58ffb91b-6433-44df-bf52-8df349b66484"
+  target:
+    name: "process6"
+    id: "035005d4-577f-46b7-8002-afbb3191e0e1"
+  labels:
+  - "HTTPFlow"
+  realStorageMappings: null
+- name: "flow6"
+  model: "DependFlow"
+  realPortMapping: null
+  id: "b857919d-e2a8-46dc-8863-1be59c9f9383"
+  localPort: null
+  source:
+    name: "process2"
+    id: "ddb12003-4b30-48e6-b412-3d97a1f0db06"
+  target:
+    name: "process1"
+    id: "f8bd5684-47b7-4924-a885-0ab2431fa720"
+  labels: null
+  realStorageMappings: null
+- name: "flow7"
+  model: "DependFlow"
+  realPortMapping: null
+  id: "0918f36c-f318-4477-b8eb-78e26cb187fb"
+  localPort: null
+  source:
+    name: "process4"
+    id: "f1d3aa66-b62f-4a6d-b46b-abc7fef5cd61"
+  target:
+    name: "process3"
+    id: "1045f2d5-54fa-40ae-b885-c3b04f7d0d95"
+  labels: null
+  realStorageMappings: null
+storages: []

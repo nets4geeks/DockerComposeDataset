@@ -1,0 +1,166 @@
+---
+name: "0069.yml"
+id: "45a95f36-f465-4e19-8ba9-68bcb72372f4"
+processes:
+- name: "process0"
+  realName: null
+  model: "GenericService"
+  id: "0ba3526e-0c4b-445b-b422-ae09b023de44"
+  labels: null
+  labels2: null
+- name: "process1"
+  realName: null
+  model: "WebServer"
+  id: "b4876070-613f-400e-b5c4-cb33158ec45c"
+  labels:
+  - "HTTPServer"
+  labels2: null
+- name: "process2"
+  realName: null
+  model: "SQLDatabase"
+  id: "b9ae04b6-1aa8-4338-9565-f2e5c272f459"
+  labels:
+  - "Database"
+  labels2:
+  - "CloudStorage"
+- name: "process3"
+  realName: null
+  model: "CacheDatabase"
+  id: "c44db2bb-c75a-4ffa-affa-4c218c2a78f8"
+  labels: null
+  labels2: null
+externals:
+- name: "user"
+  model: "RemoteUser"
+  id: "6a99ad54-5cc9-4367-b699-953c69c044ff"
+flows:
+- name: "flow0"
+  model: "NetworkFlow"
+  realPortMapping: null
+  id: "48d5310f-68c2-4d8e-97a2-5965c7ce5fa1"
+  localPort: null
+  source:
+    name: "user"
+    id: "6a99ad54-5cc9-4367-b699-953c69c044ff"
+  target:
+    name: "process0"
+    id: "0ba3526e-0c4b-445b-b422-ae09b023de44"
+  labels:
+  - "GenericProtocolFlow"
+  realStorageMappings: null
+- name: "flow1"
+  model: "LogStorageFlow"
+  realPortMapping: null
+  id: "d4b2d93d-044c-4106-bfa8-fba5a3fa3d0f"
+  localPort: null
+  source:
+    name: "process0"
+    id: "0ba3526e-0c4b-445b-b422-ae09b023de44"
+  target:
+    name: "hostStorage"
+    id: "e0b68d2e-447d-401a-b795-7d11fd0e7b9b"
+  labels:
+  - "ReadWriteFlow"
+  realStorageMappings: null
+- name: "flow2"
+  model: "GenericStorageFlow"
+  realPortMapping: null
+  id: "bea99ec9-84cd-43f2-9cee-925967fe01dc"
+  localPort: null
+  source:
+    name: "process0"
+    id: "0ba3526e-0c4b-445b-b422-ae09b023de44"
+  target:
+    name: "hostStorage"
+    id: "e0b68d2e-447d-401a-b795-7d11fd0e7b9b"
+  labels:
+  - "ReadWriteFlow"
+  realStorageMappings: null
+- name: "flow3"
+  model: "NetworkFlow"
+  realPortMapping: null
+  id: "633d21c1-4145-489f-b572-31465bf8c857"
+  localPort: null
+  source:
+    name: "user"
+    id: "6a99ad54-5cc9-4367-b699-953c69c044ff"
+  target:
+    name: "process1"
+    id: "b4876070-613f-400e-b5c4-cb33158ec45c"
+  labels:
+  - "HTTPFlow"
+  realStorageMappings: null
+- name: "flow4"
+  model: "ConfigStorageFlow"
+  realPortMapping: null
+  id: "e33e1ec0-4dd2-4fca-963e-340b4e0f89ec"
+  localPort: null
+  source:
+    name: "process1"
+    id: "b4876070-613f-400e-b5c4-cb33158ec45c"
+  target:
+    name: "hostStorage"
+    id: "e0b68d2e-447d-401a-b795-7d11fd0e7b9b"
+  labels:
+  - "ReadWriteFlow"
+  realStorageMappings: null
+- name: "flow5"
+  model: "DataStorageFlow"
+  realPortMapping: null
+  id: "e0e0be98-73b1-495f-bfb0-6bd8ba47af23"
+  localPort: null
+  source:
+    name: "process2"
+    id: "b9ae04b6-1aa8-4338-9565-f2e5c272f459"
+  target:
+    name: "hostStorage"
+    id: "e0b68d2e-447d-401a-b795-7d11fd0e7b9b"
+  labels:
+  - "ReadWriteFlow"
+  realStorageMappings: null
+- name: "flow6"
+  model: "DataStorageFlow"
+  realPortMapping: null
+  id: "49be9431-5909-4a9b-8736-baf57dadecca"
+  localPort: null
+  source:
+    name: "process3"
+    id: "c44db2bb-c75a-4ffa-affa-4c218c2a78f8"
+  target:
+    name: "hostStorage"
+    id: "e0b68d2e-447d-401a-b795-7d11fd0e7b9b"
+  labels:
+  - "ReadWriteFlow"
+  realStorageMappings: null
+- name: "flow7"
+  model: "DependFlow"
+  realPortMapping: null
+  id: "75f7916e-ed24-4918-8e98-b7471c3ca348"
+  localPort: null
+  source:
+    name: "process0"
+    id: "0ba3526e-0c4b-445b-b422-ae09b023de44"
+  target:
+    name: "process2"
+    id: "b9ae04b6-1aa8-4338-9565-f2e5c272f459"
+  labels: null
+  realStorageMappings: null
+- name: "flow8"
+  model: "DependFlow"
+  realPortMapping: null
+  id: "58e083bf-4878-4eb9-b2af-3678b4a90376"
+  localPort: null
+  source:
+    name: "process1"
+    id: "b4876070-613f-400e-b5c4-cb33158ec45c"
+  target:
+    name: "process0"
+    id: "0ba3526e-0c4b-445b-b422-ae09b023de44"
+  labels: null
+  realStorageMappings: null
+storages:
+- name: "hostStorage"
+  model: "HostStorage"
+  realName: null
+  realService: null
+  id: "e0b68d2e-447d-401a-b795-7d11fd0e7b9b"

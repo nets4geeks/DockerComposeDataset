@@ -1,0 +1,15 @@
+Processes:
+  - process0(DataCollector)
+  - process1(DataVisualizer)
+  - process2(SearchEngine Database)
+Storages:
+  - hostStorage(HostStorage)
+  - storage0(DockerVolume)
+Externals:
+  - user(RemoteUser)
+Flows:
+  - flow0(GenericStorageFlow ReadWriteFlow): process0 -> hostStorage
+  - flow1(NetworkFlow HTTPFlow): user -> process1
+  - flow2(DataStorageFlow ReadWriteFlow): process2 -> storage0
+  - flow3(DependFlow): process0 -> process2
+  - flow4(DependFlow): process1 -> process2

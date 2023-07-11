@@ -1,0 +1,19 @@
+Processes:
+  - process0(WebProxy HTTPServer)
+  - process1(RubyEnv DevelopmentEnvironment)
+  - process2(SQLDatabase Database CloudStorage)
+Storages:
+  - storage0(DockerVolume)
+  - dockerSocket(DockerSocket)
+  - storage1(DockerVolume)
+Externals:
+  - user(RemoteUser)
+Flows:
+  - flow0(NetworkFlow HTTPFlow): user -> process0
+  - flow1(ConfigStorageFlow ReadWriteFlow): process0 -> storage0
+  - flow2(DockerSocketFlow ReadOnlyFlow SensitiveHostPath): process0 -> dockerSocket
+  - flow3(NetworkFlow GenericProtocolFlow): user -> process1
+  - flow4(GenericStorageFlow ReadWriteFlow): process1 -> storage1
+  - flow5(NetworkFlow DBFlow): user -> process2
+  - flow6(DependFlow): process1 -> process2
+  - flow7(DependFlow): process1 -> process0

@@ -1,0 +1,13 @@
+Processes:
+  - process0(SQLDatabase Database CloudStorage)
+  - process1(CacheDatabase)
+  - process2(CacheDatabase)
+Storages:
+  - storage0(DockerVolume)
+Externals:
+  - user(RemoteUser)
+Flows:
+  - flow0(NetworkFlow DBFlow): user -> process0
+  - flow1(DataStorageFlow ReadWriteFlow): process0 -> storage0
+  - flow2(NetworkFlow RESPFlow): user -> process1
+  - flow3(NetworkFlow RESPFlow): user -> process2

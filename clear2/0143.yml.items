@@ -1,0 +1,12 @@
+Processes:
+  - process0(GenericDevelopment)
+  - process1(GenericDevelopment)
+  - process2(SQLDatabase Database CloudStorage)
+Storages:
+Externals:
+  - user(RemoteUser)
+Flows:
+  - flow0(NetworkFlow GenericProtocolFlow): user -> process0
+  - flow1(NetworkFlow GenericProtocolFlow): user -> process1
+  - flow2(NetworkFlow DBFlow): user -> process2
+  - flow3(DependFlow): process1 -> process2

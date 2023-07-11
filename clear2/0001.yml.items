@@ -1,0 +1,29 @@
+Processes:
+  - process0(SQLDatabase Database CloudStorage)
+  - process1(InfrastructureMonitoring)
+  - process2(WebApplication WebServer HTTPServer HTTPSServer)
+  - process3(DataVisualizer HTTPServer)
+  - process4(AgentApplication)
+Storages:
+  - hostStorage(HostStorage)
+Externals:
+  - user(RemoteUser)
+Flows:
+  - flow0(NetworkFlow DBFlow): user -> process0
+  - flow1(DataStorageFlow ReadWriteFlow): process0 -> hostStorage
+  - flow2(NetworkFlow GenericProtocolFlow): user -> process1
+  - flow3(GenericStorageFlow ReadWriteFlow): process1 -> hostStorage
+  - flow4(NetworkFlow HTTPFlow): user -> process2
+  - flow5(NetworkFlow HTTPSFlow): user -> process2
+  - flow6(NetworkFlow HTTPFlow): user -> process3
+  - flow7(NetworkFlow GenericProtocolFlow): user -> process4
+  - flow8(GenericStorageFlow ReadWriteFlow SensitiveHostPath): process4 -> hostStorage
+  - flow9(DependFlow): process1 -> process0
+  - flow10(LinkFlow): process1 -> process0
+  - flow11(DependFlow): process2 -> process0
+  - flow12(LinkFlow): process2 -> process0
+  - flow13(DependFlow): process3 -> process0
+  - flow14(DependFlow): process3 -> process1
+  - flow15(LinkFlow): process3 -> process0
+  - flow16(LinkFlow): process3 -> process1
+  - flow17(LinkFlow): process4 -> process1

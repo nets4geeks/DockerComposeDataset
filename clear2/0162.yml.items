@@ -1,0 +1,11 @@
+Processes:
+  - process0(DataVisualizer)
+  - process1(SearchEngine Database)
+  - process2(DataCollector)
+Storages:
+Externals:
+  - user(RemoteUser)
+Flows:
+  - flow0(NetworkFlow HTTPFlow): user -> process0
+  - flow1(LinkFlow): process0 -> process1
+  - flow2(LinkFlow): process2 -> process1

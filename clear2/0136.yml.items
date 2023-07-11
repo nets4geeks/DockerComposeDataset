@@ -1,0 +1,22 @@
+Processes:
+  - process0(SQLDatabase Database CloudStorage)
+  - process1(CacheDatabase)
+  - process2(CommunicationPlatform WebServer WebApplication HTTPServer)
+  - process3(CommunicationPlatform WebServer WebApplication)
+  - process4(CommunicationPlatform WebServer WebApplication)
+Storages:
+  - hostStorage(HostStorage)
+Externals:
+  - user(RemoteUser)
+Flows:
+  - flow0(DataStorageFlow ReadWriteFlow): process0 -> hostStorage
+  - flow1(DataStorageFlow ReadWriteFlow): process1 -> hostStorage
+  - flow2(NetworkFlow HTTPFlow): user -> process2
+  - flow3(GenericStorageFlow ReadWriteFlow): process2 -> hostStorage
+  - flow4(GenericStorageFlow ReadWriteFlow): process4 -> hostStorage
+  - flow5(DependFlow): process2 -> process0
+  - flow6(DependFlow): process2 -> process1
+  - flow7(DependFlow): process3 -> process0
+  - flow8(DependFlow): process3 -> process1
+  - flow9(DependFlow): process4 -> process0
+  - flow10(DependFlow): process4 -> process1
