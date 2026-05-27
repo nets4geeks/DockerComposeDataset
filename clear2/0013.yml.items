@@ -1,0 +1,45 @@
+Processes:
+  - process0(GenericService)
+  - process1(GenericService)
+  - process2(GenericService)
+  - process3(GenericService)
+  - process4(GenericService)
+  - process5(GenericService)
+  - process6(SQLDatabase Database HTTPServer CloudStorage)
+  - process7(SQLDatabase Database CloudStorage)
+  - process8(SQLDatabase Database CloudStorage)
+  - process9(MessageBroker AMQPServer)
+Storages:
+  - hostStorage(HostStorage)
+  - storage0(DockerVolume)
+  - storage1(DockerVolume)
+  - storage2(DockerVolume)
+  - storage3(DockerVolume)
+Externals:
+  - user(RemoteUser)
+Flows:
+  - flow0(NetworkFlow GenericProtocolFlow): user -> process0
+  - flow1(GenericStorageFlow ReadWriteFlow): process0 -> hostStorage
+  - flow2(NetworkFlow GenericProtocolFlow): user -> process2
+  - flow3(GenericStorageFlow ReadWriteFlow): process2 -> hostStorage
+  - flow4(NetworkFlow GenericProtocolFlow): user -> process4
+  - flow5(GenericStorageFlow ReadWriteFlow): process4 -> hostStorage
+  - flow6(NetworkFlow GenericProtocolFlow): user -> process6
+  - flow7(NetworkFlow HTTPFlow): user -> process6
+  - flow8(GenericStorageFlow ReadWriteFlow): process6 -> storage0
+  - flow9(GenericStorageFlow ReadWriteFlow): process7 -> storage1
+  - flow10(GenericStorageFlow ReadWriteFlow): process8 -> storage2
+  - flow11(NetworkFlow HTTPFlow): user -> process9
+  - flow12(NetworkFlow AMQPFlow): user -> process9
+  - flow13(GenericStorageFlow ReadWriteFlow): process9 -> storage3
+  - flow14(DependFlow): process0 -> process6
+  - flow15(DependFlow): process0 -> process9
+  - flow16(DependFlow): process1 -> process0
+  - flow17(DependFlow): process2 -> process6
+  - flow18(DependFlow): process2 -> process9
+  - flow19(DependFlow): process3 -> process2
+  - flow20(DependFlow): process4 -> process6
+  - flow21(DependFlow): process4 -> process9
+  - flow22(DependFlow): process5 -> process4
+  - flow23(DependFlow): process7 -> process6
+  - flow24(DependFlow): process8 -> process6

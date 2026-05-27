@@ -1,0 +1,48 @@
+Processes:
+  - process0(WebServer)
+  - process1(GenericService HTTPServer HTTPSServer)
+  - process2(SQLDatabase Database CloudStorage)
+  - process3(GenericService SMTPServer)
+  - process4(ObjectStorage Database)
+  - process5(CacheDatabase)
+  - process6(SSOService)
+  - process7(SearchEngine Database)
+  - process8(CloudStack)
+Storages:
+  - storage0(DockerVolume)
+  - storage1(DockerVolume)
+  - hostStorage(HostStorage)
+  - storage2(DockerVolume)
+  - storage3(DockerVolume)
+  - storage4(DockerVolume)
+  - storage5(DockerVolume)
+  - storage6(DockerVolume)
+  - storage7(DockerVolume)
+Externals:
+  - user(RemoteUser)
+Flows:
+  - flow0(CertStorageFlow ReadWriteFlow): process0 -> storage0
+  - flow1(CertStorageFlow ReadWriteFlow): process0 -> storage1
+  - flow2(ConfigStorageFlow ReadWriteFlow): process0 -> hostStorage
+  - flow3(DataStorageFlow ReadWriteFlow): process0 -> hostStorage
+  - flow4(DataStorageFlow ReadWriteFlow): process0 -> storage2
+  - flow5(DataStorageFlow ReadWriteFlow): process0 -> storage3
+  - flow6(DataStorageFlow ReadWriteFlow): process0 -> storage4
+  - flow7(NetworkFlow HTTPFlow): user -> process1
+  - flow8(NetworkFlow HTTPSFlow): user -> process1
+  - flow9(NetworkFlow GenericProtocolFlow): user -> process1
+  - flow10(DataStorageFlow ReadWriteFlow): process1 -> hostStorage
+  - flow11(DataStorageFlow ReadWriteFlow): process1 -> storage2
+  - flow12(DataStorageFlow ReadWriteFlow): process1 -> storage3
+  - flow13(DataStorageFlow ReadWriteFlow): process1 -> storage4
+  - flow14(NetworkFlow DBFlow): user -> process2
+  - flow15(ConfigStorageFlow ReadWriteFlow): process2 -> hostStorage
+  - flow16(DataStorageFlow ReadWriteFlow): process2 -> storage5
+  - flow17(NetworkFlow SMTPFlow): user -> process3
+  - flow18(NetworkFlow GenericProtocolFlow): user -> process4
+  - flow19(DataStorageFlow ReadWriteFlow): process4 -> storage6
+  - flow20(DataStorageFlow ReadWriteFlow): process7 -> storage7
+  - flow21(NetworkFlow GenericProtocolFlow): user -> process8
+  - flow22(DependFlow): process0 -> process1
+  - flow23(DependFlow): process1 -> process2
+  - flow24(DependFlow): process6 -> process1

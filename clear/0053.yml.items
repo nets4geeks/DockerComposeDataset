@@ -1,0 +1,45 @@
+Processes:
+  - process0(WebProxy HTTPServer HTTPSServer)
+  - process1(CertManager)
+  - process2(WebServer)
+  - process3(CMS WebApplication WebServer HTTPServer)
+  - process4(SQLDatabase Database)
+  - process5(CMS WebApplication WebServer HTTPServer)
+  - process6(SQLDatabase Database)
+Storages:
+  - dockerSocket(DockerSocket)
+  - storage0(DockerAnonymousVolume)
+  - hostStorage(HostStorage)
+  - storage1(DockerAnonymousVolume)
+Externals:
+  - user(RemoteUser)
+Flows:
+  - flow0(NetworkFlow HTTPFlow): user -> process0
+  - flow1(NetworkFlow HTTPSFlow): user -> process0
+  - flow2(DockerSocketFlow ReadOnlyFlow SensitiveHostPath): process0 -> dockerSocket
+  - flow3(ConfigStorageFlow ReadWriteFlow): process0 -> storage0
+  - flow4(CertStorageFlow ReadOnlyFlow): process0 -> hostStorage
+  - flow5(DataStorageFlow ReadWriteFlow): process0 -> storage1
+  - flow6(CertStorageFlow ReadWriteFlow): process1 -> hostStorage
+  - flow7(DockerSocketFlow ReadOnlyFlow SensitiveHostPath): process1 -> dockerSocket
+  - flow8(NetworkFlow HTTPFlow): user -> process3
+  - flow9(GenericStorageFlow ReadWriteFlow): process3 -> hostStorage
+  - flow10(DataStorageFlow ReadWriteFlow): process3 -> hostStorage
+  - flow11(DataStorageFlow ReadWriteFlow): process4 -> hostStorage
+  - flow12(NetworkFlow HTTPFlow): user -> process5
+  - flow13(GenericStorageFlow ReadWriteFlow): process5 -> hostStorage
+  - flow14(DataStorageFlow ReadWriteFlow): process5 -> hostStorage
+  - flow15(DataStorageFlow ReadWriteFlow): process6 -> hostStorage
+  - flow16(DependFlow): process1 -> process0
+  - flow17(DependFlow): process3 -> process0
+  - flow18(DependFlow): process3 -> process1
+  - flow19(DependFlow): process3 -> process4
+  - flow20(LinkFlow): process3 -> process4
+  - flow21(DependFlow): process4 -> process0
+  - flow22(DependFlow): process4 -> process1
+  - flow23(DependFlow): process5 -> process0
+  - flow24(DependFlow): process5 -> process1
+  - flow25(DependFlow): process5 -> process6
+  - flow26(LinkFlow): process5 -> process6
+  - flow27(DependFlow): process6 -> process0
+  - flow28(DependFlow): process6 -> process1

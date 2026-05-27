@@ -1,0 +1,8 @@
+Processes:
+  - process0(NodeJsEnv DevelopmentEnvironment CloudApplication)
+  - process1(NoSQLDatabase Database)
+Storages:
+Externals:
+  - user(RemoteUser)
+Flows:
+  - flow0(NetworkFlow GenericProtocolFlow): user -> process0

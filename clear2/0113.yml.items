@@ -1,0 +1,37 @@
+Processes:
+  - process0(SQLDatabase Database CloudStorage)
+  - process1(CMS WebApplication WebServer HTTPServer)
+  - process2(DatabaseManagement HTTPServer)
+  - process3(WebProxy HTTPServer HTTPSServer)
+  - process4(GenericMonitoring WebServer WebApplication Database)
+  - process5(DataVisualizer HTTPServer)
+Storages:
+  - storage0(DockerVolume)
+  - storage1(DockerVolume)
+  - dockerSocket(DockerSocket)
+  - hostStorage(HostStorage)
+  - storage2(DockerVolume)
+  - storage3(DockerVolume)
+  - storage4(DockerVolume)
+  - storage5(DockerVolume)
+Externals:
+  - user(RemoteUser)
+Flows:
+  - flow0(DataStorageFlow ReadWriteFlow): process0 -> storage0
+  - flow1(NetworkFlow HTTPFlow): user -> process1
+  - flow2(DataStorageFlow ReadWriteFlow): process1 -> storage1
+  - flow3(NetworkFlow HTTPFlow): user -> process2
+  - flow4(NetworkFlow HTTPFlow): user -> process3
+  - flow5(NetworkFlow HTTPFlow): user -> process3
+  - flow6(NetworkFlow HTTPSFlow): user -> process3
+  - flow7(DockerSocketFlow ReadWriteFlow SensitiveHostPath): process3 -> dockerSocket
+  - flow8(GenericStorageFlow ReadWriteFlow): process3 -> hostStorage
+  - flow9(NetworkFlow GenericProtocolFlow): user -> process4
+  - flow10(ConfigStorageFlow ReadWriteFlow): process4 -> storage2
+  - flow11(DataStorageFlow ReadWriteFlow): process4 -> storage3
+  - flow12(NetworkFlow HTTPFlow): user -> process5
+  - flow13(DataStorageFlow ReadWriteFlow): process5 -> storage4
+  - flow14(ConfigStorageFlow ReadWriteFlow): process5 -> storage5
+  - flow15(DependFlow): process1 -> process0
+  - flow16(DependFlow): process2 -> process0
+  - flow17(DependFlow): process5 -> process4

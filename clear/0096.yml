@@ -1,0 +1,88 @@
+---
+name: "0096.yml"
+id: "2d6986dd-c4ee-4022-a95e-d7d337347168"
+processes:
+- name: "process0"
+  realName: null
+  model: "SQLDatabase"
+  id: "17c9dbae-10e6-4336-93ea-50ffeb29d149"
+  labels:
+  - "Database"
+- name: "process1"
+  realName: null
+  model: "JavaEnv"
+  id: "dfebca3e-4f69-414f-b45d-764a347c65e7"
+  labels:
+  - "DevelopmentEnvironment"
+  - "HTTPServer"
+externals:
+- name: "user"
+  model: "RemoteUser"
+  id: "711d522c-d574-4e08-96d7-2b060ce47b88"
+flows:
+- name: "flow0"
+  model: "DataStorageFlow"
+  realPortMapping: null
+  id: "b14ffe61-773c-4624-9fc7-2e69304ddf4a"
+  localPort: null
+  source:
+    name: "process0"
+    id: "17c9dbae-10e6-4336-93ea-50ffeb29d149"
+  target:
+    name: "storage0"
+    id: "6d8703e8-2c58-44d0-948f-bb5f2e7dd9a3"
+  labels:
+  - "ReadWriteFlow"
+  realStorageMappings: null
+- name: "flow1"
+  model: "NetworkFlow"
+  realPortMapping: null
+  id: "b05d0cd4-c5d0-41a0-86b0-1d38f72818fa"
+  localPort: null
+  source:
+    name: "user"
+    id: "711d522c-d574-4e08-96d7-2b060ce47b88"
+  target:
+    name: "process1"
+    id: "dfebca3e-4f69-414f-b45d-764a347c65e7"
+  labels:
+  - "HTTPFlow"
+  realStorageMappings: null
+- name: "flow2"
+  model: "GenericStorageFlow"
+  realPortMapping: null
+  id: "09544b25-693a-4800-9265-34d5d8b2d88e"
+  localPort: null
+  source:
+    name: "process1"
+    id: "dfebca3e-4f69-414f-b45d-764a347c65e7"
+  target:
+    name: "storage1"
+    id: "36914803-a573-4f88-91ee-b2c92b59e3df"
+  labels:
+  - "ReadWriteFlow"
+  realStorageMappings: null
+- name: "flow3"
+  model: "DependFlow"
+  realPortMapping: null
+  id: "eac080bc-f154-46d7-a45e-6b4314036f13"
+  localPort: null
+  source:
+    name: "process1"
+    id: "dfebca3e-4f69-414f-b45d-764a347c65e7"
+  target:
+    name: "process0"
+    id: "17c9dbae-10e6-4336-93ea-50ffeb29d149"
+  labels: null
+  realStorageMappings: null
+storages:
+- name: "storage0"
+  model: "DockerVolume"
+  realName: null
+  realService: null
+  id: "6d8703e8-2c58-44d0-948f-bb5f2e7dd9a3"
+- name: "storage1"
+  model: "DockerVolume"
+  realName: null
+  realService: null
+  id: "36914803-a573-4f88-91ee-b2c92b59e3df"

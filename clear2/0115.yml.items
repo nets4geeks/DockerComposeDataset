@@ -1,0 +1,42 @@
+Processes:
+  - process0(PHPEnv DevelopmentEnvironment)
+  - process1(WebServer)
+  - process2(GenericService)
+  - process3(SearchEngine Database)
+  - process4(SQLDatabase Database CloudStorage)
+  - process5(WebProxy HTTPServer HTTPSServer)
+  - process6(GenericService)
+  - process7(CacheDatabase)
+  - process8(ObjectStorage Database)
+  - process9(GenericService)
+Storages:
+  - storage0(DockerVolume)
+  - hostStorage(HostStorage)
+  - storage1(DockerVolume)
+  - storage2(DockerVolume)
+  - dockerSocket(DockerSocket)
+  - storage3(DockerVolume)
+  - storage4(DockerVolume)
+Externals:
+  - user(RemoteUser)
+Flows:
+  - flow0(GenericStorageFlow ReadWriteFlow): process0 -> storage0
+  - flow1(DataStorageFlow ReadWriteFlow): process0 -> hostStorage
+  - flow2(GenericStorageFlow ReadWriteFlow): process3 -> storage1
+  - flow3(DataStorageFlow ReadWriteFlow): process4 -> storage2
+  - flow4(NetworkFlow HTTPFlow): user -> process5
+  - flow5(NetworkFlow HTTPSFlow): user -> process5
+  - flow6(GenericStorageFlow ReadWriteFlow): process5 -> hostStorage
+  - flow7(DockerSocketFlow ReadWriteFlow SensitiveHostPath): process5 -> dockerSocket
+  - flow8(NetworkFlow RESPFlow): user -> process7
+  - flow9(DataStorageFlow ReadWriteFlow): process7 -> storage3
+  - flow10(NetworkFlow GenericProtocolFlow): user -> process8
+  - flow11(DataStorageFlow ReadWriteFlow): process8 -> storage4
+  - flow12(DependFlow): process0 -> process8
+  - flow13(DependFlow): process0 -> process4
+  - flow14(DependFlow): process0 -> process3
+  - flow15(DependFlow): process0 -> process7
+  - flow16(DependFlow): process0 -> process9
+  - flow17(DependFlow): process1 -> process0
+  - flow18(DependFlow): process2 -> process1
+  - flow19(DependFlow): process9 -> process8

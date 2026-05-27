@@ -1,0 +1,86 @@
+---
+name: "0151.yml"
+id: "dbc12fcb-a1a7-4c72-9b9d-a7fdd319f71f"
+processes:
+- name: "process0"
+  realName: null
+  model: "NodeJsEnv"
+  id: "eaf910ad-1fbb-44f3-b7ef-23299f1fcc43"
+  labels:
+  - "DevelopmentEnvironment"
+  - "HTTPServer"
+  labels2:
+  - "CloudApplication"
+- name: "process1"
+  realName: null
+  model: "NoSQLDatabase"
+  id: "7764b1cf-9548-4368-8037-5c87add4596e"
+  labels:
+  - "Database"
+  labels2: null
+externals:
+- name: "user"
+  model: "RemoteUser"
+  id: "dad4f474-f349-44b8-9718-1b43edfcc1f2"
+flows:
+- name: "flow0"
+  model: "NetworkFlow"
+  realPortMapping: null
+  id: "41672dd5-cc15-44e1-9048-9721bf881564"
+  localPort: null
+  source:
+    name: "user"
+    id: "dad4f474-f349-44b8-9718-1b43edfcc1f2"
+  target:
+    name: "process0"
+    id: "eaf910ad-1fbb-44f3-b7ef-23299f1fcc43"
+  labels:
+  - "HTTPFlow"
+  realStorageMappings: null
+- name: "flow1"
+  model: "GenericStorageFlow"
+  realPortMapping: null
+  id: "fe1468b0-01bf-4f92-a15a-6b9541d271d2"
+  localPort: null
+  source:
+    name: "process0"
+    id: "eaf910ad-1fbb-44f3-b7ef-23299f1fcc43"
+  target:
+    name: "hostStorage"
+    id: "c5eb0f57-6b80-49ce-8144-b3c4ca4aa435"
+  labels:
+  - "ReadWriteFlow"
+  realStorageMappings: null
+- name: "flow2"
+  model: "NetworkFlow"
+  realPortMapping: null
+  id: "7d196e6e-8421-4069-b901-351987202eee"
+  localPort: null
+  source:
+    name: "user"
+    id: "dad4f474-f349-44b8-9718-1b43edfcc1f2"
+  target:
+    name: "process1"
+    id: "7764b1cf-9548-4368-8037-5c87add4596e"
+  labels:
+  - "DBFlow"
+  realStorageMappings: null
+- name: "flow3"
+  model: "LinkFlow"
+  realPortMapping: null
+  id: "fd884886-6a46-4e65-9ea4-9c074ed827d2"
+  localPort: null
+  source:
+    name: "process0"
+    id: "eaf910ad-1fbb-44f3-b7ef-23299f1fcc43"
+  target:
+    name: "process1"
+    id: "7764b1cf-9548-4368-8037-5c87add4596e"
+  labels: null
+  realStorageMappings: null
+storages:
+- name: "hostStorage"
+  model: "HostStorage"
+  realName: null
+  realService: null
+  id: "c5eb0f57-6b80-49ce-8144-b3c4ca4aa435"

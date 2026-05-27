@@ -1,0 +1,28 @@
+Processes:
+  - process0(ObjectStorage Database)
+  - process1(NoSQLDatabase Database)
+  - process2(DatabaseManagement HTTPServer)
+  - process3(CloudStack)
+  - process4(MessageBroker)
+  - process5(CacheDatabase)
+  - process6(CacheDatabase)
+  - process7(SearchEngine Database)
+Storages:
+  - hostStorage(HostStorage)
+Externals:
+  - user(RemoteUser)
+Flows:
+  - flow0(NetworkFlow GenericProtocolFlow): user -> process0
+  - flow1(DataStorageFlow ReadWriteFlow): process0 -> hostStorage
+  - flow2(NetworkFlow DBFlow): user -> process1
+  - flow3(NetworkFlow HTTPFlow): user -> process2
+  - flow4(NetworkFlow GenericProtocolFlow): user -> process3
+  - flow5(NetworkFlow GenericProtocolFlow): user -> process4
+  - flow6(NetworkFlow RESPFlow): user -> process5
+  - flow7(NetworkFlow GenericProtocolFlow): user -> process6
+  - flow8(NetworkFlow GenericProtocolFlow): user -> process6
+  - flow9(NetworkFlow GenericProtocolFlow): user -> process6
+  - flow10(NetworkFlow GenericProtocolFlow): user -> process6
+  - flow11(NetworkFlow GenericProtocolFlow): user -> process6
+  - flow12(NetworkFlow GenericProtocolFlow): user -> process6
+  - flow13(NetworkFlow HTTPFlow): user -> process7

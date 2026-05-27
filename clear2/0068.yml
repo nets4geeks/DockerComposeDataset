@@ -1,0 +1,39 @@
+---
+name: "0068.yml"
+id: "e1667853-fd2e-4b2b-a759-9cc9dfbdaf38"
+processes:
+- name: "process0"
+  realName: null
+  model: "NodeJsEnv"
+  id: "bfd39f92-218e-431e-8ea7-637a9b65320d"
+  labels:
+  - "DevelopmentEnvironment"
+  labels2:
+  - "CloudApplication"
+- name: "process1"
+  realName: null
+  model: "NoSQLDatabase"
+  id: "d71e10e6-cf89-4e77-98a5-2284e66b287d"
+  labels:
+  - "Database"
+  labels2: null
+externals:
+- name: "user"
+  model: "RemoteUser"
+  id: "fca18f80-2cf0-497e-9d03-b640ff0fcd5a"
+flows:
+- name: "flow0"
+  model: "NetworkFlow"
+  realPortMapping: null
+  id: "b418e6d6-6565-4062-b7bc-12c26a9e3334"
+  localPort: null
+  source:
+    name: "user"
+    id: "fca18f80-2cf0-497e-9d03-b640ff0fcd5a"
+  target:
+    name: "process0"
+    id: "bfd39f92-218e-431e-8ea7-637a9b65320d"
+  labels:
+  - "GenericProtocolFlow"
+  realStorageMappings: null
+storages: []

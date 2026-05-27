@@ -1,0 +1,27 @@
+Processes:
+  - process0(GenericService)
+  - process1(GenericService)
+  - process2(SQLDatabase Database)
+  - process3(MessageBroker)
+  - process4(GenericService)
+  - process5(GenericService)
+  - process6(GenericService)
+Storages:
+Externals:
+  - user(RemoteUser)
+Flows:
+  - flow0(NetworkFlow GenericProtocolFlow): user -> process0
+  - flow1(NetworkFlow GenericProtocolFlow): user -> process4
+  - flow2(DependFlow): process4 -> process2
+  - flow3(LinkFlow): process4 -> process2
+  - flow4(LinkFlow): process4 -> process3
+  - flow5(DependFlow): process5 -> process3
+  - flow6(DependFlow): process5 -> process4
+  - flow7(DependFlow): process5 -> process1
+  - flow8(LinkFlow): process5 -> process2
+  - flow9(LinkFlow): process5 -> process3
+  - flow10(LinkFlow): process5 -> process1
+  - flow11(DependFlow): process6 -> process3
+  - flow12(DependFlow): process6 -> process4
+  - flow13(LinkFlow): process6 -> process2
+  - flow14(LinkFlow): process6 -> process3

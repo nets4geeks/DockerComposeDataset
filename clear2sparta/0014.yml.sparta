@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<spartamodel:DFDModel xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:spartamodel="http://distrinet.cs.kuleuven.be/spartamodel" xmi:version="2.0" xmi:id="_eBTdBRMXeXCMdXQolq-d7A">
+<containedElements xsi:type="spartamodel:DataFlow" xmi:id="_b5roYabpuf7rpWxLECQ0pg" name="flow0" sender="_WYBhlamgCM3IrfR3_i7plg" recipient="_QUw6qzg-YawKGBWXbft-gg"/>
+<containedElements xsi:type="spartamodel:DataFlow" xmi:id="_nTouPCeDEkaC1R-gd-YfPA" name="flow1" sender="_QUw6qzg-YawKGBWXbft-gg" recipient="_3sNnuq3yACx97w5e_e7hhA"/>
+<containedElements xsi:type="spartamodel:DataFlow" xmi:id="_DP_CRAe9RJPjkCnT072Dww" name="flow2" sender="_WYBhlamgCM3IrfR3_i7plg" recipient="_-5_DBmZ7Ce-xRlw9it5XDw"/>
+<containedElements xsi:type="spartamodel:Process" xmi:id="_QUw6qzg-YawKGBWXbft-gg" name="process0" send="_nTouPCeDEkaC1R-gd-YfPA" receive="_b5roYabpuf7rpWxLECQ0pg">
+<annotations xsi:type="spartamodel:ModelElementAnnotation" value="Container"/>
+<annotations xsi:type="spartamodel:ModelElementAnnotation" value="CloudApplication"/>
+</containedElements>
+<containedElements xsi:type="spartamodel:Process" xmi:id="_-5_DBmZ7Ce-xRlw9it5XDw" name="process1" send="" receive="_DP_CRAe9RJPjkCnT072Dww">
+<annotations xsi:type="spartamodel:ModelElementAnnotation" value="Container"/>
+<annotations xsi:type="spartamodel:ModelElementAnnotation" value="CloudApplication"/>
+</containedElements>
+<containedElements xsi:type="spartamodel:DataStore" xmi:id="_3sNnuq3yACx97w5e_e7hhA" name="hostStorage" send="" receive="_nTouPCeDEkaC1R-gd-YfPA">
+<annotations xsi:type="spartamodel:ModelElementAnnotation" value="HostStorage"/>
+</containedElements>
+<containedElements xsi:type="spartamodel:ExternalEntity" xmi:id="_WYBhlamgCM3IrfR3_i7plg" name="user" send="_b5roYabpuf7rpWxLECQ0pg _DP_CRAe9RJPjkCnT072Dww" receive="">
+<annotations xsi:type="spartamodel:ModelElementAnnotation" value="RemoteUser"/>
+</containedElements>
+<resource xsi:type="spartamodel:ThreatTypeCatalog" href="../threatmodels/IACNewCatalog_v2.sparta#_BtICwBDgEe-wPvByQR6wwA"/>
+</spartamodel:DFDModel>

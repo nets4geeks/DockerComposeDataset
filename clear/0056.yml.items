@@ -1,0 +1,9 @@
+Processes:
+  - process0(CacheDatabase)
+  - process1(NodeJsEnv DevelopmentEnvironment)
+Storages:
+Externals:
+  - user(RemoteUser)
+Flows:
+  - flow0(NetworkFlow GenericProtocolFlow): user -> process1
+  - flow1(DependFlow): process1 -> process0

@@ -1,0 +1,11 @@
+Processes:
+  - process0(SQLDatabase Database)
+  - process1(GenericService)
+  - process2(GenericService)
+Storages:
+Externals:
+  - user(RemoteUser)
+Flows:
+  - flow0(NetworkFlow GenericProtocolFlow): user -> process1
+  - flow1(NetworkFlow GenericProtocolFlow): user -> process2
+  - flow2(DependFlow): process1 -> process0

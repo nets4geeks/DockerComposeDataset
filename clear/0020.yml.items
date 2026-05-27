@@ -1,0 +1,17 @@
+Processes:
+  - process0(GenericService)
+  - process1(MessageBroker)
+  - process2(NoSQLDatabase Database)
+Storages:
+  - hostStorage(HostStorage)
+Externals:
+  - user(RemoteUser)
+Flows:
+  - flow0(NetworkFlow GenericProtocolFlow): user -> process0
+  - flow1(GenericStorageFlow ReadWriteFlow): process0 -> hostStorage
+  - flow2(GenericStorageFlow ReadWriteFlow): process1 -> hostStorage
+  - flow3(DataStorageFlow ReadWriteFlow): process2 -> hostStorage
+  - flow4(DependFlow): process0 -> process1
+  - flow5(DependFlow): process0 -> process2
+  - flow6(LinkFlow): process0 -> process2
+  - flow7(LinkFlow): process0 -> process1

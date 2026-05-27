@@ -1,0 +1,28 @@
+Processes:
+  - process0(NoSQLDatabase Database)
+  - process1(GenericService)
+  - process2(GenericService)
+  - process3(OS)
+  - process4(AgentApplication)
+  - process5(PythonEnv DevelopmentEnvironment)
+  - process6(GenericService)
+  - process7(WebServer HTTPServer)
+Storages:
+  - hostStorage(HostStorage)
+Externals:
+  - user(RemoteUser)
+Flows:
+  - flow0(NetworkFlow DBFlow): user -> process0
+  - flow1(NetworkFlow GenericProtocolFlow): user -> process1
+  - flow2(NetworkFlow GenericProtocolFlow): user -> process1
+  - flow3(GenericStorageFlow ReadWriteFlow): process1 -> hostStorage
+  - flow4(NetworkFlow GenericProtocolFlow): user -> process2
+  - flow5(NetworkFlow GenericProtocolFlow): user -> process2
+  - flow6(GenericStorageFlow ReadWriteFlow): process5 -> hostStorage
+  - flow7(GenericStorageFlow ReadWriteFlow): process6 -> hostStorage
+  - flow8(NetworkFlow HTTPFlow): user -> process7
+  - flow9(DataStorageFlow ReadWriteFlow): process7 -> hostStorage
+  - flow10(DependFlow): process1 -> process0
+  - flow11(DependFlow): process1 -> process2
+  - flow12(DependFlow): process3 -> process1
+  - flow13(DependFlow): process6 -> process7

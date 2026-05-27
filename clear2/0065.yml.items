@@ -1,0 +1,20 @@
+Processes:
+  - process0(SearchEngine Database)
+  - process1(NoSQLDatabase Database)
+  - process2(DatabaseManagement)
+  - process3(SQLDatabase Database CloudStorage)
+  - process4(DatabaseManagement HTTPServer)
+  - process5(CacheDatabase)
+  - process6(MessageBroker)
+Storages:
+Externals:
+  - user(RemoteUser)
+Flows:
+  - flow0(NetworkFlow HTTPFlow): user -> process0
+  - flow1(NetworkFlow DBFlow): user -> process1
+  - flow2(NetworkFlow GenericProtocolFlow): user -> process2
+  - flow3(NetworkFlow DBFlow): user -> process3
+  - flow4(NetworkFlow HTTPFlow): user -> process4
+  - flow5(NetworkFlow HTTPFlow): user -> process6
+  - flow6(DependFlow): process2 -> process1
+  - flow7(DependFlow): process4 -> process3

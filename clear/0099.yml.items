@@ -1,0 +1,17 @@
+Processes:
+  - process0(NoSQLDatabase Database)
+  - process1(CacheDatabase)
+  - process2(SearchEngine Database)
+  - process3(GenericService)
+Storages:
+  - hostStorage(HostStorage)
+Externals:
+  - user(RemoteUser)
+Flows:
+  - flow0(NetworkFlow DBFlow): user -> process0
+  - flow1(DataStorageFlow ReadWriteFlow): process0 -> hostStorage
+  - flow2(NetworkFlow RESPFlow): user -> process1
+  - flow3(DataStorageFlow ReadWriteFlow): process1 -> hostStorage
+  - flow4(NetworkFlow HTTPFlow): user -> process2
+  - flow5(DataStorageFlow ReadWriteFlow): process2 -> hostStorage
+  - flow6(GenericStorageFlow ReadWriteFlow): process3 -> hostStorage

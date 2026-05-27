@@ -1,0 +1,18 @@
+Processes:
+  - process0(CacheDatabase)
+  - process1(SQLDatabase Database CloudStorage)
+  - process2(GitService HTTPServer SSHServer)
+Storages:
+  - storage0(DockerVolume)
+  - storage1(DockerVolume)
+  - storage2(DockerVolume)
+Externals:
+  - user(RemoteUser)
+Flows:
+  - flow0(DataStorageFlow ReadWriteFlow): process0 -> storage0
+  - flow1(DataStorageFlow ReadWriteFlow): process1 -> storage1
+  - flow2(NetworkFlow HTTPFlow): user -> process2
+  - flow3(NetworkFlow SSHFlow): user -> process2
+  - flow4(DataStorageFlow ReadWriteFlow): process2 -> storage2
+  - flow5(DependFlow): process2 -> process0
+  - flow6(DependFlow): process2 -> process1

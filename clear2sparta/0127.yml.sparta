@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<spartamodel:DFDModel xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:spartamodel="http://distrinet.cs.kuleuven.be/spartamodel" xmi:version="2.0" xmi:id="_siPMeKpmQ2oslFIQ9VT_kQ">
+<containedElements xsi:type="spartamodel:DataFlow" xmi:id="_9qqrPCzm_0PVSpIt9vIitg" name="flow0" sender="_NZig0cAISsNWyMkR1z3l9w" recipient="_3oXsOYfLzvuOCp9PaQ6NLg"/>
+<containedElements xsi:type="spartamodel:DataFlow" xmi:id="_wvvhad1BG7p5XBhibf-PKA" name="flow1" sender="_NZig0cAISsNWyMkR1z3l9w" recipient="_Gevf6ij8MrtEGeI4Kgat6g"/>
+<containedElements xsi:type="spartamodel:DataFlow" xmi:id="_7aszToETV1KPiVC6NZVg-Q" name="flow2" sender="_3oXsOYfLzvuOCp9PaQ6NLg" recipient="_BH7M7-pZ1XFjS3VkyiCjZg"/>
+<containedElements xsi:type="spartamodel:Process" xmi:id="_BH7M7-pZ1XFjS3VkyiCjZg" name="process0" send="" receive="_7aszToETV1KPiVC6NZVg-Q">
+<annotations xsi:type="spartamodel:ModelElementAnnotation" value="Container"/>
+<annotations xsi:type="spartamodel:ModelElementAnnotation" value="CloudApplication"/>
+</containedElements>
+<containedElements xsi:type="spartamodel:Process" xmi:id="_3oXsOYfLzvuOCp9PaQ6NLg" name="process1" send="_7aszToETV1KPiVC6NZVg-Q" receive="_9qqrPCzm_0PVSpIt9vIitg">
+<annotations xsi:type="spartamodel:ModelElementAnnotation" value="Container"/>
+<annotations xsi:type="spartamodel:ModelElementAnnotation" value="CloudApplication"/>
+</containedElements>
+<containedElements xsi:type="spartamodel:Process" xmi:id="_Gevf6ij8MrtEGeI4Kgat6g" name="process2" send="" receive="_wvvhad1BG7p5XBhibf-PKA">
+<annotations xsi:type="spartamodel:ModelElementAnnotation" value="Container"/>
+<annotations xsi:type="spartamodel:ModelElementAnnotation" value="CloudApplication"/>
+</containedElements>
+<containedElements xsi:type="spartamodel:ExternalEntity" xmi:id="_NZig0cAISsNWyMkR1z3l9w" name="user" send="_9qqrPCzm_0PVSpIt9vIitg _wvvhad1BG7p5XBhibf-PKA" receive="">
+<annotations xsi:type="spartamodel:ModelElementAnnotation" value="RemoteUser"/>
+</containedElements>
+<resource xsi:type="spartamodel:ThreatTypeCatalog" href="../threatmodels/IACNewCatalog_v2.sparta#_BtICwBDgEe-wPvByQR6wwA"/>
+</spartamodel:DFDModel>

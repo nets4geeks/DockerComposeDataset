@@ -1,0 +1,13 @@
+Processes:
+  - process0(NoSQLDatabase Database)
+  - process1(DataCollector)
+Storages:
+  - storage0(DockerVolume)
+  - hostStorage(HostStorage)
+Externals:
+  - user(RemoteUser)
+Flows:
+  - flow0(NetworkFlow HTTPFlow): user -> process0
+  - flow1(DataStorageFlow ReadWriteFlow): process0 -> storage0
+  - flow2(ConfigStorageFlow ReadOnlyFlow): process1 -> hostStorage
+  - flow3(DependFlow): process1 -> process0

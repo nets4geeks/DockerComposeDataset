@@ -1,0 +1,31 @@
+Processes:
+  - process0(SQLDatabase Database CloudStorage)
+  - process1(MessageBroker)
+  - process2(GenericService)
+  - process3(GenericService)
+  - process4(GenericService HTTPServer)
+  - process5(DirectoryService LDAPServer)
+  - process6(GenericService)
+Storages:
+Externals:
+  - user(RemoteUser)
+Flows:
+  - flow0(NetworkFlow DBFlow): user -> process0
+  - flow1(NetworkFlow GenericProtocolFlow): user -> process1
+  - flow2(NetworkFlow GenericProtocolFlow): user -> process2
+  - flow3(NetworkFlow GenericProtocolFlow): user -> process3
+  - flow4(NetworkFlow HTTPFlow): user -> process4
+  - flow5(NetworkFlow LDAPFlow): user -> process5
+  - flow6(NetworkFlow GenericProtocolFlow): user -> process6
+  - flow7(DependFlow): process3 -> process0
+  - flow8(DependFlow): process3 -> process1
+  - flow9(DependFlow): process3 -> process2
+  - flow10(DependFlow): process4 -> process0
+  - flow11(DependFlow): process4 -> process1
+  - flow12(DependFlow): process4 -> process2
+  - flow13(DependFlow): process4 -> process3
+  - flow14(DependFlow): process6 -> process2
+  - flow15(DependFlow): process6 -> process1
+  - flow16(DependFlow): process6 -> process3
+  - flow17(DependFlow): process6 -> process4
+  - flow18(DependFlow): process6 -> process5

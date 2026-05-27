@@ -1,0 +1,29 @@
+Processes:
+  - process0(CMS WebApplication WebServer)
+  - process1(GenericDevelopment)
+  - process2(WebProxy HTTPServer HTTPSServer)
+  - process3(CertManager)
+Storages:
+  - hostStorage(HostStorage)
+  - storage0(DockerVolume)
+  - storage1(DockerVolume)
+  - dockerSocket(DockerSocket)
+  - storage2(DockerVolume)
+Externals:
+  - user(RemoteUser)
+Flows:
+  - flow0(DataStorageFlow ReadWriteFlow): process0 -> hostStorage
+  - flow1(NetworkFlow GenericProtocolFlow): user -> process1
+  - flow2(GenericStorageFlow ReadWriteFlow): process1 -> hostStorage
+  - flow3(NetworkFlow HTTPFlow): user -> process2
+  - flow4(NetworkFlow HTTPSFlow): user -> process2
+  - flow5(ConfigStorageFlow ReadWriteFlow): process2 -> storage0
+  - flow6(DataStorageFlow ReadWriteFlow): process2 -> storage1
+  - flow7(DockerSocketFlow ReadOnlyFlow SensitiveHostPath): process2 -> dockerSocket
+  - flow8(CertStorageFlow ReadWriteFlow): process2 -> storage2
+  - flow9(CertStorageFlow ReadWriteFlow): process3 -> storage2
+  - flow10(ConfigStorageFlow ReadWriteFlow): process3 -> storage0
+  - flow11(DataStorageFlow ReadWriteFlow): process3 -> storage1
+  - flow12(DockerSocketFlow ReadOnlyFlow SensitiveHostPath): process3 -> dockerSocket
+  - flow13(DependFlow): process0 -> process2
+  - flow14(DependFlow): process1 -> process0

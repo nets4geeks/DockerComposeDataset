@@ -1,0 +1,13 @@
+Processes:
+  - process0(SQLDatabase Database)
+  - process1(JavaEnv DevelopmentEnvironment HTTPServer)
+Storages:
+  - storage0(DockerVolume)
+  - storage1(DockerVolume)
+Externals:
+  - user(RemoteUser)
+Flows:
+  - flow0(DataStorageFlow ReadWriteFlow): process0 -> storage0
+  - flow1(NetworkFlow HTTPFlow): user -> process1
+  - flow2(GenericStorageFlow ReadWriteFlow): process1 -> storage1
+  - flow3(DependFlow): process1 -> process0

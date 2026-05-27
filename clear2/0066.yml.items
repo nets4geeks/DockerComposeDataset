@@ -1,0 +1,21 @@
+Processes:
+  - process0(ApplicationGateway)
+  - process1(SQLDatabase Database CloudStorage)
+  - process2(RemoteDesktop HTTPServer)
+  - process3(WebServer HTTPSServer)
+Storages:
+  - hostStorage(HostStorage)
+Externals:
+  - user(RemoteUser)
+Flows:
+  - flow0(GenericStorageFlow ReadWriteFlow): process0 -> hostStorage
+  - flow1(ConfigStorageFlow ReadOnlyFlow): process1 -> hostStorage
+  - flow2(DataStorageFlow ReadWriteFlow): process1 -> hostStorage
+  - flow3(NetworkFlow HTTPFlow): user -> process2
+  - flow4(NetworkFlow HTTPSFlow): user -> process3
+  - flow5(CertStorageFlow ReadOnlyFlow): process3 -> hostStorage
+  - flow6(ConfigStorageFlow ReadOnlyFlow): process3 -> hostStorage
+  - flow7(DependFlow): process2 -> process0
+  - flow8(DependFlow): process2 -> process1
+  - flow9(LinkFlow): process2 -> process0
+  - flow10(LinkFlow): process3 -> process2

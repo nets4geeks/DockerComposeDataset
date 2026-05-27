@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<spartamodel:DFDModel xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:spartamodel="http://distrinet.cs.kuleuven.be/spartamodel" xmi:version="2.0" xmi:id="_VEiHYjmbUMMlTHzhNm6hGA">
+<containedElements xsi:type="spartamodel:DataFlow" xmi:id="_3ZK8wQ1tHuzuT7T4CcKphQ" name="flow0" sender="_cJaA4cA8F97SH7ueK43-ig" recipient="_FKoj3KmkKO3poGtj6FfG9g"/>
+<containedElements xsi:type="spartamodel:DataFlow" xmi:id="_g6_aEsNPs7GNWLYD3iTduA" name="flow1" sender="_YQd9dFBf5LlQ3Baz--pX0w" recipient="_Q1ZfMuPYsqggEVwMLGn4tw"/>
+<containedElements xsi:type="spartamodel:DataFlow" xmi:id="_IrBlhR3YPyf3GnhL-8GTMQ" name="flow2" sender="_YQd9dFBf5LlQ3Baz--pX0w" recipient="_Q1ZfMuPYsqggEVwMLGn4tw"/>
+<containedElements xsi:type="spartamodel:Process" xmi:id="_cJaA4cA8F97SH7ueK43-ig" name="process0" send="_3ZK8wQ1tHuzuT7T4CcKphQ" receive="">
+<annotations xsi:type="spartamodel:ModelElementAnnotation" value="Container"/>
+<annotations xsi:type="spartamodel:ModelElementAnnotation" value="CloudApplication"/>
+</containedElements>
+<containedElements xsi:type="spartamodel:Process" xmi:id="_YQd9dFBf5LlQ3Baz--pX0w" name="process1" send="_g6_aEsNPs7GNWLYD3iTduA _IrBlhR3YPyf3GnhL-8GTMQ" receive="">
+<annotations xsi:type="spartamodel:ModelElementAnnotation" value="Container"/>
+<annotations xsi:type="spartamodel:ModelElementAnnotation" value="CloudApplication"/>
+</containedElements>
+<containedElements xsi:type="spartamodel:DataStore" xmi:id="_FKoj3KmkKO3poGtj6FfG9g" name="dockerSocket" send="" receive="_3ZK8wQ1tHuzuT7T4CcKphQ">
+<annotations xsi:type="spartamodel:ModelElementAnnotation" value="ContainerSocket"/>
+</containedElements>
+<containedElements xsi:type="spartamodel:DataStore" xmi:id="_Q1ZfMuPYsqggEVwMLGn4tw" name="hostStorage" send="" receive="_g6_aEsNPs7GNWLYD3iTduA _IrBlhR3YPyf3GnhL-8GTMQ">
+<annotations xsi:type="spartamodel:ModelElementAnnotation" value="HostStorage"/>
+</containedElements>
+<containedElements xsi:type="spartamodel:ExternalEntity" xmi:id="_ywbLvknoxSMdB1JYXlKXAg" name="user" send="" receive="">
+<annotations xsi:type="spartamodel:ModelElementAnnotation" value="RemoteUser"/>
+</containedElements>
+<resource xsi:type="spartamodel:ThreatTypeCatalog" href="../threatmodels/IACNewCatalog_v2.sparta#_BtICwBDgEe-wPvByQR6wwA"/>
+</spartamodel:DFDModel>

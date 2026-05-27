@@ -1,0 +1,13 @@
+Processes:
+  - process0(CacheDatabase)
+  - process1(NodeJsEnv DevelopmentEnvironment CloudApplication)
+Storages:
+  - hostStorage(HostStorage)
+  - storage0(DockerAnonymousVolume)
+Externals:
+  - user(RemoteUser)
+Flows:
+  - flow0(NetworkFlow GenericProtocolFlow): user -> process1
+  - flow1(GenericStorageFlow ReadWriteFlow): process1 -> hostStorage
+  - flow2(GenericStorageFlow ReadWriteFlow): process1 -> storage0
+  - flow3(LinkFlow): process1 -> process0

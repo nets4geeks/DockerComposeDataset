@@ -1,0 +1,9 @@
+Processes:
+  - process0(SQLDatabase Database CloudStorage)
+  - process1(CMS WebApplication WebServer HTTPServer)
+Storages:
+Externals:
+  - user(RemoteUser)
+Flows:
+  - flow0(NetworkFlow HTTPFlow): user -> process1
+  - flow1(LinkFlow): process1 -> process0

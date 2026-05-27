@@ -1,0 +1,192 @@
+---
+name: "0168.yml"
+id: "423dc756-d7dd-4b50-9556-f5b847d6ff6a"
+processes:
+- name: "process0"
+  realName: null
+  model: "SearchEngine"
+  id: "91ee61cc-c7fb-4631-9bff-bfac5e483d58"
+  labels:
+  - "Database"
+  labels2: null
+- name: "process1"
+  realName: null
+  model: "NodeJsEnv"
+  id: "7e54d1fd-3d72-4a67-a10f-34e5271a8dda"
+  labels:
+  - "DevelopmentEnvironment"
+  - "HTTPServer"
+  labels2:
+  - "CloudApplication"
+- name: "process2"
+  realName: null
+  model: "NodeJsEnv"
+  id: "d94add1a-b199-4cb5-b9e6-f972912073ec"
+  labels:
+  - "DevelopmentEnvironment"
+  labels2:
+  - "CloudApplication"
+externals:
+- name: "user"
+  model: "RemoteUser"
+  id: "b4465210-2eee-45b3-885e-9b2abe850f39"
+flows:
+- name: "flow0"
+  model: "NetworkFlow"
+  realPortMapping: null
+  id: "f826a236-e454-4e19-b108-e3f5d28d8a66"
+  localPort: null
+  source:
+    name: "user"
+    id: "b4465210-2eee-45b3-885e-9b2abe850f39"
+  target:
+    name: "process0"
+    id: "91ee61cc-c7fb-4631-9bff-bfac5e483d58"
+  labels:
+  - "HTTPFlow"
+  realStorageMappings: null
+- name: "flow1"
+  model: "DataStorageFlow"
+  realPortMapping: null
+  id: "414b4c56-4b3c-4f75-a0b5-bbaa3889a58d"
+  localPort: null
+  source:
+    name: "process0"
+    id: "91ee61cc-c7fb-4631-9bff-bfac5e483d58"
+  target:
+    name: "storage0"
+    id: "669eac59-a2ae-4187-b190-538b0cd285ed"
+  labels:
+  - "ReadWriteFlow"
+  realStorageMappings: null
+- name: "flow2"
+  model: "NetworkFlow"
+  realPortMapping: null
+  id: "8bbfeba5-7be0-4509-a133-c062300f66f9"
+  localPort: null
+  source:
+    name: "user"
+    id: "b4465210-2eee-45b3-885e-9b2abe850f39"
+  target:
+    name: "process1"
+    id: "7e54d1fd-3d72-4a67-a10f-34e5271a8dda"
+  labels:
+  - "HTTPFlow"
+  realStorageMappings: null
+- name: "flow3"
+  model: "GenericStorageFlow"
+  realPortMapping: null
+  id: "f239c92e-0e51-44ff-99dc-ac346024021e"
+  localPort: null
+  source:
+    name: "process1"
+    id: "7e54d1fd-3d72-4a67-a10f-34e5271a8dda"
+  target:
+    name: "hostStorage"
+    id: "cb079b3d-5add-4c24-b1f3-2758db9d4005"
+  labels:
+  - "ReadWriteFlow"
+  realStorageMappings: null
+- name: "flow4"
+  model: "GenericStorageFlow"
+  realPortMapping: null
+  id: "1cc26e53-f2de-429f-920f-cf19986a2652"
+  localPort: null
+  source:
+    name: "process1"
+    id: "7e54d1fd-3d72-4a67-a10f-34e5271a8dda"
+  target:
+    name: "storage1"
+    id: "9ec3a60c-ad5c-49a1-a027-2fc756add3b8"
+  labels:
+  - "ReadWriteFlow"
+  realStorageMappings: null
+- name: "flow5"
+  model: "NetworkFlow"
+  realPortMapping: null
+  id: "32879b2e-fccf-43f9-b092-e7b332109848"
+  localPort: null
+  source:
+    name: "user"
+    id: "b4465210-2eee-45b3-885e-9b2abe850f39"
+  target:
+    name: "process2"
+    id: "d94add1a-b199-4cb5-b9e6-f972912073ec"
+  labels:
+  - "GenericProtocolFlow"
+  realStorageMappings: null
+- name: "flow6"
+  model: "GenericStorageFlow"
+  realPortMapping: null
+  id: "0d304bd9-a193-41b2-8412-eafcc2dc0bbe"
+  localPort: null
+  source:
+    name: "process2"
+    id: "d94add1a-b199-4cb5-b9e6-f972912073ec"
+  target:
+    name: "hostStorage"
+    id: "cb079b3d-5add-4c24-b1f3-2758db9d4005"
+  labels:
+  - "ReadWriteFlow"
+  realStorageMappings: null
+- name: "flow7"
+  model: "GenericStorageFlow"
+  realPortMapping: null
+  id: "fbf4e412-c725-4caa-b22a-9e2fef976ed2"
+  localPort: null
+  source:
+    name: "process2"
+    id: "d94add1a-b199-4cb5-b9e6-f972912073ec"
+  target:
+    name: "storage2"
+    id: "49cb2b30-d84a-4d21-bd2a-3e8c3ff38169"
+  labels:
+  - "ReadWriteFlow"
+  realStorageMappings: null
+- name: "flow8"
+  model: "DependFlow"
+  realPortMapping: null
+  id: "00de75df-92e5-4007-ab2d-6578d463ff72"
+  localPort: null
+  source:
+    name: "process1"
+    id: "7e54d1fd-3d72-4a67-a10f-34e5271a8dda"
+  target:
+    name: "process2"
+    id: "d94add1a-b199-4cb5-b9e6-f972912073ec"
+  labels: null
+  realStorageMappings: null
+- name: "flow9"
+  model: "DependFlow"
+  realPortMapping: null
+  id: "1057eb00-29da-4a7b-a6fd-b5844f3353c3"
+  localPort: null
+  source:
+    name: "process2"
+    id: "d94add1a-b199-4cb5-b9e6-f972912073ec"
+  target:
+    name: "process0"
+    id: "91ee61cc-c7fb-4631-9bff-bfac5e483d58"
+  labels: null
+  realStorageMappings: null
+storages:
+- name: "storage0"
+  model: "DockerVolume"
+  realName: null
+  realService: null
+  id: "669eac59-a2ae-4187-b190-538b0cd285ed"
+- name: "hostStorage"
+  model: "HostStorage"
+  realName: null
+  realService: null
+  id: "cb079b3d-5add-4c24-b1f3-2758db9d4005"
+- name: "storage1"
+  model: "DockerVolume"
+  realName: null
+  realService: null
+  id: "9ec3a60c-ad5c-49a1-a027-2fc756add3b8"
+- name: "storage2"
+  model: "DockerVolume"
+  realName: null
+  realService: null
+  id: "49cb2b30-d84a-4d21-bd2a-3e8c3ff38169"

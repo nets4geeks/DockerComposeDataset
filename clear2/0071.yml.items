@@ -1,0 +1,14 @@
+Processes:
+  - process0(NoSQLDatabase Database)
+  - process1(DataVisualizer HTTPServer)
+Storages:
+  - hostStorage(HostStorage)
+Externals:
+  - user(RemoteUser)
+Flows:
+  - flow0(NetworkFlow HTTPFlow): user -> process0
+  - flow1(DataStorageFlow ReadWriteFlow): process0 -> hostStorage
+  - flow2(ConfigStorageFlow ReadWriteFlow): process0 -> hostStorage
+  - flow3(NetworkFlow HTTPFlow): user -> process1
+  - flow4(DataStorageFlow ReadWriteFlow): process1 -> hostStorage
+  - flow5(DependFlow): process1 -> process0

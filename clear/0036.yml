@@ -1,0 +1,164 @@
+---
+name: "0036.yml"
+id: "9f9352d6-5438-4a91-b99b-b9b97f6c7efd"
+processes:
+- name: "process0"
+  realName: null
+  model: "CMS"
+  id: "90f0bde9-f94b-49cd-91f2-950acb8ee88c"
+  labels:
+  - "WebApplication"
+  - "WebServer"
+  - "HTTPServer"
+- name: "process1"
+  realName: null
+  model: "SQLDatabase"
+  id: "5a2fa575-191e-49e0-829f-f1ba3ed5b08e"
+  labels:
+  - "Database"
+- name: "process2"
+  realName: null
+  model: "DatabaseManagement"
+  id: "c4de4efc-67fd-4fbf-81c5-cc2a36cb728b"
+  labels:
+  - "HTTPServer"
+externals:
+- name: "user"
+  model: "RemoteUser"
+  id: "4421aae5-ceb7-4a3c-b7a0-7d9b2d1c102a"
+flows:
+- name: "flow0"
+  model: "NetworkFlow"
+  realPortMapping: null
+  id: "3c61af77-f03c-4aa8-ad8e-de239b77ece2"
+  localPort: null
+  source:
+    name: "user"
+    id: "4421aae5-ceb7-4a3c-b7a0-7d9b2d1c102a"
+  target:
+    name: "process0"
+    id: "90f0bde9-f94b-49cd-91f2-950acb8ee88c"
+  labels:
+  - "HTTPFlow"
+  realStorageMappings: null
+- name: "flow1"
+  model: "DataStorageFlow"
+  realPortMapping: null
+  id: "ded35c03-2cf5-43ea-8843-f5c7c2bb370f"
+  localPort: null
+  source:
+    name: "process0"
+    id: "90f0bde9-f94b-49cd-91f2-950acb8ee88c"
+  target:
+    name: "hostStorage"
+    id: "48663180-cc29-40b5-801d-610f93395d5e"
+  labels:
+  - "ReadWriteFlow"
+  realStorageMappings: null
+- name: "flow2"
+  model: "DataStorageFlow"
+  realPortMapping: null
+  id: "2d09bbba-7fd0-4969-9ca5-6539a17a9da1"
+  localPort: null
+  source:
+    name: "process1"
+    id: "5a2fa575-191e-49e0-829f-f1ba3ed5b08e"
+  target:
+    name: "hostStorage"
+    id: "48663180-cc29-40b5-801d-610f93395d5e"
+  labels:
+  - "ReadWriteFlow"
+  realStorageMappings: null
+- name: "flow3"
+  model: "ConfigStorageFlow"
+  realPortMapping: null
+  id: "bc196dfd-aeb6-419f-b720-3858afbe8177"
+  localPort: null
+  source:
+    name: "process1"
+    id: "5a2fa575-191e-49e0-829f-f1ba3ed5b08e"
+  target:
+    name: "hostStorage"
+    id: "48663180-cc29-40b5-801d-610f93395d5e"
+  labels:
+  - "ReadWriteFlow"
+  realStorageMappings: null
+- name: "flow4"
+  model: "LogStorageFlow"
+  realPortMapping: null
+  id: "4fb5cb7e-2e3e-449f-bd94-6b226b61b017"
+  localPort: null
+  source:
+    name: "process1"
+    id: "5a2fa575-191e-49e0-829f-f1ba3ed5b08e"
+  target:
+    name: "hostStorage"
+    id: "48663180-cc29-40b5-801d-610f93395d5e"
+  labels:
+  - "ReadWriteFlow"
+  realStorageMappings: null
+- name: "flow5"
+  model: "NetworkFlow"
+  realPortMapping: null
+  id: "c32b5ed7-b62c-4e97-b588-d4622f1c4727"
+  localPort: null
+  source:
+    name: "user"
+    id: "4421aae5-ceb7-4a3c-b7a0-7d9b2d1c102a"
+  target:
+    name: "process2"
+    id: "c4de4efc-67fd-4fbf-81c5-cc2a36cb728b"
+  labels:
+  - "HTTPFlow"
+  realStorageMappings: null
+- name: "flow6"
+  model: "GenericStorageFlow"
+  realPortMapping: null
+  id: "2e15da4e-2db3-46c3-b3f1-f9798ed47e62"
+  localPort: null
+  source:
+    name: "process2"
+    id: "c4de4efc-67fd-4fbf-81c5-cc2a36cb728b"
+  target:
+    name: "storage0"
+    id: "d48582c4-4571-4d41-856e-099f18737359"
+  labels:
+  - "ReadWriteFlow"
+  realStorageMappings: null
+- name: "flow7"
+  model: "DependFlow"
+  realPortMapping: null
+  id: "4d7cab06-5884-4680-a285-0f101ee231a0"
+  localPort: null
+  source:
+    name: "process0"
+    id: "90f0bde9-f94b-49cd-91f2-950acb8ee88c"
+  target:
+    name: "process1"
+    id: "5a2fa575-191e-49e0-829f-f1ba3ed5b08e"
+  labels: null
+  realStorageMappings: null
+- name: "flow8"
+  model: "DependFlow"
+  realPortMapping: null
+  id: "03edcc65-5d70-4cb4-9b8a-684ec69957c0"
+  localPort: null
+  source:
+    name: "process2"
+    id: "c4de4efc-67fd-4fbf-81c5-cc2a36cb728b"
+  target:
+    name: "process1"
+    id: "5a2fa575-191e-49e0-829f-f1ba3ed5b08e"
+  labels: null
+  realStorageMappings: null
+storages:
+- name: "hostStorage"
+  model: "HostStorage"
+  realName: null
+  realService: null
+  id: "48663180-cc29-40b5-801d-610f93395d5e"
+- name: "storage0"
+  model: "DockerAnonymousVolume"
+  realName: null
+  realService: null
+  id: "d48582c4-4571-4d41-856e-099f18737359"

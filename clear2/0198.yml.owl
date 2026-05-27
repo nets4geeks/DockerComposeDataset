@@ -1,0 +1,260 @@
+Prefix(:=<http://www.grsu.by/net/OdTMDockerComposeModel#>)
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+
+
+Ontology(<http://www.grsu.by/net/OdTMDockerComposeModel>
+Import(<http://www.grsu.by/net/ACCTP>)
+Import(<http://www.grsu.by/net/OdTMACCTP>)
+Import(<http://www.grsu.by/net/OdTMBaseThreatModel>)
+Import(<http://www.grsu.by/net/SecurityPatternCatalogNaiveSchema>)
+Import(<http://www.grsu.by/net/ACCTP/common>)
+
+Declaration(Class(:CacheDatabase))
+Declaration(Class(:Database))
+Declaration(Class(:DependFlow))
+Declaration(Class(:DevelopmentEnvironment))
+Declaration(Class(:GenericProtocolFlow))
+Declaration(Class(:GenericStorageFlow))
+Declaration(Class(:HostStorage))
+Declaration(Class(:LinkFlow))
+Declaration(Class(:NetworkFlow))
+Declaration(Class(:PythonEnv))
+Declaration(Class(:ReadWriteFlow))
+Declaration(Class(:RemoteUser))
+Declaration(Class(:SQLDatabase))
+Declaration(NamedIndividual(:flow0))
+Declaration(NamedIndividual(:flow1))
+Declaration(NamedIndividual(:flow10))
+Declaration(NamedIndividual(:flow11))
+Declaration(NamedIndividual(:flow12))
+Declaration(NamedIndividual(:flow13))
+Declaration(NamedIndividual(:flow14))
+Declaration(NamedIndividual(:flow2))
+Declaration(NamedIndividual(:flow3))
+Declaration(NamedIndividual(:flow4))
+Declaration(NamedIndividual(:flow5))
+Declaration(NamedIndividual(:flow6))
+Declaration(NamedIndividual(:flow7))
+Declaration(NamedIndividual(:flow8))
+Declaration(NamedIndividual(:flow9))
+Declaration(NamedIndividual(:hostStorage))
+Declaration(NamedIndividual(:process0))
+Declaration(NamedIndividual(:process1))
+Declaration(NamedIndividual(:process2))
+Declaration(NamedIndividual(:process3))
+Declaration(NamedIndividual(:process4))
+Declaration(NamedIndividual(:user))
+
+############################
+#   Classes
+############################
+
+# Class: <http://www.grsu.by/net/OdTMDockerComposeModel#CacheDatabase> (<http://www.grsu.by/net/OdTMDockerComposeModel#CacheDatabase>)
+
+SubClassOf(:CacheDatabase <http://www.grsu.by/net/OdTMBaseThreatModel#Process>)
+
+# Class: <http://www.grsu.by/net/OdTMDockerComposeModel#Database> (<http://www.grsu.by/net/OdTMDockerComposeModel#Database>)
+
+SubClassOf(:Database <http://www.grsu.by/net/OdTMBaseThreatModel#Process>)
+
+# Class: <http://www.grsu.by/net/OdTMDockerComposeModel#DependFlow> (<http://www.grsu.by/net/OdTMDockerComposeModel#DependFlow>)
+
+SubClassOf(:DependFlow <http://www.grsu.by/net/OdTMBaseThreatModel#DataFlow>)
+
+# Class: <http://www.grsu.by/net/OdTMDockerComposeModel#DevelopmentEnvironment> (<http://www.grsu.by/net/OdTMDockerComposeModel#DevelopmentEnvironment>)
+
+SubClassOf(:DevelopmentEnvironment <http://www.grsu.by/net/OdTMBaseThreatModel#Process>)
+
+# Class: <http://www.grsu.by/net/OdTMDockerComposeModel#GenericProtocolFlow> (<http://www.grsu.by/net/OdTMDockerComposeModel#GenericProtocolFlow>)
+
+SubClassOf(:GenericProtocolFlow <http://www.grsu.by/net/OdTMBaseThreatModel#DataFlow>)
+
+# Class: <http://www.grsu.by/net/OdTMDockerComposeModel#GenericStorageFlow> (<http://www.grsu.by/net/OdTMDockerComposeModel#GenericStorageFlow>)
+
+SubClassOf(:GenericStorageFlow <http://www.grsu.by/net/OdTMBaseThreatModel#DataFlow>)
+
+# Class: <http://www.grsu.by/net/OdTMDockerComposeModel#HostStorage> (<http://www.grsu.by/net/OdTMDockerComposeModel#HostStorage>)
+
+SubClassOf(:HostStorage <http://www.grsu.by/net/OdTMBaseThreatModel#DataStore>)
+
+# Class: <http://www.grsu.by/net/OdTMDockerComposeModel#LinkFlow> (<http://www.grsu.by/net/OdTMDockerComposeModel#LinkFlow>)
+
+SubClassOf(:LinkFlow <http://www.grsu.by/net/OdTMBaseThreatModel#DataFlow>)
+
+# Class: <http://www.grsu.by/net/OdTMDockerComposeModel#NetworkFlow> (<http://www.grsu.by/net/OdTMDockerComposeModel#NetworkFlow>)
+
+SubClassOf(:NetworkFlow <http://www.grsu.by/net/OdTMBaseThreatModel#DataFlow>)
+
+# Class: <http://www.grsu.by/net/OdTMDockerComposeModel#PythonEnv> (<http://www.grsu.by/net/OdTMDockerComposeModel#PythonEnv>)
+
+SubClassOf(:PythonEnv <http://www.grsu.by/net/OdTMBaseThreatModel#Process>)
+
+# Class: <http://www.grsu.by/net/OdTMDockerComposeModel#ReadWriteFlow> (<http://www.grsu.by/net/OdTMDockerComposeModel#ReadWriteFlow>)
+
+SubClassOf(:ReadWriteFlow <http://www.grsu.by/net/OdTMBaseThreatModel#DataFlow>)
+
+# Class: <http://www.grsu.by/net/OdTMDockerComposeModel#RemoteUser> (<http://www.grsu.by/net/OdTMDockerComposeModel#RemoteUser>)
+
+SubClassOf(:RemoteUser <http://www.grsu.by/net/OdTMBaseThreatModel#ExternalInteractor>)
+
+# Class: <http://www.grsu.by/net/OdTMDockerComposeModel#SQLDatabase> (<http://www.grsu.by/net/OdTMDockerComposeModel#SQLDatabase>)
+
+SubClassOf(:SQLDatabase <http://www.grsu.by/net/OdTMBaseThreatModel#Process>)
+
+
+############################
+#   Named Individuals
+############################
+
+# Individual: <http://www.grsu.by/net/OdTMDockerComposeModel#flow0> (<http://www.grsu.by/net/OdTMDockerComposeModel#flow0>)
+
+ClassAssertion(:GenericStorageFlow :flow0)
+ClassAssertion(:ReadWriteFlow :flow0)
+ObjectPropertyAssertion(<http://www.grsu.by/net/OdTMBaseThreatModel#hasSource> :flow0 :process3)
+ObjectPropertyAssertion(<http://www.grsu.by/net/OdTMBaseThreatModel#hasTarget> :flow0 :hostStorage)
+
+# Individual: <http://www.grsu.by/net/OdTMDockerComposeModel#flow1> (<http://www.grsu.by/net/OdTMDockerComposeModel#flow1>)
+
+ClassAssertion(:GenericProtocolFlow :flow1)
+ClassAssertion(:NetworkFlow :flow1)
+ObjectPropertyAssertion(<http://www.grsu.by/net/OdTMBaseThreatModel#hasSource> :flow1 :user)
+ObjectPropertyAssertion(<http://www.grsu.by/net/OdTMBaseThreatModel#hasTarget> :flow1 :process4)
+
+# Individual: <http://www.grsu.by/net/OdTMDockerComposeModel#flow10> (<http://www.grsu.by/net/OdTMDockerComposeModel#flow10>)
+
+ClassAssertion(:DependFlow :flow10)
+ObjectPropertyAssertion(<http://www.grsu.by/net/OdTMBaseThreatModel#hasSource> :flow10 :process4)
+ObjectPropertyAssertion(<http://www.grsu.by/net/OdTMBaseThreatModel#hasTarget> :flow10 :process3)
+
+# Individual: <http://www.grsu.by/net/OdTMDockerComposeModel#flow11> (<http://www.grsu.by/net/OdTMDockerComposeModel#flow11>)
+
+ClassAssertion(:LinkFlow :flow11)
+ObjectPropertyAssertion(<http://www.grsu.by/net/OdTMBaseThreatModel#hasSource> :flow11 :process4)
+ObjectPropertyAssertion(<http://www.grsu.by/net/OdTMBaseThreatModel#hasTarget> :flow11 :process0)
+
+# Individual: <http://www.grsu.by/net/OdTMDockerComposeModel#flow12> (<http://www.grsu.by/net/OdTMDockerComposeModel#flow12>)
+
+ClassAssertion(:LinkFlow :flow12)
+ObjectPropertyAssertion(<http://www.grsu.by/net/OdTMBaseThreatModel#hasSource> :flow12 :process4)
+ObjectPropertyAssertion(<http://www.grsu.by/net/OdTMBaseThreatModel#hasTarget> :flow12 :process2)
+
+# Individual: <http://www.grsu.by/net/OdTMDockerComposeModel#flow13> (<http://www.grsu.by/net/OdTMDockerComposeModel#flow13>)
+
+ClassAssertion(:LinkFlow :flow13)
+ObjectPropertyAssertion(<http://www.grsu.by/net/OdTMBaseThreatModel#hasSource> :flow13 :process4)
+ObjectPropertyAssertion(<http://www.grsu.by/net/OdTMBaseThreatModel#hasTarget> :flow13 :process3)
+
+# Individual: <http://www.grsu.by/net/OdTMDockerComposeModel#flow14> (<http://www.grsu.by/net/OdTMDockerComposeModel#flow14>)
+
+ClassAssertion(:LinkFlow :flow14)
+ObjectPropertyAssertion(<http://www.grsu.by/net/OdTMBaseThreatModel#hasSource> :flow14 :process4)
+ObjectPropertyAssertion(<http://www.grsu.by/net/OdTMBaseThreatModel#hasTarget> :flow14 :process1)
+
+# Individual: <http://www.grsu.by/net/OdTMDockerComposeModel#flow2> (<http://www.grsu.by/net/OdTMDockerComposeModel#flow2>)
+
+ClassAssertion(:GenericStorageFlow :flow2)
+ClassAssertion(:ReadWriteFlow :flow2)
+ObjectPropertyAssertion(<http://www.grsu.by/net/OdTMBaseThreatModel#hasSource> :flow2 :process4)
+ObjectPropertyAssertion(<http://www.grsu.by/net/OdTMBaseThreatModel#hasTarget> :flow2 :hostStorage)
+
+# Individual: <http://www.grsu.by/net/OdTMDockerComposeModel#flow3> (<http://www.grsu.by/net/OdTMDockerComposeModel#flow3>)
+
+ClassAssertion(:DependFlow :flow3)
+ObjectPropertyAssertion(<http://www.grsu.by/net/OdTMBaseThreatModel#hasSource> :flow3 :process3)
+ObjectPropertyAssertion(<http://www.grsu.by/net/OdTMBaseThreatModel#hasTarget> :flow3 :process2)
+
+# Individual: <http://www.grsu.by/net/OdTMDockerComposeModel#flow4> (<http://www.grsu.by/net/OdTMDockerComposeModel#flow4>)
+
+ClassAssertion(:DependFlow :flow4)
+ObjectPropertyAssertion(<http://www.grsu.by/net/OdTMBaseThreatModel#hasSource> :flow4 :process3)
+ObjectPropertyAssertion(<http://www.grsu.by/net/OdTMBaseThreatModel#hasTarget> :flow4 :process0)
+
+# Individual: <http://www.grsu.by/net/OdTMDockerComposeModel#flow5> (<http://www.grsu.by/net/OdTMDockerComposeModel#flow5>)
+
+ClassAssertion(:LinkFlow :flow5)
+ObjectPropertyAssertion(<http://www.grsu.by/net/OdTMBaseThreatModel#hasSource> :flow5 :process3)
+ObjectPropertyAssertion(<http://www.grsu.by/net/OdTMBaseThreatModel#hasTarget> :flow5 :process0)
+
+# Individual: <http://www.grsu.by/net/OdTMDockerComposeModel#flow6> (<http://www.grsu.by/net/OdTMDockerComposeModel#flow6>)
+
+ClassAssertion(:LinkFlow :flow6)
+ObjectPropertyAssertion(<http://www.grsu.by/net/OdTMBaseThreatModel#hasSource> :flow6 :process3)
+ObjectPropertyAssertion(<http://www.grsu.by/net/OdTMBaseThreatModel#hasTarget> :flow6 :process2)
+
+# Individual: <http://www.grsu.by/net/OdTMDockerComposeModel#flow7> (<http://www.grsu.by/net/OdTMDockerComposeModel#flow7>)
+
+ClassAssertion(:LinkFlow :flow7)
+ObjectPropertyAssertion(<http://www.grsu.by/net/OdTMBaseThreatModel#hasSource> :flow7 :process3)
+ObjectPropertyAssertion(<http://www.grsu.by/net/OdTMBaseThreatModel#hasTarget> :flow7 :process1)
+
+# Individual: <http://www.grsu.by/net/OdTMDockerComposeModel#flow8> (<http://www.grsu.by/net/OdTMDockerComposeModel#flow8>)
+
+ClassAssertion(:DependFlow :flow8)
+ObjectPropertyAssertion(<http://www.grsu.by/net/OdTMBaseThreatModel#hasSource> :flow8 :process4)
+ObjectPropertyAssertion(<http://www.grsu.by/net/OdTMBaseThreatModel#hasTarget> :flow8 :process0)
+
+# Individual: <http://www.grsu.by/net/OdTMDockerComposeModel#flow9> (<http://www.grsu.by/net/OdTMDockerComposeModel#flow9>)
+
+ClassAssertion(:DependFlow :flow9)
+ObjectPropertyAssertion(<http://www.grsu.by/net/OdTMBaseThreatModel#hasSource> :flow9 :process4)
+ObjectPropertyAssertion(<http://www.grsu.by/net/OdTMBaseThreatModel#hasTarget> :flow9 :process1)
+
+# Individual: <http://www.grsu.by/net/OdTMDockerComposeModel#hostStorage> (<http://www.grsu.by/net/OdTMDockerComposeModel#hostStorage>)
+
+ClassAssertion(<http://www.grsu.by/net/ACCTP/common#HostStorage> :hostStorage)
+ClassAssertion(:HostStorage :hostStorage)
+
+# Individual: <http://www.grsu.by/net/OdTMDockerComposeModel#process0> (<http://www.grsu.by/net/OdTMDockerComposeModel#process0>)
+
+ClassAssertion(<http://www.grsu.by/net/ACCTP/common#CloudApplication> :process0)
+ClassAssertion(<http://www.grsu.by/net/ACCTP/common#Container> :process0)
+ClassAssertion(:Database :process0)
+ClassAssertion(:SQLDatabase :process0)
+
+# Individual: <http://www.grsu.by/net/OdTMDockerComposeModel#process1> (<http://www.grsu.by/net/OdTMDockerComposeModel#process1>)
+
+ClassAssertion(<http://www.grsu.by/net/ACCTP/common#CloudApplication> :process1)
+ClassAssertion(<http://www.grsu.by/net/ACCTP/common#Container> :process1)
+ClassAssertion(:CacheDatabase :process1)
+
+# Individual: <http://www.grsu.by/net/OdTMDockerComposeModel#process2> (<http://www.grsu.by/net/OdTMDockerComposeModel#process2>)
+
+ClassAssertion(<http://www.grsu.by/net/ACCTP/common#CloudApplication> :process2)
+ClassAssertion(<http://www.grsu.by/net/ACCTP/common#Container> :process2)
+ClassAssertion(:CacheDatabase :process2)
+
+# Individual: <http://www.grsu.by/net/OdTMDockerComposeModel#process3> (<http://www.grsu.by/net/OdTMDockerComposeModel#process3>)
+
+ClassAssertion(<http://www.grsu.by/net/ACCTP/common#CloudApplication> :process3)
+ClassAssertion(<http://www.grsu.by/net/ACCTP/common#Container> :process3)
+ClassAssertion(:DevelopmentEnvironment :process3)
+ClassAssertion(:PythonEnv :process3)
+ObjectPropertyAssertion(<http://www.grsu.by/net/OdTMBaseThreatModel#relates> :process3 :hostStorage)
+ObjectPropertyAssertion(<http://www.grsu.by/net/OdTMBaseThreatModel#relates> :process3 :process0)
+ObjectPropertyAssertion(<http://www.grsu.by/net/OdTMBaseThreatModel#relates> :process3 :process1)
+ObjectPropertyAssertion(<http://www.grsu.by/net/OdTMBaseThreatModel#relates> :process3 :process2)
+
+# Individual: <http://www.grsu.by/net/OdTMDockerComposeModel#process4> (<http://www.grsu.by/net/OdTMDockerComposeModel#process4>)
+
+ClassAssertion(<http://www.grsu.by/net/ACCTP/common#CloudApplication> :process4)
+ClassAssertion(<http://www.grsu.by/net/ACCTP/common#Container> :process4)
+ClassAssertion(:DevelopmentEnvironment :process4)
+ClassAssertion(:PythonEnv :process4)
+ObjectPropertyAssertion(<http://www.grsu.by/net/OdTMBaseThreatModel#relates> :process4 :hostStorage)
+ObjectPropertyAssertion(<http://www.grsu.by/net/OdTMBaseThreatModel#relates> :process4 :process0)
+ObjectPropertyAssertion(<http://www.grsu.by/net/OdTMBaseThreatModel#relates> :process4 :process1)
+ObjectPropertyAssertion(<http://www.grsu.by/net/OdTMBaseThreatModel#relates> :process4 :process2)
+ObjectPropertyAssertion(<http://www.grsu.by/net/OdTMBaseThreatModel#relates> :process4 :process3)
+
+# Individual: <http://www.grsu.by/net/OdTMDockerComposeModel#user> (<http://www.grsu.by/net/OdTMDockerComposeModel#user>)
+
+ClassAssertion(<http://www.grsu.by/net/ACCTP/common#RemoteUser> :user)
+ClassAssertion(:RemoteUser :user)
+ObjectPropertyAssertion(<http://www.grsu.by/net/OdTMBaseThreatModel#relates> :user :process4)
+
+
+)

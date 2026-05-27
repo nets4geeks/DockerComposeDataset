@@ -1,0 +1,12 @@
+Processes:
+  - process0(DataCollector)
+  - process1(GenericService)
+Storages:
+  - dockerSocket(DockerSocket)
+  - hostStorage(HostStorage)
+Externals:
+  - user(RemoteUser)
+Flows:
+  - flow0(DockerSocketFlow ReadOnlyFlow SensitiveHostPath): process0 -> dockerSocket
+  - flow1(LogStorageFlow ReadWriteFlow): process1 -> hostStorage
+  - flow2(GenericStorageFlow ReadWriteFlow): process1 -> hostStorage

@@ -1,0 +1,11 @@
+Processes:
+  - process0(SQLDatabase Database)
+  - process1(RubyEnv DevelopmentEnvironment)
+Storages:
+  - storage0(DockerVolume)
+  - hostStorage(HostStorage)
+Externals:
+  - user(RemoteUser)
+Flows:
+  - flow0(DataStorageFlow ReadWriteFlow): process0 -> storage0
+  - flow1(GenericStorageFlow ReadWriteFlow): process1 -> hostStorage

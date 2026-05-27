@@ -1,0 +1,16 @@
+Processes:
+  - process0(NoSQLDatabase Database)
+  - process1(DatabaseManagement)
+  - process2(NodeJsEnv DevelopmentEnvironment HTTPServer CloudApplication)
+Storages:
+  - storage0(DockerVolume)
+  - hostStorage(HostStorage)
+Externals:
+  - user(RemoteUser)
+Flows:
+  - flow0(NetworkFlow DBFlow): user -> process0
+  - flow1(DataStorageFlow ReadWriteFlow): process0 -> storage0
+  - flow2(NetworkFlow GenericProtocolFlow): user -> process1
+  - flow3(NetworkFlow HTTPFlow): user -> process2
+  - flow4(GenericStorageFlow ReadWriteFlow): process2 -> hostStorage
+  - flow5(LinkFlow): process1 -> process0

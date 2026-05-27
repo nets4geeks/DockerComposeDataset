@@ -1,0 +1,15 @@
+Processes:
+  - process0(SQLDatabase Database CloudStorage)
+  - process1(DataConverter)
+  - process2(AgentApplication)
+Storages:
+  - hostStorage(HostStorage)
+Externals:
+  - user(RemoteUser)
+Flows:
+  - flow0(NetworkFlow DBFlow): user -> process0
+  - flow1(DataStorageFlow ReadWriteFlow): process0 -> hostStorage
+  - flow2(NetworkFlow GenericProtocolFlow): user -> process1
+  - flow3(GenericStorageFlow ReadWriteFlow): process1 -> hostStorage
+  - flow4(LinkFlow): process1 -> process0
+  - flow5(LinkFlow): process2 -> process0

@@ -1,0 +1,56 @@
+---
+name: "0177.yml"
+id: "feb0cb02-e981-4f00-ba58-4e5f55a9414d"
+processes:
+- name: "process0"
+  realName: null
+  model: "GoEnv"
+  id: "ed5e2c85-87c6-48e0-88d0-ef149e03a68e"
+  labels:
+  - "DevelopmentEnvironment"
+  labels2: null
+- name: "process1"
+  realName: null
+  model: "CredentialsManager"
+  id: "8a49e2eb-0747-46e4-9042-7c7f344ea1f4"
+  labels: null
+  labels2: null
+externals:
+- name: "user"
+  model: "RemoteUser"
+  id: "d103e649-1693-4743-89ce-57378efba475"
+flows:
+- name: "flow0"
+  model: "GenericStorageFlow"
+  realPortMapping: null
+  id: "4e63cf56-b5d2-4f5d-8fa9-0d1377e9a7f0"
+  localPort: null
+  source:
+    name: "process0"
+    id: "ed5e2c85-87c6-48e0-88d0-ef149e03a68e"
+  target:
+    name: "hostStorage"
+    id: "3789d61f-d71e-4773-abaf-32de0bb25ea4"
+  labels:
+  - "ReadWriteFlow"
+  realStorageMappings: null
+- name: "flow1"
+  model: "NetworkFlow"
+  realPortMapping: null
+  id: "1f6795ac-4fe4-469c-8d52-6e0cf7d2bd82"
+  localPort: null
+  source:
+    name: "user"
+    id: "d103e649-1693-4743-89ce-57378efba475"
+  target:
+    name: "process1"
+    id: "8a49e2eb-0747-46e4-9042-7c7f344ea1f4"
+  labels:
+  - "GenericProtocolFlow"
+  realStorageMappings: null
+storages:
+- name: "hostStorage"
+  model: "HostStorage"
+  realName: null
+  realService: null
+  id: "3789d61f-d71e-4773-abaf-32de0bb25ea4"

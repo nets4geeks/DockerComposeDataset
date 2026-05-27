@@ -1,0 +1,21 @@
+Processes:
+  - process0(WebProxy HTTPServer)
+  - process1(SQLDatabase Database CloudStorage)
+  - process2(CollaborationPlatform WebServer FileStorage)
+Storages:
+  - hostStorage(HostStorage)
+  - dockerSocket(DockerSocket)
+  - storage0(DockerVolume)
+  - storage1(DockerVolume)
+Externals:
+  - user(RemoteUser)
+Flows:
+  - flow0(NetworkFlow HTTPFlow): user -> process0
+  - flow1(ConfigStorageFlow ReadWriteFlow): process0 -> hostStorage
+  - flow2(DataStorageFlow ReadWriteFlow): process0 -> hostStorage
+  - flow3(DockerSocketFlow ReadOnlyFlow SensitiveHostPath): process0 -> dockerSocket
+  - flow4(DataStorageFlow ReadWriteFlow): process1 -> storage0
+  - flow5(DataStorageFlow ReadWriteFlow): process2 -> storage1
+  - flow6(DataStorageFlow ReadWriteFlow): process2 -> hostStorage
+  - flow7(DependFlow): process2 -> process0
+  - flow8(DependFlow): process2 -> process1

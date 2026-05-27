@@ -1,0 +1,13 @@
+Processes:
+  - process0(SQLDatabase Database CloudStorage)
+  - process1(CollaborationPlatform WebServer FileStorage HTTPServer)
+Storages:
+  - storage0(DockerVolume)
+  - storage1(DockerVolume)
+Externals:
+  - user(RemoteUser)
+Flows:
+  - flow0(DataStorageFlow ReadWriteFlow): process0 -> storage0
+  - flow1(NetworkFlow HTTPFlow): user -> process1
+  - flow2(DataStorageFlow ReadWriteFlow): process1 -> storage1
+  - flow3(DependFlow): process1 -> process0

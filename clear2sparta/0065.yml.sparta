@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<spartamodel:DFDModel xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:spartamodel="http://distrinet.cs.kuleuven.be/spartamodel" xmi:version="2.0" xmi:id="_qycC9H_07ItoAc_1RErgig">
+<containedElements xsi:type="spartamodel:DataFlow" xmi:id="_P1RH4k8A_9Hy9IlhM2ieJg" name="flow0" sender="_MVDghfq1Qgtsl0_ZKx049A" recipient="_vmaJwzN8WhbUqTg9feE8pQ"/>
+<containedElements xsi:type="spartamodel:DataFlow" xmi:id="_imZ0Kk4tfyK1sSG2C_tDDg" name="flow1" sender="_MVDghfq1Qgtsl0_ZKx049A" recipient="_mfgMdJU-b-9KmMa5O6IY6g"/>
+<containedElements xsi:type="spartamodel:DataFlow" xmi:id="_Xcdk7oRM7ShnG-xU06VqXA" name="flow2" sender="_MVDghfq1Qgtsl0_ZKx049A" recipient="_6yYLGPDGBM73O0CpRnjwBA"/>
+<containedElements xsi:type="spartamodel:DataFlow" xmi:id="_a0d06nbNaWUq9Xmx4pFI1g" name="flow3" sender="_MVDghfq1Qgtsl0_ZKx049A" recipient="_3dPry0GuhIdAEyqZ74Bm3w"/>
+<containedElements xsi:type="spartamodel:DataFlow" xmi:id="_XnwwfkdSCcWFCWIbkA0uRw" name="flow4" sender="_MVDghfq1Qgtsl0_ZKx049A" recipient="_Zo3aJiSIfkUPmD2ZL5nVGw"/>
+<containedElements xsi:type="spartamodel:DataFlow" xmi:id="_bVYrLrajGt968Akeh3bR3g" name="flow5" sender="_MVDghfq1Qgtsl0_ZKx049A" recipient="_LRBQV8OsZucajrZcMnMmmg"/>
+<containedElements xsi:type="spartamodel:DataFlow" xmi:id="_RkbSIETTAxlGUiVmX9uwRg" name="flow6" sender="_6yYLGPDGBM73O0CpRnjwBA" recipient="_mfgMdJU-b-9KmMa5O6IY6g"/>
+<containedElements xsi:type="spartamodel:DataFlow" xmi:id="_ISFVm7lYJ0Z2rKdFFJZsrg" name="flow7" sender="_Zo3aJiSIfkUPmD2ZL5nVGw" recipient="_3dPry0GuhIdAEyqZ74Bm3w"/>
+<containedElements xsi:type="spartamodel:Process" xmi:id="_vmaJwzN8WhbUqTg9feE8pQ" name="process0" send="" receive="_P1RH4k8A_9Hy9IlhM2ieJg">
+<annotations xsi:type="spartamodel:ModelElementAnnotation" value="Container"/>
+<annotations xsi:type="spartamodel:ModelElementAnnotation" value="CloudApplication"/>
+</containedElements>
+<containedElements xsi:type="spartamodel:Process" xmi:id="_mfgMdJU-b-9KmMa5O6IY6g" name="process1" send="" receive="_imZ0Kk4tfyK1sSG2C_tDDg _RkbSIETTAxlGUiVmX9uwRg">
+<annotations xsi:type="spartamodel:ModelElementAnnotation" value="Container"/>
+<annotations xsi:type="spartamodel:ModelElementAnnotation" value="CloudApplication"/>
+</containedElements>
+<containedElements xsi:type="spartamodel:Process" xmi:id="_6yYLGPDGBM73O0CpRnjwBA" name="process2" send="_RkbSIETTAxlGUiVmX9uwRg" receive="_Xcdk7oRM7ShnG-xU06VqXA">
+<annotations xsi:type="spartamodel:ModelElementAnnotation" value="Container"/>
+<annotations xsi:type="spartamodel:ModelElementAnnotation" value="CloudApplication"/>
+</containedElements>
+<containedElements xsi:type="spartamodel:Process" xmi:id="_3dPry0GuhIdAEyqZ74Bm3w" name="process3" send="" receive="_a0d06nbNaWUq9Xmx4pFI1g _ISFVm7lYJ0Z2rKdFFJZsrg">
+<annotations xsi:type="spartamodel:ModelElementAnnotation" value="Container"/>
+<annotations xsi:type="spartamodel:ModelElementAnnotation" value="CloudApplication"/>
+</containedElements>
+<containedElements xsi:type="spartamodel:Process" xmi:id="_Zo3aJiSIfkUPmD2ZL5nVGw" name="process4" send="_ISFVm7lYJ0Z2rKdFFJZsrg" receive="_XnwwfkdSCcWFCWIbkA0uRw">
+<annotations xsi:type="spartamodel:ModelElementAnnotation" value="Container"/>
+<annotations xsi:type="spartamodel:ModelElementAnnotation" value="CloudApplication"/>
+</containedElements>
+<containedElements xsi:type="spartamodel:Process" xmi:id="_A2YadmkS1wj8UEC28Z4fhQ" name="process5" send="" receive="">
+<annotations xsi:type="spartamodel:ModelElementAnnotation" value="Container"/>
+<annotations xsi:type="spartamodel:ModelElementAnnotation" value="CloudApplication"/>
+</containedElements>
+<containedElements xsi:type="spartamodel:Process" xmi:id="_LRBQV8OsZucajrZcMnMmmg" name="process6" send="" receive="_bVYrLrajGt968Akeh3bR3g">
+<annotations xsi:type="spartamodel:ModelElementAnnotation" value="Container"/>
+<annotations xsi:type="spartamodel:ModelElementAnnotation" value="CloudApplication"/>
+</containedElements>
+<containedElements xsi:type="spartamodel:ExternalEntity" xmi:id="_MVDghfq1Qgtsl0_ZKx049A" name="user" send="_P1RH4k8A_9Hy9IlhM2ieJg _imZ0Kk4tfyK1sSG2C_tDDg _Xcdk7oRM7ShnG-xU06VqXA _a0d06nbNaWUq9Xmx4pFI1g _XnwwfkdSCcWFCWIbkA0uRw _bVYrLrajGt968Akeh3bR3g" receive="">
+<annotations xsi:type="spartamodel:ModelElementAnnotation" value="RemoteUser"/>
+</containedElements>
+<resource xsi:type="spartamodel:ThreatTypeCatalog" href="../threatmodels/IACNewCatalog_v2.sparta#_BtICwBDgEe-wPvByQR6wwA"/>
+</spartamodel:DFDModel>

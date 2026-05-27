@@ -1,0 +1,11 @@
+Processes:
+  - process0(SQLDatabase Database)
+  - process1(PythonEnv DevelopmentEnvironment)
+Storages:
+  - hostStorage(HostStorage)
+Externals:
+  - user(RemoteUser)
+Flows:
+  - flow0(NetworkFlow GenericProtocolFlow): user -> process1
+  - flow1(GenericStorageFlow ReadWriteFlow): process1 -> hostStorage
+  - flow2(DependFlow): process1 -> process0

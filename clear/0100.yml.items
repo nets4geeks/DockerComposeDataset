@@ -1,0 +1,12 @@
+Processes:
+  - process0(SQLDatabase Database)
+  - process1(CacheDatabase)
+  - process2(GenericService)
+Storages:
+  - hostStorage(HostStorage)
+Externals:
+  - user(RemoteUser)
+Flows:
+  - flow0(GenericStorageFlow ReadWriteFlow): process2 -> hostStorage
+  - flow1(DependFlow): process2 -> process0
+  - flow2(DependFlow): process2 -> process1

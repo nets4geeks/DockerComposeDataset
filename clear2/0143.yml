@@ -1,0 +1,85 @@
+---
+name: "0143.yml"
+id: "186beddf-fd0b-4610-9253-5cfc2650224a"
+processes:
+- name: "process0"
+  realName: null
+  model: "GenericDevelopment"
+  id: "9f578f11-d4f5-4138-a784-359647322629"
+  labels: null
+  labels2: null
+- name: "process1"
+  realName: null
+  model: "GenericDevelopment"
+  id: "0dc56ca4-d130-4fcb-a9d0-798c76c960a6"
+  labels: null
+  labels2: null
+- name: "process2"
+  realName: null
+  model: "SQLDatabase"
+  id: "3e2e7293-4d30-4fab-9728-d954e888a653"
+  labels:
+  - "Database"
+  labels2:
+  - "CloudStorage"
+externals:
+- name: "user"
+  model: "RemoteUser"
+  id: "21701016-11eb-4f97-b254-993a30112166"
+flows:
+- name: "flow0"
+  model: "NetworkFlow"
+  realPortMapping: null
+  id: "2001abed-3d8f-4dd9-ae13-ae2a9e9bcb23"
+  localPort: null
+  source:
+    name: "user"
+    id: "21701016-11eb-4f97-b254-993a30112166"
+  target:
+    name: "process0"
+    id: "9f578f11-d4f5-4138-a784-359647322629"
+  labels:
+  - "GenericProtocolFlow"
+  realStorageMappings: null
+- name: "flow1"
+  model: "NetworkFlow"
+  realPortMapping: null
+  id: "f96c2a11-7148-4894-96d4-6ca0786442c9"
+  localPort: null
+  source:
+    name: "user"
+    id: "21701016-11eb-4f97-b254-993a30112166"
+  target:
+    name: "process1"
+    id: "0dc56ca4-d130-4fcb-a9d0-798c76c960a6"
+  labels:
+  - "GenericProtocolFlow"
+  realStorageMappings: null
+- name: "flow2"
+  model: "NetworkFlow"
+  realPortMapping: null
+  id: "f3260edc-f91e-45f6-a51d-3165701ff3c4"
+  localPort: null
+  source:
+    name: "user"
+    id: "21701016-11eb-4f97-b254-993a30112166"
+  target:
+    name: "process2"
+    id: "3e2e7293-4d30-4fab-9728-d954e888a653"
+  labels:
+  - "DBFlow"
+  realStorageMappings: null
+- name: "flow3"
+  model: "DependFlow"
+  realPortMapping: null
+  id: "178c2235-7f9f-4606-8fcb-6a560ba0e7bf"
+  localPort: null
+  source:
+    name: "process1"
+    id: "0dc56ca4-d130-4fcb-a9d0-798c76c960a6"
+  target:
+    name: "process2"
+    id: "3e2e7293-4d30-4fab-9728-d954e888a653"
+  labels: null
+  realStorageMappings: null
+storages: []

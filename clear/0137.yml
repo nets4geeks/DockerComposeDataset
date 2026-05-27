@@ -1,0 +1,170 @@
+---
+name: "0137.yml"
+id: "d371e716-13b9-4a08-82a7-54a6837a0f20"
+processes:
+- name: "process0"
+  realName: null
+  model: "InfrastructureMonitoring"
+  id: "1dc89ae1-b30d-48cc-aaca-4599ff4cf36a"
+  labels: null
+- name: "process1"
+  realName: null
+  model: "WebApplication"
+  id: "f195acf4-cf00-4866-b5f4-fc240b7a701d"
+  labels:
+  - "WebServer"
+  - "HTTPServer"
+  - "HTTPSServer"
+- name: "process2"
+  realName: null
+  model: "SQLDatabase"
+  id: "32776a17-f845-432e-97e1-07fcdd7d8b10"
+  labels:
+  - "Database"
+externals:
+- name: "user"
+  model: "RemoteUser"
+  id: "50f091b7-e0e3-4243-bf15-3ccacf729193"
+flows:
+- name: "flow0"
+  model: "NetworkFlow"
+  realPortMapping: null
+  id: "30573a00-df93-4a91-8c72-a0e9689284f4"
+  localPort: null
+  source:
+    name: "user"
+    id: "50f091b7-e0e3-4243-bf15-3ccacf729193"
+  target:
+    name: "process0"
+    id: "1dc89ae1-b30d-48cc-aaca-4599ff4cf36a"
+  labels:
+  - "GenericProtocolFlow"
+  realStorageMappings: null
+- name: "flow1"
+  model: "GenericStorageFlow"
+  realPortMapping: null
+  id: "955408d4-57b7-4370-acab-c15d38f89482"
+  localPort: null
+  source:
+    name: "process0"
+    id: "1dc89ae1-b30d-48cc-aaca-4599ff4cf36a"
+  target:
+    name: "hostStorage"
+    id: "c58ec977-af83-4155-89e7-e10b32c4a10d"
+  labels:
+  - "ReadWriteFlow"
+  realStorageMappings: null
+- name: "flow2"
+  model: "NetworkFlow"
+  realPortMapping: null
+  id: "6e017895-f711-4560-ae04-d067dcbca792"
+  localPort: null
+  source:
+    name: "user"
+    id: "50f091b7-e0e3-4243-bf15-3ccacf729193"
+  target:
+    name: "process1"
+    id: "f195acf4-cf00-4866-b5f4-fc240b7a701d"
+  labels:
+  - "HTTPFlow"
+  realStorageMappings: null
+- name: "flow3"
+  model: "NetworkFlow"
+  realPortMapping: null
+  id: "d141919a-3ff1-4c6b-8fa0-6db060aa5ad5"
+  localPort: null
+  source:
+    name: "user"
+    id: "50f091b7-e0e3-4243-bf15-3ccacf729193"
+  target:
+    name: "process1"
+    id: "f195acf4-cf00-4866-b5f4-fc240b7a701d"
+  labels:
+  - "HTTPSFlow"
+  realStorageMappings: null
+- name: "flow4"
+  model: "NetworkFlow"
+  realPortMapping: null
+  id: "7ebb6e72-a08c-46da-92d6-ba649e09a62d"
+  localPort: null
+  source:
+    name: "user"
+    id: "50f091b7-e0e3-4243-bf15-3ccacf729193"
+  target:
+    name: "process2"
+    id: "32776a17-f845-432e-97e1-07fcdd7d8b10"
+  labels:
+  - "DBFlow"
+  realStorageMappings: null
+- name: "flow5"
+  model: "DataStorageFlow"
+  realPortMapping: null
+  id: "ccd9c15d-034d-4734-8bac-59ec3089d765"
+  localPort: null
+  source:
+    name: "process2"
+    id: "32776a17-f845-432e-97e1-07fcdd7d8b10"
+  target:
+    name: "hostStorage"
+    id: "c58ec977-af83-4155-89e7-e10b32c4a10d"
+  labels:
+  - "ReadWriteFlow"
+  realStorageMappings: null
+- name: "flow6"
+  model: "DependFlow"
+  realPortMapping: null
+  id: "94e78df6-5618-41a1-a56c-e62c9c82d94b"
+  localPort: null
+  source:
+    name: "process0"
+    id: "1dc89ae1-b30d-48cc-aaca-4599ff4cf36a"
+  target:
+    name: "process2"
+    id: "32776a17-f845-432e-97e1-07fcdd7d8b10"
+  labels: null
+  realStorageMappings: null
+- name: "flow7"
+  model: "LinkFlow"
+  realPortMapping: null
+  id: "2e9b2e09-65e5-4dfb-8e90-8b5ac0df8d40"
+  localPort: null
+  source:
+    name: "process0"
+    id: "1dc89ae1-b30d-48cc-aaca-4599ff4cf36a"
+  target:
+    name: "process2"
+    id: "32776a17-f845-432e-97e1-07fcdd7d8b10"
+  labels: null
+  realStorageMappings: null
+- name: "flow8"
+  model: "DependFlow"
+  realPortMapping: null
+  id: "d9863d35-9dea-4752-824b-514dcd36192d"
+  localPort: null
+  source:
+    name: "process1"
+    id: "f195acf4-cf00-4866-b5f4-fc240b7a701d"
+  target:
+    name: "process2"
+    id: "32776a17-f845-432e-97e1-07fcdd7d8b10"
+  labels: null
+  realStorageMappings: null
+- name: "flow9"
+  model: "LinkFlow"
+  realPortMapping: null
+  id: "cfcf660f-03b9-459b-aac7-814a26798817"
+  localPort: null
+  source:
+    name: "process1"
+    id: "f195acf4-cf00-4866-b5f4-fc240b7a701d"
+  target:
+    name: "process2"
+    id: "32776a17-f845-432e-97e1-07fcdd7d8b10"
+  labels: null
+  realStorageMappings: null
+storages:
+- name: "hostStorage"
+  model: "HostStorage"
+  realName: null
+  realService: null
+  id: "c58ec977-af83-4155-89e7-e10b32c4a10d"

@@ -1,0 +1,29 @@
+Processes:
+  - process0(PHPEnv DevelopmentEnvironment)
+  - process1(SearchEngine Database)
+  - process2(DataVisualizer)
+  - process3(DataCollector)
+  - process4(CacheDatabase)
+  - process5(SQLDatabase Database CloudStorage)
+Storages:
+  - hostStorage(HostStorage)
+  - storage0(DockerVolume)
+  - storage1(DockerVolume)
+  - storage2(DockerVolume)
+Externals:
+  - user(RemoteUser)
+Flows:
+  - flow0(DataStorageFlow ReadWriteFlow): process0 -> hostStorage
+  - flow1(GenericStorageFlow ReadWriteFlow): process0 -> hostStorage
+  - flow2(DataStorageFlow ReadWriteFlow): process1 -> storage0
+  - flow3(ConfigStorageFlow ReadWriteFlow): process1 -> hostStorage
+  - flow4(NetworkFlow HTTPFlow): user -> process2
+  - flow5(ConfigStorageFlow ReadWriteFlow): process2 -> hostStorage
+  - flow6(NetworkFlow GenericProtocolFlow): user -> process3
+  - flow7(DataStorageFlow ReadWriteFlow): process4 -> storage1
+  - flow8(DataStorageFlow ReadWriteFlow): process5 -> storage2
+  - flow9(LinkFlow): process0 -> process5
+  - flow10(DependFlow): process1 -> process0
+  - flow11(DependFlow): process2 -> process1
+  - flow12(LinkFlow): process2 -> process1
+  - flow13(LinkFlow): process3 -> process1

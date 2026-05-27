@@ -1,0 +1,17 @@
+Processes:
+  - process0(StatisticsPlatform WebServer WebApplication)
+  - process1(SQLDatabase Database)
+  - process2(WebServer HTTPServer)
+Storages:
+  - hostStorage(HostStorage)
+Externals:
+  - user(RemoteUser)
+Flows:
+  - flow0(DataStorageFlow ReadWriteFlow): process0 -> hostStorage
+  - flow1(GenericStorageFlow ReadWriteFlow): process0 -> hostStorage
+  - flow2(DataStorageFlow ReadWriteFlow): process1 -> hostStorage
+  - flow3(NetworkFlow HTTPFlow): user -> process2
+  - flow4(ConfigStorageFlow ReadWriteFlow): process2 -> hostStorage
+  - flow5(DataStorageFlow ReadWriteFlow): process2 -> hostStorage
+  - flow6(DependFlow): process0 -> process1
+  - flow7(LinkFlow): process2 -> process0

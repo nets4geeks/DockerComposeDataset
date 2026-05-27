@@ -1,0 +1,15 @@
+Processes:
+  - process0(DataCollector)
+  - process1(DataCollector)
+  - process2(DataVisualizer)
+  - process3(SearchEngine Database)
+Storages:
+  - dockerSocket(DockerSocket)
+Externals:
+  - user(RemoteUser)
+Flows:
+  - flow0(DockerSocketFlow ReadWriteFlow SensitiveHostPath): process0 -> dockerSocket
+  - flow1(NetworkFlow HTTPFlow): user -> process2
+  - flow2(LinkFlow): process0 -> process1
+  - flow3(LinkFlow): process1 -> process3
+  - flow4(LinkFlow): process2 -> process3

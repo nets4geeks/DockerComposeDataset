@@ -1,0 +1,14 @@
+Processes:
+  - process0(NodeJsEnv DevelopmentEnvironment CloudApplication)
+  - process1(NodeJsEnv DevelopmentEnvironment CloudApplication)
+  - process2(NoSQLDatabase Database)
+Storages:
+  - hostStorage(HostStorage)
+Externals:
+  - user(RemoteUser)
+Flows:
+  - flow0(GenericStorageFlow ReadWriteFlow): process0 -> hostStorage
+  - flow1(NetworkFlow GenericProtocolFlow): user -> process1
+  - flow2(ConfigStorageFlow ReadOnlyFlow): process2 -> hostStorage
+  - flow3(DataStorageFlow ReadWriteFlow): process2 -> hostStorage
+  - flow4(LinkFlow): process1 -> process2

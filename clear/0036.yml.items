@@ -1,0 +1,19 @@
+Processes:
+  - process0(CMS WebApplication WebServer HTTPServer)
+  - process1(SQLDatabase Database)
+  - process2(DatabaseManagement HTTPServer)
+Storages:
+  - hostStorage(HostStorage)
+  - storage0(DockerAnonymousVolume)
+Externals:
+  - user(RemoteUser)
+Flows:
+  - flow0(NetworkFlow HTTPFlow): user -> process0
+  - flow1(DataStorageFlow ReadWriteFlow): process0 -> hostStorage
+  - flow2(DataStorageFlow ReadWriteFlow): process1 -> hostStorage
+  - flow3(ConfigStorageFlow ReadWriteFlow): process1 -> hostStorage
+  - flow4(LogStorageFlow ReadWriteFlow): process1 -> hostStorage
+  - flow5(NetworkFlow HTTPFlow): user -> process2
+  - flow6(GenericStorageFlow ReadWriteFlow): process2 -> storage0
+  - flow7(DependFlow): process0 -> process1
+  - flow8(DependFlow): process2 -> process1

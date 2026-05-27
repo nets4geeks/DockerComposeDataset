@@ -1,0 +1,13 @@
+Processes:
+  - process0(ChatPlatform)
+  - process1(WebServer HTTPServer HTTPSServer)
+Storages:
+  - hostStorage(HostStorage)
+Externals:
+  - user(RemoteUser)
+Flows:
+  - flow0(NetworkFlow GenericProtocolFlow): user -> process0
+  - flow1(NetworkFlow HTTPFlow): user -> process1
+  - flow2(NetworkFlow HTTPSFlow): user -> process1
+  - flow3(ConfigStorageFlow ReadWriteFlow): process1 -> hostStorage
+  - flow4(DependFlow): process1 -> process0

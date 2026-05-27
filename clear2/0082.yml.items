@@ -1,0 +1,15 @@
+Processes:
+  - process0(GenericMonitoring WebServer WebApplication Database)
+  - process1(DataVisualizer HTTPServer)
+  - process2(GenericService)
+Storages:
+  - hostStorage(HostStorage)
+Externals:
+  - user(RemoteUser)
+Flows:
+  - flow0(NetworkFlow GenericProtocolFlow): user -> process0
+  - flow1(ConfigStorageFlow ReadWriteFlow): process0 -> hostStorage
+  - flow2(NetworkFlow HTTPFlow): user -> process1
+  - flow3(NetworkFlow GenericProtocolFlow): user -> process2
+  - flow4(DependFlow): process0 -> process2
+  - flow5(DependFlow): process1 -> process0

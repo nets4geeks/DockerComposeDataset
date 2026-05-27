@@ -1,0 +1,15 @@
+Processes:
+  - process0(OS)
+  - process1(DataConverter)
+  - process2(GenericService)
+  - process3(JavaEnv DevelopmentEnvironment)
+Storages:
+  - hostStorage(HostStorage)
+Externals:
+  - user(RemoteUser)
+Flows:
+  - flow0(GenericStorageFlow ReadWriteFlow): process0 -> hostStorage
+  - flow1(GenericStorageFlow ReadWriteFlow): process2 -> hostStorage
+  - flow2(GenericStorageFlow ReadWriteFlow): process3 -> hostStorage
+  - flow3(DependFlow): process3 -> process2
+  - flow4(DependFlow): process3 -> process1

@@ -1,0 +1,20 @@
+Processes:
+  - process0(DirectoryService)
+  - process1(MessageBroker)
+  - process2(GoEnv DevelopmentEnvironment HTTPServer)
+  - process3(DataCollector)
+Storages:
+  - hostStorage(HostStorage)
+Externals:
+  - user(RemoteUser)
+Flows:
+  - flow0(NetworkFlow GenericProtocolFlow): user -> process0
+  - flow1(NetworkFlow GenericProtocolFlow): user -> process1
+  - flow2(NetworkFlow HTTPFlow): user -> process2
+  - flow3(NetworkFlow GenericProtocolFlow): user -> process2
+  - flow4(NetworkFlow GenericProtocolFlow): user -> process3
+  - flow5(ConfigStorageFlow ReadOnlyFlow): process3 -> hostStorage
+  - flow6(DependFlow): process1 -> process0
+  - flow7(LinkFlow): process1 -> process0
+  - flow8(DependFlow): process2 -> process1
+  - flow9(DependFlow): process2 -> process3

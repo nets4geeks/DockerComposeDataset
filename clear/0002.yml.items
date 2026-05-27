@@ -1,0 +1,20 @@
+Processes:
+  - process0(SQLDatabase Database)
+  - process1(CMS WebApplication WebServer HTTPServer)
+  - process2(DatabaseManagement HTTPServer)
+  - process3(GenericService HTTPServer SMTPServer)
+Storages:
+  - storage0(DockerVolume)
+  - hostStorage(HostStorage)
+Externals:
+  - user(RemoteUser)
+Flows:
+  - flow0(DataStorageFlow ReadWriteFlow): process0 -> storage0
+  - flow1(NetworkFlow HTTPFlow): user -> process1
+  - flow2(DataStorageFlow ReadWriteFlow): process1 -> hostStorage
+  - flow3(NetworkFlow HTTPFlow): user -> process2
+  - flow4(NetworkFlow HTTPFlow): user -> process3
+  - flow5(NetworkFlow SMTPFlow): user -> process3
+  - flow6(DependFlow): process1 -> process0
+  - flow7(LinkFlow): process1 -> process3
+  - flow8(DependFlow): process2 -> process0

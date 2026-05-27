@@ -1,0 +1,14 @@
+Processes:
+  - process0(NodeJsEnv DevelopmentEnvironment)
+  - process1(PythonEnv DevelopmentEnvironment)
+  - process2(SearchEngine Database)
+Storages:
+  - hostStorage(HostStorage)
+Externals:
+  - user(RemoteUser)
+Flows:
+  - flow0(NetworkFlow GenericProtocolFlow): user -> process0
+  - flow1(NetworkFlow GenericProtocolFlow): user -> process1
+  - flow2(NetworkFlow HTTPFlow): user -> process2
+  - flow3(NetworkFlow ClusterFlow): user -> process2
+  - flow4(GenericStorageFlow ReadWriteFlow): process2 -> hostStorage

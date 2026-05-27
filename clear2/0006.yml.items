@@ -1,0 +1,14 @@
+Processes:
+  - process0(PHPEnv DevelopmentEnvironment)
+  - process1(SQLDatabase Database CloudStorage)
+  - process2(WebServer HTTPServer)
+Storages:
+  - hostStorage(HostStorage)
+Externals:
+  - user(RemoteUser)
+Flows:
+  - flow0(NetworkFlow DBFlow): user -> process1
+  - flow1(NetworkFlow HTTPFlow): user -> process2
+  - flow2(ConfigStorageFlow ReadOnlyFlow): process2 -> hostStorage
+  - flow3(DependFlow): process0 -> process1
+  - flow4(DependFlow): process2 -> process0

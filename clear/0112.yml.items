@@ -1,0 +1,15 @@
+Processes:
+  - process0(WebServer HTTPServer)
+  - process1(PHPEnv DevelopmentEnvironment)
+  - process2(SQLDatabase Database)
+Storages:
+  - hostStorage(HostStorage)
+  - storage0(DockerVolume)
+Externals:
+  - user(RemoteUser)
+Flows:
+  - flow0(NetworkFlow HTTPFlow): user -> process0
+  - flow1(ConfigStorageFlow ReadWriteFlow): process0 -> hostStorage
+  - flow2(DataStorageFlow ReadWriteFlow): process1 -> hostStorage
+  - flow3(NetworkFlow DBFlow): user -> process2
+  - flow4(DataStorageFlow ReadWriteFlow): process2 -> storage0

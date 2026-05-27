@@ -1,0 +1,44 @@
+Processes:
+  - process0(SSOService HTTPServer)
+  - process1(SQLDatabase Database CloudStorage)
+  - process2(ObjectStorage Database)
+  - process3(ObjectStorage Database HTTPServer)
+  - process4(GenericService)
+  - process5(SQLDatabase Database CloudStorage)
+  - process6(ConsoleService)
+  - process7(JavaEnv DevelopmentEnvironment)
+  - process8(JavaEnv DevelopmentEnvironment HTTPServer)
+  - process9(GenericService)
+  - process10(GenericService HTTPServer)
+Storages:
+  - hostStorage(HostStorage)
+Externals:
+  - user(RemoteUser)
+Flows:
+  - flow0(NetworkFlow HTTPFlow): user -> process0
+  - flow1(NetworkFlow DBFlow): user -> process1
+  - flow2(ConfigStorageFlow ReadWriteFlow): process1 -> hostStorage
+  - flow3(NetworkFlow GenericProtocolFlow): user -> process2
+  - flow4(NetworkFlow HTTPFlow): user -> process3
+  - flow5(GenericStorageFlow ReadWriteFlow): process3 -> hostStorage
+  - flow6(DataStorageFlow ReadWriteFlow): process4 -> hostStorage
+  - flow7(GenericStorageFlow ReadWriteFlow): process4 -> hostStorage
+  - flow8(NetworkFlow DBFlow): user -> process5
+  - flow9(ConfigStorageFlow ReadWriteFlow): process5 -> hostStorage
+  - flow10(GenericStorageFlow ReadOnlyFlow): process6 -> hostStorage
+  - flow11(NetworkFlow GenericProtocolFlow): user -> process7
+  - flow12(DataStorageFlow ReadWriteFlow): process7 -> hostStorage
+  - flow13(GenericStorageFlow ReadWriteFlow): process7 -> hostStorage
+  - flow14(NetworkFlow GenericProtocolFlow): user -> process8
+  - flow15(NetworkFlow HTTPFlow): user -> process8
+  - flow16(GenericStorageFlow ReadWriteFlow): process8 -> hostStorage
+  - flow17(NetworkFlow HTTPFlow): user -> process10
+  - flow18(DependFlow): process0 -> process1
+  - flow19(DependFlow): process3 -> process2
+  - flow20(DependFlow): process3 -> process0
+  - flow21(DependFlow): process8 -> process5
+  - flow22(DependFlow): process8 -> process0
+  - flow23(DependFlow): process8 -> process3
+  - flow24(DependFlow): process8 -> process10
+  - flow25(DependFlow): process10 -> process9
+  - flow26(DependFlow): process10 -> process0

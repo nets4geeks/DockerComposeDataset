@@ -1,0 +1,25 @@
+Processes:
+  - process0(SQLDatabase Database)
+  - process1(GenericService HTTPServer)
+  - process2(GenericService HTTPServer)
+  - process3(GenericService)
+  - process4(DirectoryService LDAPServer)
+  - process5(CacheDatabase)
+Storages:
+  - hostStorage(HostStorage)
+Externals:
+  - user(RemoteUser)
+Flows:
+  - flow0(NetworkFlow DBFlow): user -> process0
+  - flow1(DataStorageFlow ReadWriteFlow): process0 -> hostStorage
+  - flow2(NetworkFlow HTTPFlow): user -> process1
+  - flow3(DataStorageFlow ReadWriteFlow): process1 -> hostStorage
+  - flow4(GenericStorageFlow ReadWriteFlow): process1 -> hostStorage
+  - flow5(NetworkFlow HTTPFlow): user -> process2
+  - flow6(NetworkFlow GenericProtocolFlow): user -> process3
+  - flow7(DataStorageFlow ReadWriteFlow): process3 -> hostStorage
+  - flow8(NetworkFlow LDAPFlow): user -> process4
+  - flow9(GenericStorageFlow ReadWriteFlow): process4 -> hostStorage
+  - flow10(DataStorageFlow ReadWriteFlow): process4 -> hostStorage
+  - flow11(ConfigStorageFlow ReadWriteFlow): process4 -> hostStorage
+  - flow12(LinkFlow): process1 -> process0

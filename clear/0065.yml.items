@@ -1,0 +1,13 @@
+Processes:
+  - process0(PythonEnv DevelopmentEnvironment HTTPServer)
+  - process1(WebProxy HTTPServer)
+Storages:
+  - hostStorage(HostStorage)
+  - dockerSocket(DockerSocket)
+Externals:
+  - user(RemoteUser)
+Flows:
+  - flow0(NetworkFlow HTTPFlow): user -> process0
+  - flow1(GenericStorageFlow ReadWriteFlow): process0 -> hostStorage
+  - flow2(NetworkFlow HTTPFlow): user -> process1
+  - flow3(DockerSocketFlow ReadWriteFlow SensitiveHostPath): process1 -> dockerSocket

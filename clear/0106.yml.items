@@ -1,0 +1,16 @@
+Processes:
+  - process0(CacheDatabase)
+  - process1(NodeJsEnv DevelopmentEnvironment)
+  - process2(NodeJsEnv DevelopmentEnvironment)
+  - process3(NodeJsEnv DevelopmentEnvironment)
+Storages:
+  - hostStorage(HostStorage)
+Externals:
+  - user(RemoteUser)
+Flows:
+  - flow0(DataStorageFlow ReadWriteFlow): process1 -> hostStorage
+  - flow1(DataStorageFlow ReadWriteFlow): process2 -> hostStorage
+  - flow2(DataStorageFlow ReadWriteFlow): process3 -> hostStorage
+  - flow3(LinkFlow): process1 -> process0
+  - flow4(LinkFlow): process2 -> process0
+  - flow5(LinkFlow): process3 -> process0

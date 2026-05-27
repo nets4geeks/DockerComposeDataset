@@ -1,0 +1,101 @@
+---
+name: "0071.yml"
+id: "5c90e820-7882-4f15-bcc9-b1f728b7a99c"
+processes:
+- name: "process0"
+  realName: null
+  model: "PHPEnv"
+  id: "031dd76b-1b27-424d-90c8-b1167f4d5230"
+  labels:
+  - "DevelopmentEnvironment"
+- name: "process1"
+  realName: null
+  model: "SQLDatabase"
+  id: "d5714608-c0d3-40dc-9d68-ba5ddda0efcb"
+  labels:
+  - "Database"
+- name: "process2"
+  realName: null
+  model: "WebServer"
+  id: "dcc91360-5423-4059-a9bc-4045bd60717d"
+  labels:
+  - "HTTPServer"
+externals:
+- name: "user"
+  model: "RemoteUser"
+  id: "ae50463e-39b8-4bd6-9166-1e6f51d50755"
+flows:
+- name: "flow0"
+  model: "NetworkFlow"
+  realPortMapping: null
+  id: "43e644fd-2424-4324-b1b7-f5053556df85"
+  localPort: null
+  source:
+    name: "user"
+    id: "ae50463e-39b8-4bd6-9166-1e6f51d50755"
+  target:
+    name: "process1"
+    id: "d5714608-c0d3-40dc-9d68-ba5ddda0efcb"
+  labels:
+  - "DBFlow"
+  realStorageMappings: null
+- name: "flow1"
+  model: "NetworkFlow"
+  realPortMapping: null
+  id: "b70c6ebd-a818-47e6-98cf-e39a4ca9daa9"
+  localPort: null
+  source:
+    name: "user"
+    id: "ae50463e-39b8-4bd6-9166-1e6f51d50755"
+  target:
+    name: "process2"
+    id: "dcc91360-5423-4059-a9bc-4045bd60717d"
+  labels:
+  - "HTTPFlow"
+  realStorageMappings: null
+- name: "flow2"
+  model: "ConfigStorageFlow"
+  realPortMapping: null
+  id: "b9e31b44-ece3-459a-bb96-20ad2f4cf6ba"
+  localPort: null
+  source:
+    name: "process2"
+    id: "dcc91360-5423-4059-a9bc-4045bd60717d"
+  target:
+    name: "hostStorage"
+    id: "dbbbe1bb-a1a6-4e8a-936d-1f5e6cfe91f2"
+  labels:
+  - "ReadOnlyFlow"
+  realStorageMappings: null
+- name: "flow3"
+  model: "DependFlow"
+  realPortMapping: null
+  id: "68fff7b4-0582-44f6-b8f2-b867629ac465"
+  localPort: null
+  source:
+    name: "process0"
+    id: "031dd76b-1b27-424d-90c8-b1167f4d5230"
+  target:
+    name: "process1"
+    id: "d5714608-c0d3-40dc-9d68-ba5ddda0efcb"
+  labels: null
+  realStorageMappings: null
+- name: "flow4"
+  model: "DependFlow"
+  realPortMapping: null
+  id: "94e79446-0eb3-4292-a240-7a27146948f1"
+  localPort: null
+  source:
+    name: "process2"
+    id: "dcc91360-5423-4059-a9bc-4045bd60717d"
+  target:
+    name: "process0"
+    id: "031dd76b-1b27-424d-90c8-b1167f4d5230"
+  labels: null
+  realStorageMappings: null
+storages:
+- name: "hostStorage"
+  model: "HostStorage"
+  realName: null
+  realService: null
+  id: "dbbbe1bb-a1a6-4e8a-936d-1f5e6cfe91f2"
