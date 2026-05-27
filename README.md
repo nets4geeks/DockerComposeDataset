@@ -13,7 +13,7 @@ The set is based on a domain taxonomy (see services2.yml).
 Each diagram has three representations (see the 'clear2' folder):
 * YAML file that can be used to draw a picture (a visual view of a diagram) or might be converted to another format,
 * OWL (Web Ontology Language) ontology that can be used to reason extra facts about the diagram,
-* RDF (Resource Description Framework) graph that contains ‘full’ knowledge about the diagram and can be questioned about various aspects of design and security by SPARQL requests (see 'sparql/requests').
+* RDF (Resource Description Framework) graph that contains ‘full’ knowledge about the diagram and can be questioned about various aspects of design and security by SPARQL requests (see 'sparql/requests2').
 
 The diagrams have been manually classified into five categories related to the web applications and data processing (see 'labels2').
 This taxonomy (ground truth) allows to define type of a background application, what gives the first view of the security analysis.
@@ -21,7 +21,7 @@ This taxonomy (ground truth) allows to define type of a background application, 
 
 Also the set includes:
 
-* [SPARTA](https://sparta.distrinet-research.be/) representation, created by third-party CLI tool [sparta-cli-2026.0.0-shaded.jar](https://github.com/SPARTA-Threat-Modeling/SPARTA) (see the 'clear2sparta' folder)
+* [SPARTA](https://sparta.distrinet-research.be/) representation, understadable by third-party tools, like [sparta-cli-2026.0.0-shaded.jar](https://github.com/SPARTA-Threat-Modeling/SPARTA) (see the 'clear2sparta' folder)
 
 
 ## Old set (180 items)
